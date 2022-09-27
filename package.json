@@ -7,8 +7,8 @@
     "node": "16.14.2"
   },
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
+    "start": "npx husky install && vite",
+    "build": "npx husky install && vite build",
     "preview": "vite preview",
     "lint-staged": "lint-staged --allow-empty --quiet",
     "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue "
