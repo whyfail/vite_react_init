@@ -3,5 +3,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true // 保存时自动进行 eslint 的修复
   },
-  "editor.formatOnSave": true // 保存时自动格式化
+  "editor.formatOnSave": true, // 保存时自动格式化
+  "files.eol": "\n" //默认行尾字符。
 }

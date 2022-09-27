@@ -1,22 +1,22 @@
 ---
 
-## 项目
+#### 项目
 
-- 适量图层自定义系统
+- 自定义系统
 
-## 下载依赖
+#### 下载依赖
 
 ```
 npm install
 ```
 
-### 启动服务
+#### 启动服务
 
 ```
-npm run serve
+npm run start
 ```
 
-### 项目打包
+#### 项目打包
 
 ```
 npm run build
@@ -49,7 +49,8 @@ npm run build
 [修复] 主界面白屏修复
 ```
 
-### git 提交方案，多人协作的情况下，提交 git 的时候就会出现提交分支混乱的情况，为避免这样情况，可以使用如下方案进行提交，可以避免很多意外情况。
+#### git 提交方案
+- 多人协作的情况下，提交 git 的时候就会出现提交分支混乱的情况，为避免这样情况，可以使用如下方案进行提交，可以避免很多意外情况。
 
 ```
 git add -A
@@ -68,4 +69,12 @@ git rebase --continue ，// 可以线性的连接本地分支与远程分支，�
 git push
 ```
 
+#### 项目功能简介
+- `lint-staged husky`:用于代码提交时进行`eslint prettier`代码校验，校验通过后，才能提交代码
+- `package.json` 中 `engines`用来定义`node`版本，可根据自己的需要自行修改
+- `.npmrc` 文件是用来约束npm的，`package.json` 中 `engines`只能限制`yarn`，所以需要这个文件配置
+- `react-dev-inspector` 用来通过页面快速定位到代码，在`main.jsx`中进行了配置，在页面中可使用`control + y`可跳转到vscode中代码对用位置
+- `postcss-px-to-viewport` 用来将css中的px单位转换为vw，`react-jss`和行内样式无效
+- `viteCompression` 用来配置开启gzip打包
+- `rollup-plugin-visualizer` 用来打包时展示包大小细节
 ---
