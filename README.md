@@ -1,5 +1,3 @@
----
-
 #### 项目
 
 - 自定义系统
@@ -50,6 +48,7 @@ npm run build
 ```
 
 #### git 提交方案
+
 - 多人协作的情况下，提交 git 的时候就会出现提交分支混乱的情况，为避免这样情况，可以使用如下方案进行提交，可以避免很多意外情况。
 
 ```
@@ -70,11 +69,11 @@ git push
 ```
 
 #### 项目功能简介
+
 - `lint-staged husky`:用于代码提交时进行`eslint prettier`代码校验，校验通过后，才能提交代码
 - `package.json` 中 `engines`用来定义`node`版本，可根据自己的需要自行修改
-- `.npmrc` 文件是用来约束npm的，`package.json` 中 `engines`只能限制`yarn`，所以需要这个文件配置
-- `react-dev-inspector` 用来通过页面快速定位到代码，在`main.jsx`中进行了配置，在页面中可使用`control + y`可跳转到vscode中代码对用位置
-- `postcss-px-to-viewport` 用来将css中的px单位转换为vw，`react-jss`和行内样式无效
-- `viteCompression` 用来配置开启gzip打包
+- `.npmrc` 文件是用来约束 npm 的，`package.json` 中 `engines`只能限制`yarn`，所以需要这个文件配置
+- `react-dev-inspector` 用来通过页面快速定位到代码，在`main.jsx`中进行了配置，在页面中可使用`control + y`可跳转到 vscode 中代码对用位置
+- `postcss-px-to-viewport` 用来将 css 中的 px 单位转换为 vw，`react-jss`和行内样式无效
+- `viteCompression` 用来配置开启 gzip 打包
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
----
