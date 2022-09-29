@@ -1,7 +1,9 @@
 {
-  "name": "init_object",
+  "name": "{{ name }}",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "{{ auther }}",
+  "description": "{{ description }}",
   "type": "module",
   "engines": {
     "node": "16.14.2"
