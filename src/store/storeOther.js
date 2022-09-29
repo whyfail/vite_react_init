@@ -1,24 +1,25 @@
 import { makeAutoObservable } from 'mobx';
 
 class storeOther {
-  // 监听的dom
-  DOM = null;
+  number = 0;
 
   // 响应式
   constructor() {
     makeAutoObservable(this);
   }
 
-  // dom赋值
-  setDom = (val) => {
-    this.DOM = val;
+  // 增加
+  addNumber = () => {
+    this.number += 1;
   };
 
-  // DOM恢复到顶部
-  setDomScroll = () => {
-    if (this.DOM) this.DOM.scrollTop = 0;
+  // 减少
+  subtractNumber = () => {
+    this.number -= 1;
   };
 }
 
+const otherMobx = new storeOther();
+
 // 导出实力
-export default storeOther;
+export default otherMobx;
