@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'antd';
 import { createUseStyles } from 'react-jss';
 import { observer } from 'mobx-react-lite';
 import otherMobx from '../store/storeOther';
@@ -7,9 +6,12 @@ import './index.less';
 
 const myStyles = createUseStyles({
   root: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#1a1a1a',
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    userSelect: 'none',
   },
 });
 
@@ -21,36 +23,13 @@ const index = observer(() => {
 
   return (
     <div className={classes.root}>
-      <div id="holder">
-        <h1>
-          <Button type="primary" onClick={addNumber}>
-            +
-          </Button>
-          <Button>{number}</Button>
-          <Button type="primary" onClick={subtractNumber}>
-            -
-          </Button>
-        </h1>
-        <div id="portals">
-          <span>
-            <span>
-              <span>
-                <span>
-                  <span>
-                    <span>
-                      <span>
-                        <span>
-                          <span>
-                            <span></span>
-                          </span>
-                        </span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </span>{' '}
+      <div className="content_root">
+        <div className="container">
+          <div className="brand-logo">{number}</div>
+          <div className="inputs">
+            <button onClick={addNumber}>+</button>
+            <button onClick={subtractNumber}>-</button>
+          </div>
         </div>
       </div>
     </div>
