@@ -1,0 +1,47 @@
+import axios from 'axios';
+
+// 访问前缀（线下）
+export const BASE_NAME = '/API_BASE'; //测试版本
+
+// token 变量
+export const KEY_TOKEN = 'ke_yan_web_app_token';
+export const USER_KEY_TOKEN = 'ke_yan_web_app_user';
+
+// 响应码
+export const ResponseCode = {
+  successCode: 200,
+  outTimeCode: 504,
+  InvalidTokenCode: 401,
+  OtherLoading: 403,
+};
+
+// 请求拦截器
+axios.interceptors.request.use(
+  (config) => {
+    // 接口带token
+    config.headers.Authorization = localStorage.getItem(KEY_TOKEN) ? `Bearer ${localStorage.getItem(KEY_TOKEN)}` : '';
+
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
+
+//  响应拦截器
+axios.interceptors.response.use(
+  (response) => {
+    if (response?.data?.msg === '请求过于频繁，请稍后再试') {
+      console.error(response.data.msg);
+    }
+
+    return response.data;
+  },
+  (error) => {
+    if (error?.response?.status === ResponseCode.outTimeCode) {
+      console.error('请求超时,请稍后重试');
+    }
+
+    return Promise.reject(error);
+  },
+);
+
+export default axios;
