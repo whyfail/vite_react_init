@@ -10,7 +10,7 @@ moment.locale('zh-cn');
 const App = () => {
   return (
     <ConfigProvider locale={zhCN}>
-      <Index />;
+      <Index />
     </ConfigProvider>
   );
 };
