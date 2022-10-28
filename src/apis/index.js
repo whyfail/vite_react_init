@@ -15,8 +15,12 @@ export const ResponseCode = {
   OtherLoading: 403,
 };
 
+const http = axios.create({
+  timeout: 5000,
+});
+
 // 请求拦截器
-axios.interceptors.request.use(
+http.interceptors.request.use(
   (config) => {
     // 接口带token
     config.headers.Authorization = localStorage.getItem(KEY_TOKEN) ? `Bearer ${localStorage.getItem(KEY_TOKEN)}` : '';
@@ -27,7 +31,7 @@ axios.interceptors.request.use(
 );
 
 //  响应拦截器
-axios.interceptors.response.use(
+http.interceptors.response.use(
   (response) => {
     if (response?.data?.msg === '请求过于频繁，请稍后再试') {
       console.error(response.data.msg);
@@ -44,4 +48,4 @@ axios.interceptors.response.use(
   },
 );
 
-export default axios;
+export default http;
