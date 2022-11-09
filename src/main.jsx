@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'antd/dist/antd.less';
 import App from './App';
+import 'antd/dist/antd.less';
 import './assets/css/normalize.less';
+import './common/common-set-rem';
 import { Inspector } from 'react-dev-inspector';
 
 const isDev = process.env.NODE_ENV === 'development';
