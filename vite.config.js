@@ -5,6 +5,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import progress from 'vite-plugin-progress';
 import postCssPxToRem from 'postcss-pxtorem';
+import vitePluginNoBug from 'vite-plugin-no-bug';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,6 +23,7 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
+    vitePluginNoBug(),
   ],
   css: {
     postcss: {
