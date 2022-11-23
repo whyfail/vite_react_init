@@ -34,15 +34,6 @@ export default defineConfig({
         }),
       ],
     },
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-        modifyVars: {
-          // 主题修改
-          '@primary-color': '#1d88f6', // 全局主色
-        },
-      },
-    },
   },
   server: {
     host: '0.0.0.0',
@@ -62,7 +53,6 @@ export default defineConfig({
           react: ['react', 'react-router-dom'],
           lodash: ['lodash'],
           antd: ['antd'],
-          moment: ['moment'],
           ahooks: ['ahooks'],
           reactJss: ['react-jss'],
         },

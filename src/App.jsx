@@ -1,15 +1,22 @@
 import React from 'react';
 import Index from './components';
-import moment from 'moment';
-import 'moment/dist/locale/zh-cn';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 
-moment.locale('zh-cn');
+dayjs.locale('zh-cn');
 
 const App = () => {
   return (
-    <ConfigProvider locale={zhCN}>
+    <ConfigProvider
+      locale={zhCN}
+      theme={{
+        token: {
+          colorPrimary: '#00b96b',
+        },
+      }}
+    >
       <Index />
     </ConfigProvider>
   );
