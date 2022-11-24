@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "npx husky install && vite",
-    "build": "npx husky install && vite build",
+    "build": "npx husky install && node auto_update_version.js && vite build",
     "preview": "vite preview",
     "lint-staged": "lint-staged --allow-empty --quiet",
     "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue "
