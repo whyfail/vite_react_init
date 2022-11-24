@@ -8,7 +8,13 @@ function setRem() {
   // 非正常屏幕下的尺寸换算
   let dueH = (vW * 1080) / 1920;
 
-  if (vW < 1660 || vH < 900) return;
+  // 最小适配分辨率
+  if (vW < 1660 || vH < 900) {
+    document.querySelector('#root').style.minWidth = '1660px';
+    document.querySelector('#root').style.minHeight = '900px';
+
+    return;
+  }
 
   if (vH < dueH) {
     // 当前屏幕高度小于应有的屏幕高度，就需要根据当前屏幕高度重新计算屏幕宽度
