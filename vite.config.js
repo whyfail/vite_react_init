@@ -6,6 +6,7 @@ import viteCompression from 'vite-plugin-compression';
 import progress from 'vite-plugin-progress';
 import postCssPxToRem from 'postcss-pxtorem';
 import vitePluginNoBug from 'vite-plugin-no-bug';
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
       targets: ['defaults', 'not IE 11'],
     }),
     vitePluginNoBug(),
+    chunkSplitPlugin(),
   ],
   css: {
     postcss: {
