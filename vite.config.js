@@ -35,6 +35,7 @@ export default defineConfig({
         postCssPxToRem({
           rootValue: 16, // 1rem的大小
           propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+          selectorBlackList: ['#root'],
         }),
       ],
     },
