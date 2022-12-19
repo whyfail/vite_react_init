@@ -56,7 +56,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ['react', 'react-router-dom'],
-          lodash: ['lodash'],
+          lodashEs: ['lodash-es'],
           antd: ['antd'],
           ahooks: ['ahooks'],
           reactJss: ['react-jss'],
