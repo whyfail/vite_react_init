@@ -4,6 +4,7 @@ import App from './App';
 import 'antd/dist/reset.css';
 import './assets/css/normalize.less';
 import { Inspector } from 'react-dev-inspector';
+import './common/common-jss-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
 
