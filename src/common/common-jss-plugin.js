@@ -2,8 +2,7 @@
  * react-jss px转rem插件
  */
 import { jss } from 'react-jss';
-
-const baseFontSize = 16;
+import { BASE_FONT_SIZE } from './common-const';
 
 const pxToRem = (value, defaultValue) => {
   const parsedValue = parseInt(value, 10);
@@ -12,7 +11,7 @@ const pxToRem = (value, defaultValue) => {
     return defaultValue || value;
   }
 
-  return `${parsedValue / baseFontSize}rem`;
+  return `${parsedValue / BASE_FONT_SIZE}rem`;
 };
 
 const pxToRemPlugin = {
