@@ -5,6 +5,7 @@ import 'dayjs/locale/zh-cn';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import { setHtmlRem } from './common/common-set-rem';
+import { BASE_MIN_VW_VH } from './common/common-const';
 
 dayjs.locale('zh-cn');
 
@@ -84,8 +85,8 @@ const App = () => {
       let dueH = (vW * 1080) / 1920;
 
       // 最小适配分辨率
-      if (vW < 1660 || vH < 900) {
-        let rem = 1660 * basePc; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应font-size值
+      if (vW < BASE_MIN_VW_VH.VW || vH < BASE_MIN_VW_VH.VH) {
+        let rem = BASE_MIN_VW_VH.VW * basePc; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应font-size值
 
         allStyleVal[key] = rem;
       } else {
