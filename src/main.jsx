@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import 'antd/dist/reset.css';
+import './store/plugin-log';
 import './assets/css/normalize.less';
 import { Inspector } from 'react-dev-inspector';
 import './common/common-jss-plugin';
@@ -9,7 +10,7 @@ import './common/common-jss-plugin';
 const isDev = process.env.NODE_ENV === 'development';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <>
     <App />
     {isDev && (
       <Inspector
@@ -25,5 +26,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         }}
       />
     )}
-  </React.StrictMode>,
+  </>,
 );
