@@ -77,3 +77,4 @@ git push
 - `postcss-pxtorem` 用来将 css 中的 px 单位转换为 rem，`react-jss`和行内样式无效
 - `viteCompression` 用来配置开启 gzip 打包
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
+- `vite-plugin-image-optimizer` 打包时候适当优化图片资源
