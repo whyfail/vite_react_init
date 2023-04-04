@@ -46,12 +46,9 @@
     "prettier": "^2.7.1",
     "react-dev-inspector": "^1.8.1",
     "rollup-plugin-visualizer": "^5.8.2",
-    "sharp": "^0.32.0",
-    "svgo": "^3.0.2",
     "vite": "^4.2.1",
     "vite-plugin-chunk-split": "^0.4.4",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-image-optimizer": "^1.1.2",
     "vite-plugin-no-bug": "^1.0.4",
     "vite-plugin-progress": "^0.0.4"
   },

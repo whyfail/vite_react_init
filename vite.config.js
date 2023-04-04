@@ -7,7 +7,6 @@ import progress from 'vite-plugin-progress';
 import postCssPxToRem from 'postcss-pxtorem';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,7 +25,6 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
-    ViteImageOptimizer(),
     vitePluginNoBug(),
     chunkSplitPlugin(),
     progress(),

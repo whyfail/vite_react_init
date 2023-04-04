@@ -79,3 +79,51 @@ git push
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
 - `vite-plugin-image-optimizer` 打包时候适当优化图片资源
 - `preinstall` 该命令是为了强制包管理器，这里使用的是 npm
+
+#### 项目打包图片优化方案
+
+- `vite-plugin-imagemin`:一个压缩图片资产的 vite 插件 （https://github.com/vbenjs/vite-plugin-imagemin）
+- 但项目中并没有引入，因为国内下载极为不便，所以需要在电脑 host 文件加上如下配置：
+- 199.232.4.133 raw.githubusercontent.com
+- 加上配置后执行`npm i vite-plugin-imagemin -D`
+- 在`vite.config`文件中加上插件配置：
+
+```
+import viteImagemin from 'vite-plugin-imagemin'
+
+export default () => {
+  return {
+    plugins: [
+      viteImagemin({
+        gifsicle: {
+          optimizationLevel: 7,
+          interlaced: false,
+        },
+        optipng: {
+          optimizationLevel: 7,
+        },
+        mozjpeg: {
+          quality: 20,
+        },
+        pngquant: {
+          quality: [0.8, 0.9],
+          speed: 4,
+        },
+        svgo: {
+          plugins: [
+            {
+              name: 'removeViewBox',
+            },
+            {
+              name: 'removeEmptyAttrs',
+              active: false,
+            },
+          ],
+        },
+      }),
+    ],
+  }
+}
+```
+
+- 对应的配置也可以随项目修改
