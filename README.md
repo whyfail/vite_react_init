@@ -78,3 +78,4 @@ git push
 - `viteCompression` 用来配置开启 gzip 打包
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
 - `vite-plugin-image-optimizer` 打包时候适当优化图片资源
+- `preinstall` 该命令是为了强制包管理器，这里使用的是 npm

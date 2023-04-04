@@ -12,7 +12,8 @@
     "build": "npx husky install && node auto_update_version.js && vite build",
     "preview": "vite preview",
     "lint-staged": "lint-staged --allow-empty --quiet",
-    "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue "
+    "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue ",
+    "preinstall": "npx only-allow npm"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
