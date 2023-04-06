@@ -1,8 +1,9 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { createUseStyles } from 'react-jss';
-import CommonProgress from '../common/CommonProgress';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 import '../assets/css/router-transition.less';
 
 // 路由懒加载
@@ -21,10 +22,12 @@ const Index = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    isLoading ? NProgress.start() : NProgress.done();
+  }, [isLoading]);
+
   return (
     <>
-      {/* 路由加载进度条 */}
-      <CommonProgress isAnimating={isLoading} key={location.key} />
       {/* 路由跳转过渡 */}
       <SwitchTransition className={classes.root}>
         <CSSTransition
