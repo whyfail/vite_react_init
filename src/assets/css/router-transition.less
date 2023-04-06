@@ -1,0 +1,22 @@
+/* 入场动画过程 */
+.dg-enter {
+  transform: translateX(-20px);
+}
+.dg-enter-active {
+  transition: 1s;
+  transform: translateX(0px);
+}
+.dg-enter-done {
+  transform: translateX(0px);
+}
+/* 出场动画过程 */
+.dg-exit {
+  transform: translateX(0px);
+}
+.dg-exit-active {
+  transition: 1s;
+  transform: translateX(-20px);
+}
+.dg-exit-done {
+  transform: translateX(-20px);
+}

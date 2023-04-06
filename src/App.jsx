@@ -6,6 +6,7 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import { setHtmlRem } from './common/common-set-rem';
 import { BASE_MIN_VW_VH } from './common/common-const';
+import { HashRouter as Router } from 'react-router-dom';
 
 dayjs.locale('zh-cn');
 
@@ -124,7 +125,9 @@ const App = () => {
         },
       }}
     >
-      <Index />
+      <Router>
+        <Index />
+      </Router>
     </ConfigProvider>
   );
 };
