@@ -20,9 +20,16 @@ const routes = [
         element: <Index />,
       },
       {
-        path: '/login',
+        path: 'login',
         name: 'Login',
         element: <LoginIndex />,
+        children: [
+          {
+            path: 'other',
+            name: 'other',
+            element: <div>other页面</div>,
+          },
+        ],
       },
       { path: '*', name: '404', element: <div>404页面</div> },
     ],
