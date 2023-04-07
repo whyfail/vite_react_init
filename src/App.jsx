@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Index from './components';
+import React, { useEffect, useState, Suspense } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import { setHtmlRem } from './common/common-set-rem';
 import { BASE_MIN_VW_VH } from './common/common-const';
-import { HashRouter as Router } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import router from './common/common-router';
 
 dayjs.locale('zh-cn');
 
@@ -125,9 +125,9 @@ const App = () => {
         },
       }}
     >
-      <Router>
-        <Index />
-      </Router>
+      <Suspense fallback={<div>loading</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </ConfigProvider>
   );
 };

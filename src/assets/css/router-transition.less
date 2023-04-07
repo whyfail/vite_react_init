@@ -1,23 +1,29 @@
 /* 入场动画过程 */
 .dg-enter {
+  opacity: 0;
   transform: translateX(-20px);
 }
 .dg-enter-active {
   transition: 1s;
+  opacity: 1;
   transform: translateX(0px);
 }
 .dg-enter-done {
+  opacity: 1;
   transform: translateX(0px);
 }
 /* 出场动画过程 */
 .dg-exit {
+  opacity: 1;
   transform: translateX(0px);
 }
 .dg-exit-active {
   transition: 1s;
+  opacity: 0;
   transform: translateX(-20px);
 }
 .dg-exit-done {
+  opacity: 0;
   transform: translateX(-20px);
 }
 

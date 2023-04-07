@@ -1,58 +1,42 @@
-import React, { useState, lazy, Suspense, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import React from 'react';
 import { createUseStyles } from 'react-jss';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import '../assets/css/router-transition.less';
+import { observer } from 'mobx-react-lite';
+import otherMobx from '../store/storeOther';
+import './index.less';
+import { useNavigate } from 'react-router-dom';
 
-// 路由懒加载
-const LoginIndex = lazy(() => import('../components/module-login/index'));
-const MapIndex = lazy(() => import('../components/module-map/index'));
-
-const useStyle = createUseStyles({
+const myStyles = createUseStyles({
   root: {
     width: '100%',
     height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    userSelect: 'none',
   },
 });
 
-const Index = () => {
-  const classes = useStyle();
-  const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
+const Index = observer(() => {
+  const classes = myStyles();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    isLoading ? NProgress.start() : NProgress.done();
-  }, [isLoading]);
+  // 全局状态
+  const { number, addNumber, subtractNumber } = otherMobx;
 
   return (
-    <>
-      {/* 路由跳转过渡 */}
-      <SwitchTransition className={classes.root}>
-        <CSSTransition
-          key={location.key}
-          unmountOnExit
-          timeout={500}
-          classNames="dg"
-          onEnter={() => {
-            setIsLoading(true);
-          }}
-          onEntered={() => {
-            setIsLoading(false);
-          }}
-        >
-          <Suspense fallback={<div>loading...</div>}>
-            <Routes location={location}>
-              <Route element={<MapIndex />} path="/" />
-              <Route element={<LoginIndex />} path="/login" />
-              <Route element={<div>Not Found</div>} path="*" />
-            </Routes>
-          </Suspense>
-        </CSSTransition>
-      </SwitchTransition>
-    </>
+    <div className={classes.root}>
+      <div className="content_root">
+        <div className="container">
+          <div className="brand-logo">{number}</div>
+          <div className="inputs">
+            <button onClick={addNumber}>+</button>
+            <button onClick={subtractNumber}>-</button>
+            <button onClick={() => navigate('/login')}>跳转login</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+});
 
 export default Index;
