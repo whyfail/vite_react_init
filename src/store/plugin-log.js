@@ -7,13 +7,19 @@ import { spy } from 'mobx';
   if (import.meta.env.MODE !== 'development') return;
   spy((e) => {
     if (e.type === 'update') {
-      console.debug(`${new Date().toLocaleString()} %c${e.debugObjectName} 中的 ${e.name}状态改变：`, 'color: red');
-      console.debug(` `, e);
+      console.debug(
+        `%c${new Date().toLocaleString()}：${e.debugObjectName} 中的 ${e.name}状态改变：`,
+        'background-color: #00BCD4; padding: 6px 12px; border-radius: 2px; font-size: 14px; color: #fff; text-transform: uppercase; font-weight: 600;',
+      );
+      console.debug(`   `, e);
     }
 
     if (e.type === 'action') {
-      console.debug(`${new Date().toLocaleString()} %c${e.name} 方法调用：`, 'color: red');
-      console.debug(` `, e);
+      console.debug(
+        `%c${new Date().toLocaleString()}： ${e.name} 方法调用：`,
+        'background-color: #2196f3; padding: 6px 12px; border-radius: 2px; font-size: 14px; color: #fff; text-transform: uppercase; font-weight: 600;',
+      );
+      console.debug(`   `, e);
     }
   });
 })();
