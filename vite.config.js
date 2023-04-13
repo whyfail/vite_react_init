@@ -5,6 +5,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import progress from 'vite-plugin-progress';
 import postCssPxToRem from 'postcss-pxtorem';
+import autoprefixer from 'autoprefixer';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 
@@ -36,6 +37,10 @@ export default defineConfig({
           rootValue: 16, // 1rem的大小
           propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
           selectorBlackList: ['#root'],
+        }),
+        autoprefixer({
+          grid: true,
+          overrideBrowserslist: ['> 1%'],
         }),
       ],
     },

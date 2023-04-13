@@ -2,6 +2,7 @@
  * react-jss px转rem插件
  */
 import { jss } from 'react-jss';
+import jssPluginPreFixer from 'jss-plugin-vendor-prefixer';
 import { BASE_FONT_SIZE } from './common-const';
 
 const pxToRem = (value, defaultValue) => {
@@ -38,4 +39,5 @@ const pxToRemPlugin = {
   },
 };
 
+jss.use(jssPluginPreFixer);
 jss.use(pxToRemPlugin);
