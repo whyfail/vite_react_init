@@ -1,4 +1,6 @@
 module.exports = {
+  // 插件
+  plugin: ['prettier-plugin-sort-imports'],
   // 一行最多 120 字符
   printWidth: 120,
   // 使用 2 个空格缩进
@@ -38,4 +40,6 @@ module.exports = {
   endOfLine: 'auto',
   // 格式化内嵌代码
   embeddedLanguageFormatting: 'auto',
+  // prettier-plugin-sort-imports 配置
+  importOrder: ['^react(.*)', 'antd/(.*)', '<THIRD_PARTY_MODULES>', '@/(.*)', '^[./]'],
 };

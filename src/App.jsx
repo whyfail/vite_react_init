@@ -1,12 +1,12 @@
-import React, { useEffect, useState, Suspense } from 'react';
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
+import React, { Suspense, useEffect, useState } from 'react';
+import { RouterProvider } from 'react-router-dom';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
-import { setHtmlRem } from './common/common-set-rem';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import { BASE_MIN_VW_VH } from './common/common-const';
-import { RouterProvider } from 'react-router-dom';
 import router from './common/common-router';
+import { setHtmlRem } from './common/common-set-rem';
 
 dayjs.locale('zh-cn');
 

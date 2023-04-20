@@ -1,9 +1,9 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import otherMobx from '../store/storeOther';
 import './index.less';
-import { useNavigate } from 'react-router-dom';
 
 const myStyles = createUseStyles({
   root: {

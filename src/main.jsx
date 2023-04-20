@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import 'antd/dist/reset.css';
-import './store/plugin-log';
-import './assets/css/normalize.less';
 import { Inspector } from 'react-dev-inspector';
+import ReactDOM from 'react-dom/client';
+import 'antd/dist/reset.css';
+import App from './App';
+import './assets/css/normalize.less';
 import './common/common-jss-plugin';
+import './store/plugin-log';
 
 const isDev = import.meta.env.MODE === 'development';
 

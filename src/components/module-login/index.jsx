@@ -1,6 +1,6 @@
-import { Button } from 'antd';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
 
 const LoginIndex = () => {
   const navigate = useNavigate();

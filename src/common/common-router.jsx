@@ -1,8 +1,8 @@
 /**
  * 路由配置文件
  */
-import { createHashRouter } from 'react-router-dom';
 import React, { lazy } from 'react';
+import { createHashRouter } from 'react-router-dom';
 import CommonRouterTransition from './CommonRouterTransition';
 
 // 路由懒加载
