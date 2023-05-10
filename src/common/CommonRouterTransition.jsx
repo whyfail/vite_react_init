@@ -3,7 +3,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useLocation, useOutlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -16,11 +16,10 @@ const useStyle = createUseStyles({
   },
 });
 
-const CommonRouterTransition = () => {
+const CommonRouterTransition = ({ children }) => {
   const classes = useStyle();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  const currentOutlet = useOutlet();
 
   useEffect(() => {
     isLoading ? NProgress.start() : NProgress.done();
@@ -41,7 +40,7 @@ const CommonRouterTransition = () => {
           setIsLoading(false);
         }}
       >
-        <div className={classes.root}>{currentOutlet}</div>
+        <div className={classes.root}>{children}</div>
       </CSSTransition>
     </SwitchTransition>
   );

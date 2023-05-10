@@ -3,7 +3,6 @@
  */
 import React, { lazy } from 'react';
 import { createHashRouter } from 'react-router-dom';
-import CommonRouterTransition from './CommonRouterTransition';
 
 // 路由懒加载
 const LoginIndex = lazy(() => import('../components/module-login'));
@@ -12,7 +11,6 @@ const Index = lazy(() => import('../components'));
 const routes = [
   {
     path: '/',
-    element: <CommonRouterTransition />,
     children: [
       {
         path: '/',
