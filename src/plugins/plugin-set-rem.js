@@ -1,7 +1,7 @@
 /**
  *  改变窗口大小时重新设置 rem
  */
-import { BASE_FONT_SIZE, BASE_MIN_VW_VH } from './common-const';
+import { BASE_FONT_SIZE, BASE_MIN_VW_VH } from '../common/common-const';
 
 // 设置 rem 函数
 export const setHtmlRem = () => {
@@ -13,9 +13,6 @@ export const setHtmlRem = () => {
 
   // 最小适配分辨率
   if (vW < BASE_MIN_VW_VH.VW || vH < BASE_MIN_VW_VH.VH) {
-    document.querySelector('#root').style.minWidth = `${BASE_MIN_VW_VH.VW}px`;
-    document.querySelector('#root').style.minHeight = `${BASE_MIN_VW_VH.VH}px`;
-
     let rem = BASE_MIN_VW_VH.VW * basePc; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应font-size值
 
     document.documentElement.style.fontSize = rem + 'px';

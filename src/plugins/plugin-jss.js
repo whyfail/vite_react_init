@@ -3,7 +3,7 @@
  */
 import { jss } from 'react-jss';
 import jssPluginPreFixer from 'jss-plugin-vendor-prefixer';
-import { BASE_FONT_SIZE } from './common-const';
+import { BASE_FONT_SIZE } from '../common/common-const';
 
 const pxToRem = (value, defaultValue) => {
   const parsedValue = parseInt(value, 10);

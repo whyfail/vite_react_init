@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import '../assets/css/router-transition.less';
 
 const useStyle = createUseStyles({
   root: {
@@ -16,7 +15,7 @@ const useStyle = createUseStyles({
   },
 });
 
-const CommonRouterTransition = ({ children }) => {
+const RouterTransition = ({ children }) => {
   const classes = useStyle();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,4 +45,4 @@ const CommonRouterTransition = ({ children }) => {
   );
 };
 
-export default CommonRouterTransition;
+export default RouterTransition;

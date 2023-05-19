@@ -3,9 +3,9 @@ import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
 import 'antd/dist/reset.css';
 import App from './App';
-import './assets/css/normalize.less';
-import './common/common-jss-plugin';
-import './store/plugin-log';
+import './assets/css/index.less';
+import './plugins/plugin-jss';
+import './plugins/plugin-log';
 
 const isDev = import.meta.env.MODE === 'development';
 

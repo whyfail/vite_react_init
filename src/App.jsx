@@ -4,75 +4,14 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { BASE_MIN_VW_VH } from './common/common-const';
-import router from './common/common-router';
-import { setHtmlRem } from './common/common-set-rem';
+import { ANTD_THEME_UNIT, BASE_MIN_VW_VH } from './common/common-const';
+import { setHtmlRem } from './plugins/plugin-set-rem';
+import router from './routes';
 
 dayjs.locale('zh-cn');
 
 const App = () => {
-  const [antdThemeUnit, setAntdThemeUnit] = useState({
-    fontSize: 14,
-    controlHeight: 32,
-    fontSizeHeading1: 38,
-    fontSizeHeading2: 30,
-    fontSizeHeading3: 24,
-    fontSizeHeading4: 20,
-    fontSizeHeading5: 16,
-    fontSizeLG: 16,
-    fontSizeSM: 12,
-    fontSizeXL: 20,
-    sizeLG: 24,
-    sizeMD: 20,
-    sizeMS: 16,
-    sizeSM: 12,
-    sizeXL: 32,
-    sizeXS: 8,
-    sizeXXL: 48,
-    sizeXXS: 4,
-    controlInteractiveSize: 16,
-    controlPaddingHorizontal: 12,
-    controlPaddingHorizontalSM: 8,
-    fontSizeIcon: 12,
-    margin: 16,
-    marginLG: 24,
-    marginMD: 20,
-    marginSM: 12,
-    marginXL: 32,
-    marginXS: 8,
-    marginXXL: 48,
-    marginXXS: 4,
-    padding: 16,
-    paddingContentHorizontal: 16,
-    paddingContentHorizontalLG: 24,
-    paddingContentHorizontalSM: 16,
-    paddingContentVertical: 12,
-    paddingContentVerticalLG: 16,
-    paddingContentVerticalSM: 8,
-    paddingLG: 24,
-    paddingMD: 20,
-    paddingSM: 12,
-    paddingXL: 32,
-    paddingXS: 8,
-    paddingXXS: 4,
-    screenLG: 992,
-    screenLGMax: 1199,
-    screenLGMin: 992,
-    screenMD: 768,
-    screenMDMax: 991,
-    screenMDMin: 768,
-    screenSM: 576,
-    screenSMMax: 767,
-    screenSMMin: 576,
-    screenXL: 1200,
-    screenXLMax: 1599,
-    screenXLMin: 1200,
-    screenXS: 480,
-    screenXSMax: 575,
-    screenXSMin: 480,
-    screenXXL: 1600,
-    screenXXLMin: 1600,
-  });
+  const [antdThemeUnit, setAntdThemeUnit] = useState(ANTD_THEME_UNIT);
 
   // 自适应修改antd样式单位
   const changeAntdThemeUnit = () => {
@@ -103,14 +42,20 @@ const App = () => {
     setAntdThemeUnit(allStyleVal);
   };
 
-  // 改变窗口大小时重新设置单位大小
-  useEffect(() => {
+  // 设置rem执行函数
+  const handleSetRem = () => {
     changeAntdThemeUnit();
     setHtmlRem();
+  };
 
-    window.onresize = function () {
-      changeAntdThemeUnit();
-      setHtmlRem();
+  // 改变窗口大小时重新设置单位大小
+  useEffect(() => {
+    handleSetRem();
+
+    const resizeFun = window.addEventListener('resize', handleSetRem);
+
+    return () => {
+      window.removeEventListener('resize', resizeFun);
     };
   }, []);
 

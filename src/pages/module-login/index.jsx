@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import CommonRouterTransition from '../../common/CommonRouterTransition';
+import RouterTransition from '../../components/RouterTransition';
 
 const LoginIndex = () => {
   const navigate = useNavigate();
@@ -13,9 +13,9 @@ const LoginIndex = () => {
         跳转其他页
       </Button>
       {/* 嵌套路由必须添加 Outlet */}
-      <CommonRouterTransition>
+      <RouterTransition>
         <Outlet />
-      </CommonRouterTransition>
+      </RouterTransition>
     </center>
   );
 };

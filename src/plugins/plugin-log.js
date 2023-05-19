@@ -1,5 +1,5 @@
 /**
- * 日志打印插件
+ * mobx日志打印插件
  */
 import { spy } from 'mobx';
 
