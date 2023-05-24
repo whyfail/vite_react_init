@@ -2,16 +2,20 @@ import React from 'react';
 import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
 import 'antd/dist/reset.css';
+import { RecoilRoot } from 'recoil';
 import App from './App';
 import './assets/css/index.less';
+import RecoilDebugLog from './components/RecoilDebugLog';
 import './plugins/plugin-jss';
-import './plugins/plugin-log';
 
 const isDev = import.meta.env.MODE === 'development';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    <App />
+    <RecoilRoot>
+      {isDev && <RecoilDebugLog />}
+      <App />
+    </RecoilRoot>
     {isDev && (
       <Inspector
         keys={['control', 'y']}

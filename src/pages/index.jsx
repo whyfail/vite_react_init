@@ -1,8 +1,8 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
-import { observer } from 'mobx-react-lite';
-import otherMobx from '../store/storeOther';
+import { useRecoilState } from 'recoil';
+import { userNumber } from '../stores/store-user';
 
 const myStyles = createUseStyles({
   root: {
@@ -97,12 +97,12 @@ const myStyles = createUseStyles({
   },
 });
 
-const Index = observer(() => {
+const Index = () => {
   const classes = myStyles();
   const navigate = useNavigate();
 
   // 全局状态
-  const { number, addNumber, subtractNumber } = otherMobx;
+  const [number, setNumber] = useRecoilState(userNumber);
 
   return (
     <div className={classes.root}>
@@ -110,14 +110,14 @@ const Index = observer(() => {
         <div className="container">
           <div className="brand-logo">{number}</div>
           <div className="inputs">
-            <button onClick={addNumber}>+</button>
-            <button onClick={subtractNumber}>-</button>
+            <button onClick={() => setNumber(number + 1)}>+</button>
+            <button onClick={() => setNumber(number - 1)}>-</button>
             <button onClick={() => navigate('/login')}>跳转login</button>
           </div>
         </div>
       </div>
     </div>
   );
-});
+};
 
 export default Index;
