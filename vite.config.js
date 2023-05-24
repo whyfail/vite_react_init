@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import legacy from '@vitejs/plugin-legacy';
-import { visualizer } from 'rollup-plugin-visualizer';
-import viteCompression from 'vite-plugin-compression';
-import progress from 'vite-plugin-progress';
-import postCssPxToRem from 'postcss-pxtorem';
+import react from '@vitejs/plugin-react-swc';
 import autoprefixer from 'autoprefixer';
-import vitePluginNoBug from 'vite-plugin-no-bug';
+import postCssPxToRem from 'postcss-pxtorem';
+import { visualizer } from 'rollup-plugin-visualizer';
+import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+import viteCompression from 'vite-plugin-compression';
+import vitePluginNoBug from 'vite-plugin-no-bug';
+import progress from 'vite-plugin-progress';
 
 // https://vitejs.dev/config/
 export default defineConfig({
