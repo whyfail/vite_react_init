@@ -2,6 +2,7 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { nonComponentsChangeRecoil } from '../common/common-fun';
 import { userNumber } from '../stores/store-user';
 
 const myStyles = createUseStyles({
@@ -112,6 +113,7 @@ const Index = () => {
           <div className="inputs">
             <button onClick={() => setNumber(number + 1)}>+</button>
             <button onClick={() => setNumber(number - 1)}>-</button>
+            <button onClick={nonComponentsChangeRecoil}>组件外修改状态</button>
             <button onClick={() => navigate('/login')}>跳转login</button>
           </div>
         </div>

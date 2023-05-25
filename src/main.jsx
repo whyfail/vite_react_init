@@ -3,6 +3,7 @@ import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
 import 'antd/dist/reset.css';
 import { RecoilRoot } from 'recoil';
+import RecoilNexus from 'recoil-nexus';
 import App from './App';
 import './assets/css/index.less';
 import RecoilDebugLog from './components/RecoilDebugLog';
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     <RecoilRoot>
       {isDev && <RecoilDebugLog />}
+      <RecoilNexus />
       <App />
     </RecoilRoot>
     {isDev && (
