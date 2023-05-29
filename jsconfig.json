@@ -1,8 +1,6 @@
 // 解决带alias快捷跳转失败
 {
   "compilerOptions": {
-    "target": "ES6",
-    "jsx": "react",
     "baseUrl": "./",
     "paths": {
       // ?此处添加别名路径
