@@ -5,13 +5,14 @@ import { ConfigProvider } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { ANTD_THEME_UNIT, BASE_MIN_VW_VH } from './common/common-const';
+import Loading from './components/Loading';
 import { setHtmlRem } from './plugins/plugin-set-rem';
 import router from './routes';
 
 dayjs.locale('zh-cn');
 
 const App = () => {
-  const [antdThemeUnit, setAntdThemeUnit] = useState(ANTD_THEME_UNIT);
+  const [antdThemeUnit, setAntdThemeUnit] = useState({});
 
   // 自适应修改antd样式单位
   const changeAntdThemeUnit = () => {
@@ -19,8 +20,8 @@ const App = () => {
     let vH = window.innerHeight; // 当前窗口的高度
     const allStyleVal = {};
 
-    for (const key in antdThemeUnit) {
-      let basePc = antdThemeUnit[key] / 1920; // 表示1920的设计图,使用16PX的默认值
+    for (const key in ANTD_THEME_UNIT) {
+      let basePc = ANTD_THEME_UNIT[key] / 1920; // 表示1920的设计图,使用16PX的默认值
       // 非正常屏幕下的尺寸换算
       let dueH = (vW * 1080) / 1920;
 
@@ -70,7 +71,7 @@ const App = () => {
         },
       }}
     >
-      <Suspense fallback={<div>loading</div>}>
+      <Suspense fallback={<Loading />}>
         <RouterProvider router={router} />
       </Suspense>
     </ConfigProvider>
