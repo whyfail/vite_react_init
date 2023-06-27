@@ -7,7 +7,6 @@ import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import viteCompression from 'vite-plugin-compression';
 import vitePluginNoBug from 'vite-plugin-no-bug';
-import progress from 'vite-plugin-progress';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,7 +27,6 @@ export default defineConfig({
     }),
     vitePluginNoBug(),
     chunkSplitPlugin(),
-    progress(),
   ],
   css: {
     postcss: {

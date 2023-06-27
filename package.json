@@ -8,8 +8,8 @@
     "node": "16.14.2"
   },
   "scripts": {
-    "start": "npx husky install && vite",
-    "build": "npx husky install && node auto_update_version.js && vite build",
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "preview": "vite preview",
     "lint-staged": "lint-staged --allow-empty --quiet",
     "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue ",
@@ -55,8 +55,7 @@
     "vite": "^4.3.9",
     "vite-plugin-chunk-split": "^0.4.4",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-no-bug": "^1.0.4",
-    "vite-plugin-progress": "^0.0.4"
+    "vite-plugin-no-bug": "^1.0.4"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue}": "npm run lint-staged:js",
