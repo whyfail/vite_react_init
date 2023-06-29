@@ -49,6 +49,7 @@
     "lint-staged": "^13.0.3",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^2.7.1",
+    "prettier-plugin-rational-order": "^1.0.3",
     "react-dev-inspector": "^1.8.1",
     "rollup-plugin-visualizer": "^5.8.2",
     "terser": "^5.16.9",

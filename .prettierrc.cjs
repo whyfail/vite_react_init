@@ -1,6 +1,6 @@
 module.exports = {
   // 插件
-  plugin: ['prettier-plugin-sort-imports'],
+  plugin: ['prettier-plugin-sort-imports', 'prettier-plugin-rational-order'],
   // 一行最多 120 字符
   printWidth: 120,
   // 使用 2 个空格缩进
