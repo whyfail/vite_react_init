@@ -2,8 +2,9 @@
  * 路由配置文件
  */
 import React, { lazy } from 'react';
-import { createHashRouter } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Router404 from '@/components/Router404';
+import RouterAuth from '@/components/RouterAuth';
 import RouterError from '@/components/RouterError';
 
 // 路由懒加载
@@ -17,24 +18,75 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'index',
         element: <Index />,
-      },
-      {
-        path: 'login',
-        name: 'Login',
-        element: <LoginIndex />,
+        meta: {
+          title: '首页',
+          needLogin: true,
+        },
         children: [
           {
             path: 'other',
-            name: 'other',
-            element: <div>other页面</div>,
+            element: <button>子页面</button>,
+            meta: {
+              title: '子页面',
+              needLogin: true,
+            },
           },
         ],
       },
-      { path: '*', name: '404', element: <Router404 /> },
+      {
+        path: 'login',
+        element: <LoginIndex />,
+        meta: {
+          title: '登录页',
+          needLogin: false,
+        },
+      },
+
+      // 放最后
+      {
+        path: '*',
+        element: <Router404 />,
+      },
     ],
+  },
+  {
+    path: '/',
+    redirect: '/',
   },
 ];
 
-export default createHashRouter(routes);
+// HOC
+const authLoad = (element, meta = {}) => {
+  return <RouterAuth meta={meta}>{element}</RouterAuth>;
+};
+
+// 路由配置列表数据转换
+export const transformRoutes = (routes) => {
+  const list = [];
+
+  routes.forEach((route) => {
+    const obj = { ...route };
+
+    if (obj.redirect) {
+      obj.element = <Navigate to={obj.redirect} replace={true} />;
+    }
+
+    if (obj.element) {
+      obj.element = authLoad(obj.element, obj.meta);
+    }
+
+    delete obj.redirect;
+    delete obj.meta;
+
+    if (obj.children) {
+      obj.children = transformRoutes(obj.children);
+    }
+
+    list.push(obj);
+  });
+
+  return list;
+};
+
+export default routes;

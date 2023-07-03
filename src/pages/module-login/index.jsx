@@ -1,7 +1,7 @@
 import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import RouterTransition from '../../components/RouterTransition';
+import { KEY_TOKEN } from '@/apis';
 
 const LoginIndex = () => {
   const navigate = useNavigate();
@@ -9,13 +9,14 @@ const LoginIndex = () => {
   return (
     <center style={{ paddingTop: '20%' }}>
       <Button onClick={() => navigate('/')}>跳转主页</Button>
-      <Button onClick={() => navigate('/login/other')} type="link">
-        跳转其他页
+      <Button
+        onClick={() => {
+          localStorage.setItem(KEY_TOKEN, '123');
+          navigate('/');
+        }}
+      >
+        添加token跳转主页
       </Button>
-      {/* 嵌套路由必须添加 Outlet */}
-      <RouterTransition>
-        <Outlet />
-      </RouterTransition>
     </center>
   );
 };

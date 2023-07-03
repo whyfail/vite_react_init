@@ -1,18 +1,18 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useRoutes } from 'react-router-dom';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { ANTD_THEME_UNIT, BASE_MIN_VW_VH } from './common/common-const';
-import Loading from './components/Loading';
 import { setHtmlRem } from './plugins/plugin-set-rem';
-import router from './routes';
+import routes, { transformRoutes } from './routes';
 
 dayjs.locale('zh-cn');
 
 const App = () => {
   const [antdThemeUnit, setAntdThemeUnit] = useState({});
+  const pages = useRoutes(transformRoutes(routes));
 
   // 自适应修改antd样式单位
   const changeAntdThemeUnit = () => {
@@ -71,9 +71,7 @@ const App = () => {
         },
       }}
     >
-      <Suspense fallback={<Loading />}>
-        <RouterProvider router={router} />
-      </Suspense>
+      {pages}
     </ConfigProvider>
   );
 };

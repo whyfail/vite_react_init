@@ -20,7 +20,7 @@ const Loading = () => {
 
   return (
     <div className={classes.root}>
-      <Spin tip="加载中..." size="large" />
+      <Spin size="large" />
     </div>
   );
 };

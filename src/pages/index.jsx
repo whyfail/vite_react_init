@@ -1,7 +1,9 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { KEY_TOKEN } from '@/apis';
+import RouterTransition from '@/components/RouterTransition';
 import { nonComponentsChangeRecoil } from '../common/common-fun';
 import { userNumber } from '../stores/store-user';
 
@@ -114,7 +116,19 @@ const Index = () => {
             <button onClick={() => setNumber(number + 1)}>+</button>
             <button onClick={() => setNumber(number - 1)}>-</button>
             <button onClick={nonComponentsChangeRecoil}>组件外修改状态</button>
-            <button onClick={() => navigate('/login')}>跳转login</button>
+            <button
+              onClick={() => {
+                localStorage.removeItem(KEY_TOKEN);
+                navigate('/login');
+              }}
+            >
+              跳转登录页
+            </button>
+            <button onClick={() => navigate('/other')}>跳转子页面</button>
+            {/* 嵌套路由必须添加 Outlet */}
+            <RouterTransition>
+              <Outlet />
+            </RouterTransition>
           </div>
         </div>
       </div>

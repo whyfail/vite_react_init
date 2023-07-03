@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router-dom';
 import 'antd/dist/reset.css';
 import { RecoilRoot } from 'recoil';
 import RecoilNexus from 'recoil-nexus';
 import App from './App';
 import './assets/css/index.less';
+import Loading from './components/Loading';
 import RecoilDebugLog from './components/RecoilDebugLog';
 import './plugins/plugin-jss';
 
@@ -16,7 +18,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <RecoilRoot>
       {isDev && <RecoilDebugLog />}
       <RecoilNexus />
-      <App />
+
+      <HashRouter>
+        <Suspense fallback={<Loading />}>
+          <App />
+        </Suspense>
+      </HashRouter>
     </RecoilRoot>
     {isDev && (
       <Inspector
