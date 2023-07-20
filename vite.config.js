@@ -45,6 +45,7 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
+    open: true,
     proxy: {
       // 代理
       '/PROXY': {
