@@ -4,7 +4,6 @@ import autoprefixer from 'autoprefixer';
 import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import viteCompression from 'vite-plugin-compression';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 
@@ -23,7 +22,6 @@ export default defineConfig({
       targets: ['defaults', 'not IE 11'],
     }),
     vitePluginNoBug(),
-    chunkSplitPlugin(),
   ],
   css: {
     postcss: {
@@ -56,7 +54,11 @@ export default defineConfig({
       },
     },
   },
+  esbuild: {
+    drop: ['console', 'debugger'], // 删除 所有的console 和 debugger
+  },
   build: {
+    chunkSizeWarningLimit: 1500,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -65,14 +67,8 @@ export default defineConfig({
           antd: ['antd'],
           ahooks: ['ahooks'],
           reactJss: ['react-jss'],
+          recoil: ['recoil'],
         },
-      },
-    },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
       },
     },
   },
