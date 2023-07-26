@@ -7,6 +7,7 @@ import 'dayjs/locale/zh-cn';
 import { ANTD_THEME_UNIT, BASE_MIN_VW_VH } from './common/common-const';
 import { setHtmlRem } from './plugins/plugin-set-rem';
 import routes, { transformRoutes } from './routes';
+import { App as AntdApp } from 'antd';
 
 dayjs.locale('zh-cn');
 
@@ -71,7 +72,7 @@ const App = () => {
         },
       }}
     >
-      {pages}
+      <AntdApp message={{ maxCount: 1 }}>{pages}</AntdApp>
     </ConfigProvider>
   );
 };
