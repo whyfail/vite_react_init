@@ -2,10 +2,10 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { KEY_TOKEN } from '@/apis';
 import RouterTransition from '@/components/RouterTransition';
 import { nonComponentsChangeRecoil } from '../common/common-fun';
 import { userNumber } from '../stores/store-user';
+import { clearToken } from '@/utils/auth';
 
 const myStyles = createUseStyles({
   root: {
@@ -118,7 +118,7 @@ const Index = () => {
             <button onClick={nonComponentsChangeRecoil}>组件外修改状态</button>
             <button
               onClick={() => {
-                localStorage.removeItem(KEY_TOKEN);
+                clearToken();
                 navigate('/login');
               }}
             >

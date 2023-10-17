@@ -1,11 +1,8 @@
+import { getToken } from '@/utils/auth';
 import axios from 'axios';
 
 // 访问前缀（线下）
 export const BASE_NAME = '/API_BASE'; //测试版本
-
-// token 变量
-export const KEY_TOKEN = 'ke_yan_web_app_token';
-export const USER_KEY_TOKEN = 'ke_yan_web_app_user';
 
 // 响应码
 export const ResponseCode = {
@@ -23,7 +20,7 @@ const http = axios.create({
 http.interceptors.request.use(
   (config) => {
     // 接口带token
-    config.headers.Authorization = localStorage.getItem(KEY_TOKEN) ? `Bearer ${localStorage.getItem(KEY_TOKEN)}` : '';
+    config.headers.Authorization = getToken() ? `Bearer ${getToken()}` : '';
 
     return config;
   },

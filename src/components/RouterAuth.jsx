@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { KEY_TOKEN } from '@/apis';
 import { App as AntdApp } from 'antd';
+import { isLogin } from '@/utils/auth';
 
 const RouterAuth = (props) => {
   const { meta } = props;
@@ -12,17 +12,14 @@ const RouterAuth = (props) => {
     document.title = meta.title;
   }
 
-  // 获取登录Token
-  const token = localStorage.getItem(KEY_TOKEN);
-
   // 权限登录校验
-  const needLogin = meta && meta.needLogin && !token;
+  const needLogin = meta && meta.needLogin && !isLogin();
 
   useEffect(() => {
     if (needLogin) {
       message.error('请先登录!');
     }
-  }, [meta, token, message]);
+  }, [meta, message]);
 
   if (needLogin) {
     return <Navigate to="/login" replace></Navigate>;

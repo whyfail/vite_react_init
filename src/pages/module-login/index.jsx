@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import { KEY_TOKEN } from '@/apis';
 import clsx from 'clsx';
+import { setToken } from '@/utils/auth';
 
 const LoginIndex = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const LoginIndex = () => {
       <Button onClick={() => navigate('/')}>跳转主页</Button>
       <Button
         onClick={() => {
-          localStorage.setItem(KEY_TOKEN, '123');
+          setToken('123');
           navigate('/');
         }}
       >
