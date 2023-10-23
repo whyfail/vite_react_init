@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import zhCN from 'antd/lib/locale/zh_CN';
+import { StyleProvider, px2remTransformer } from '@ant-design/cssinjs';
 import { ConfigProvider } from 'antd';
+import { App as AntdApp } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { setHtmlRem } from './plugins/plugin-set-rem';
 import routes, { transformRoutes } from './routes';
-import { App as AntdApp } from 'antd';
-import { StyleProvider, px2remTransformer } from '@ant-design/cssinjs';
 
 dayjs.locale('zh-cn');
 
