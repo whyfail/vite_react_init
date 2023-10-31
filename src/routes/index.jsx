@@ -14,45 +14,43 @@ const Index = lazy(() => import('../pages'));
 const routes = [
   {
     path: '/',
+    redirect: '/other',
+  },
+  {
+    path: '/',
+    element: <Index />,
     errorElement: <RouterError />,
+    meta: {
+      title: '首页',
+      needLogin: true,
+    },
     children: [
       {
-        path: '/',
-        element: <Index />,
+        path: 'other',
+        element: <button>子页面</button>,
         meta: {
-          title: '首页',
+          title: '子页面',
           needLogin: true,
         },
-        children: [
-          {
-            path: 'other',
-            element: <button>子页面</button>,
-            meta: {
-              title: '子页面',
-              needLogin: true,
-            },
-          },
-        ],
-      },
-      {
-        path: 'login',
-        element: <LoginIndex />,
-        meta: {
-          title: '登录页',
-          needLogin: false,
-        },
-      },
-
-      // 放最后
-      {
-        path: '*',
-        element: <Router404 />,
       },
     ],
   },
   {
-    path: '/',
-    redirect: '/',
+    path: 'login',
+    element: <LoginIndex />,
+    meta: {
+      title: '登录页',
+      needLogin: false,
+    },
+  },
+  // 放最后
+  {
+    path: '*',
+    element: <Router404 />,
+    meta: {
+      title: '404',
+      needLogin: true,
+    },
   },
 ];
 

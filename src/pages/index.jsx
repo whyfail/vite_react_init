@@ -1,11 +1,11 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate, useOutlet } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import RouterTransition from '@/components/RouterTransition';
+import { clearToken } from '@/utils/auth';
 import { nonComponentsChangeRecoil } from '../common/common-fun';
 import { userNumber } from '../stores/store-user';
-import { clearToken } from '@/utils/auth';
 
 const myStyles = createUseStyles({
   root: {
@@ -103,7 +103,7 @@ const myStyles = createUseStyles({
 const Index = () => {
   const classes = myStyles();
   const navigate = useNavigate();
-
+  const currentOutlet = useOutlet();
   // 全局状态
   const [number, setNumber] = useRecoilState(userNumber);
 
@@ -126,9 +126,7 @@ const Index = () => {
             </button>
             <button onClick={() => navigate('/other')}>跳转子页面</button>
             {/* 嵌套路由必须添加 Outlet */}
-            <RouterTransition>
-              <Outlet />
-            </RouterTransition>
+            <RouterTransition>{currentOutlet}</RouterTransition>
           </div>
         </div>
       </div>
