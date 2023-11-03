@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "lint-staged": "lint-staged --allow-empty --quiet",
     "lint-staged:js": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue ",
-    "preinstall": "npx only-allow npm"
+    "preinstall": "npx only-allow npm",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.2",
@@ -47,7 +48,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^2.7.1",
