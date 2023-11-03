@@ -9,12 +9,13 @@ import RouterError from '@/components/RouterError';
 
 // 路由懒加载
 const LoginIndex = lazy(() => import('../pages/module-login'));
+const HomeIndex = lazy(() => import('../pages/module-home'));
 const Index = lazy(() => import('../pages'));
 
 const routes = [
   {
     path: '/',
-    redirect: '/other',
+    redirect: '/home',
   },
   {
     path: '/',
@@ -26,8 +27,16 @@ const routes = [
     },
     children: [
       {
+        path: 'home',
+        element: <HomeIndex />,
+        meta: {
+          title: '子页面',
+          needLogin: true,
+        },
+      },
+      {
         path: 'other',
-        element: <button>子页面</button>,
+        element: <div style={{ color: '#000' }}>other</div>,
         meta: {
           title: '子页面',
           needLogin: true,

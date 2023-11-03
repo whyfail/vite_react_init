@@ -55,7 +55,7 @@ const useStyle = createUseStyles({
   },
 });
 
-const LoginMain = () => {
+const LoginMain = React.memo(() => {
   const classes = useStyle();
   const formRef = useRef();
   const navigate = useNavigate();
@@ -87,7 +87,12 @@ const LoginMain = () => {
 
   return (
     <div>
-      <Form form={form} className={classes.itemContainer} onFinish={onFinish}>
+      <Form
+        form={form}
+        className={classes.itemContainer}
+        onFinish={onFinish}
+        initialValues={{ name: 'admin', password: 'admin' }}
+      >
         {loginType === 'password' && (
           <>
             <Form.Item name="name" rules={[{ required: true, message: '账号必填', type: 'error' }]}>
@@ -124,6 +129,7 @@ const LoginMain = () => {
               <Space direction="horizontal" className={classes.root_yzm}>
                 <Input size="large" placeholder="请输入验证码" />
                 <Button
+                  size="large"
                   className={classes.verificationBtn}
                   disabled={countdown > 0}
                   onClick={() => setTargetDate(Date.now() + 60000)}
@@ -164,6 +170,8 @@ const LoginMain = () => {
       </Form>
     </div>
   );
-};
+});
+
+LoginMain.displayName = 'LoginMain';
 
 export default LoginMain;
