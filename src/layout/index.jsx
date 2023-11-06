@@ -4,6 +4,8 @@
 import React, { memo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Layout } from 'antd';
+import { useRecoilState } from 'recoil';
+import { commonMenuFull } from '@/stores/store-common';
 import LayoutContent from './LayoutContent';
 import LayoutHeader from './LayoutHeader';
 import LayoutSider from './LayoutSider';
@@ -13,29 +15,16 @@ const useStyle = createUseStyles({
     height: '100%',
   },
   root_header: {
-    color: '#fff',
-    height: 57,
-    paddingInline: 50,
     background: '#ffffff',
-  },
-  root_sider: {
-    textAlign: 'center',
-    color: '#fff',
-  },
-  root_content: {
-    textAlign: 'center',
-    minHeight: 120,
-    lineHeight: '120px',
-    color: '#fff',
-  },
-  root_footer: {
-    textAlign: 'center',
-    color: '#fff',
+    boxShadow: '1px 1px 3px #cbced1, -1px -1px 3px white',
+    zIndex: 99,
+    padding: '0 20px',
   },
 });
 
 const LayoutIndex = memo(() => {
   const classes = useStyle();
+  const [commonMenuFullVal] = useRecoilState(commonMenuFull);
 
   return (
     <Layout className={classes.root}>
@@ -43,10 +32,10 @@ const LayoutIndex = memo(() => {
         <LayoutHeader />
       </Layout.Header>
       <Layout hasSider>
-        <Layout.Sider className={classes.root_sider} theme="light">
+        <Layout.Sider theme="light" collapsed={!commonMenuFullVal}>
           <LayoutSider />
         </Layout.Sider>
-        <Layout.Content className={classes.root_content}>
+        <Layout.Content>
           <LayoutContent />
         </Layout.Content>
       </Layout>
