@@ -5,6 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import 'antd/dist/reset.css';
 import { RecoilRoot } from 'recoil';
 import RecoilNexus from 'recoil-nexus';
+import 'virtual:uno.css';
 import App from './App';
 import './assets/css/index.less';
 import Loading from './components/Loading';

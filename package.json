@@ -55,6 +55,7 @@
     "prettier-plugin-rational-order": "^1.0.3",
     "react-dev-inspector": "^2.0.0",
     "rollup-plugin-visualizer": "^5.9.2",
+    "unocss": "^0.57.2",
     "vite": "^4.5.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-no-bug": "^1.0.5"
