@@ -113,7 +113,9 @@ const Index = () => {
           <div className="inputs">
             <button onClick={() => setNumber(number + 1)}>+</button>
             <button onClick={() => setNumber(number - 1)}>-</button>
-            <button onClick={nonComponentsChangeRecoil}>组件外修改状态</button>
+            <button onClick={nonComponentsChangeRecoil} className="font-bold important-text-red">
+              组件外修改状态
+            </button>
             <button
               onClick={() => {
                 clearToken();
