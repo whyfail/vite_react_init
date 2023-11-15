@@ -47,5 +47,6 @@ module.exports = {
     'no-undef': ['error', { typeof: true }],
     'no-unused-vars': 'error',
     'react/prop-types': 'off',
+    'react/no-unknown-property': 'off',
   },
 };

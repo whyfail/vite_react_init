@@ -1,8 +1,10 @@
 // uno.config.ts
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx';
 import { defineConfig, presetUno, presetAttributify } from 'unocss';
 
 export default defineConfig({
   presets: [presetUno(), presetAttributify()],
+  transformers: [transformerAttributifyJsx()],
   rules: [
     // 省略样式规则
     [

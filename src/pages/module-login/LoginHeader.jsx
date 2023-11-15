@@ -1,31 +1,11 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
 import LogoFullIcon from '@/assets/images/login/assets-logo-full.svg';
 
-const useStyle = createUseStyles({
-  root: {
-    height: '64px',
-    padding: '0 24px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backdropFilter: 'blur(5px)',
-  },
-  root_log: {
-    width: '188px',
-    height: '64px',
-  },
-});
-
 const LoginHeader = () => {
-  const classes = useStyle();
-
   return (
-    <div>
-      <header className={classes.root}>
-        <img src={LogoFullIcon} alt="" className={classes.root_log} />
-      </header>
-    </div>
+    <header h-64px p-r-24px p-l-24px flex justify-between flex-items-center>
+      <img src={LogoFullIcon} alt="" w-188px h-64px />
+    </header>
   );
 };
 

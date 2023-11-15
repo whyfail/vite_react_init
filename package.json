@@ -42,6 +42,7 @@
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
     "@unocss/eslint-config": "^0.57.3",
+    "@unocss/transformer-attributify-jsx": "^0.57.4",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-react-swc": "^3.4.0",
     "eslint": "^8.24.0",
