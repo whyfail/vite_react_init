@@ -8,9 +8,10 @@ import RouterAuth from '@/components/RouterAuth';
 import RouterError from '@/components/RouterError';
 
 // 路由懒加载
+const Index = lazy(() => import('../pages'));
 const LoginIndex = lazy(() => import('../pages/module-login'));
 const HomeIndex = lazy(() => import('../pages/module-home'));
-const Index = lazy(() => import('../pages'));
+const TextIndex = lazy(() => import('../pages/module-test'));
 
 const routes = [
   {
@@ -30,15 +31,15 @@ const routes = [
         path: 'home',
         element: <HomeIndex />,
         meta: {
-          title: '子页面',
+          title: 'home',
           needLogin: true,
         },
       },
       {
-        path: 'other',
-        element: <div style={{ color: '#000' }}>other</div>,
+        path: 'test',
+        element: <TextIndex />,
         meta: {
-          title: '子页面',
+          title: '测试页面',
           needLogin: true,
         },
       },

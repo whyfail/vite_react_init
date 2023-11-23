@@ -25,7 +25,7 @@ const LayoutSider = () => {
     };
   }
 
-  const items = [getItem('首页', '/home', <HomeOutlined />), getItem('other', '/other', <DesktopOutlined />)];
+  const items = [getItem('首页', '/home', <HomeOutlined />), getItem('test', '/test', <DesktopOutlined />)];
 
   const handleSelect = ({ key }) => {
     navigate(key);

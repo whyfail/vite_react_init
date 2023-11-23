@@ -17,7 +17,6 @@ export const setHtmlRem = () => {
   // 最小窗口分辨率
   if (!appMinHeight) {
     document.querySelector('#root').style.minWidth = '1440px';
-    document.querySelector('#root').style.minHeight = '800px';
   }
 
   // 最小适配分辨率
