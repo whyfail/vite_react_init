@@ -1,3 +1,4 @@
+import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react-swc';
 import autoprefixer from 'autoprefixer';
@@ -26,6 +27,14 @@ export default defineConfig({
       configFile: './unocss.config.js',
     }),
     vitePluginNoBug(),
+    webUpdateNotice({
+      notificationProps: {
+        title: '系统升级通知',
+        description: '检测到当前系统版本已更新，请刷新页面后使用',
+        buttonText: '刷新',
+        dismissButtonText: '忽略',
+      },
+    }),
   ],
   css: {
     postcss: {
