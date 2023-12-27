@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
+import { map } from 'lodash-es';
 import { useRecoilState } from 'recoil';
 import { nonComponentsChangeRecoil } from '@/common/common-fun';
 import { userNumber } from '@/stores/store-user';
@@ -104,6 +105,14 @@ const Index = () => {
   const navigate = useNavigate();
   // 全局状态
   const [number, setNumber] = useRecoilState(userNumber);
+
+  useEffect(() => {
+    const cs = { a: 1, b: 2, c: 3 };
+
+    map(cs, (v, k) => {
+      console.debug(v, k);
+    });
+  }, []);
 
   return (
     <div className={classes.root}>

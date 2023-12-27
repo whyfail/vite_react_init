@@ -1,11 +1,11 @@
 {
   "name": "{{ name }}",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "{{ description }}",
   "type": "module",
   "engines": {
-    "node": ">=16.14.2"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -20,7 +20,7 @@
     "@ant-design/cssinjs": "^1.17.2",
     "@ant-design/icons": "^5.2.6",
     "ahooks": "^3.7.8",
-    "antd": "^5.11.1",
+    "antd": "^5.12.5",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
@@ -44,8 +44,8 @@
     "@types/react-dom": "^18.2.14",
     "@unocss/eslint-config": "^0.57.3",
     "@unocss/transformer-attributify-jsx": "^0.57.4",
-    "@vitejs/plugin-legacy": "^4.1.1",
-    "@vitejs/plugin-react-swc": "^3.4.0",
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -58,8 +58,9 @@
     "prettier-plugin-rational-order": "^1.0.3",
     "react-dev-inspector": "^2.0.0",
     "rollup-plugin-visualizer": "^5.9.2",
-    "unocss": "^0.57.2",
-    "vite": "^4.5.0",
+    "terser": "^5.26.0",
+    "unocss": "^0.57.7",
+    "vite": "^5.0.10",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-no-bug": "^1.0.5"
   },
