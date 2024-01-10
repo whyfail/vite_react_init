@@ -30,7 +30,7 @@ const LayoutHeader = memo(() => {
       <Space>
         <Image src={commonMenuFullVal ? AssetLogoFull : AssetLogo} height={33} preview={false} />
         <Button
-          type="text"
+          type="link"
           icon={<MenuOutlined />}
           size={33}
           onClick={() => setCommonMenuFullVal(!commonMenuFullVal)}
@@ -57,7 +57,7 @@ const LayoutHeader = memo(() => {
         trigger="click"
         placement="bottom"
       >
-        <Button type="text" icon={<UserOutlined />}>
+        <Button type="link" icon={<UserOutlined />}>
           admin <DownOutlined />
         </Button>
       </Popover>

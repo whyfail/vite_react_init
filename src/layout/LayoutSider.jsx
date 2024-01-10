@@ -1,17 +1,9 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { DesktopOutlined, HomeOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 
-const useStyle = createUseStyles({
-  root: {
-    height: '100%',
-  },
-});
-
 const LayoutSider = () => {
-  const classes = useStyle();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,7 +25,7 @@ const LayoutSider = () => {
 
   return (
     <Menu
-      className={classes.root}
+      className="h-100%"
       mode="inline"
       items={items}
       onSelect={handleSelect}

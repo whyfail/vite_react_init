@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Table, Tag } from 'antd';
+import { Button, Space, Table, Tag } from 'antd';
 
 const originData = [];
 
@@ -18,7 +18,7 @@ const columns = [
     title: '姓名',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a>{text}</a>,
+    render: (text) => <span>{text}</span>,
   },
   {
     title: '年龄',
@@ -57,8 +57,8 @@ const columns = [
     key: 'action',
     render: (_, record) => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        <Button type="link">Invite {record.name}</Button>
+        <Button type="link">Delete</Button>
       </Space>
     ),
   },
