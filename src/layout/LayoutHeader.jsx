@@ -1,7 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
 import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { useSize } from 'ahooks';
 import { Button, Image, Popover, Space } from 'antd';
 import { useRecoilState } from 'recoil';
 import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
@@ -22,11 +23,17 @@ const useStyle = createUseStyles({
 const LayoutHeader = memo(() => {
   const classes = useStyle();
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const size = useSize(ref);
 
   const [commonMenuFullVal, setCommonMenuFullVal] = useRecoilState(commonMenuFull);
 
+  useEffect(() => {
+    setCommonMenuFullVal(size?.width > 1400);
+  }, [size]);
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={ref}>
       <Space>
         <Image src={commonMenuFullVal ? AssetLogoFull : AssetLogo} height={33} preview={false} />
         <Button

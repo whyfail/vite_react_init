@@ -10,7 +10,7 @@ const LayoutContent = () => {
   const currentOutlet = useOutlet();
 
   return (
-    <main className="h-100% w-100% p-15px">
+    <main className="h-100% min-w-1200px w-100% p-15px">
       <RouterTransition>{currentOutlet}</RouterTransition>
     </main>
   );

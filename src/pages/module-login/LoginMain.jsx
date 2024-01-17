@@ -13,8 +13,8 @@ const LoginMain = React.memo(() => {
     try {
       if (e.name === 'admin' && e.password === 'admin') {
         message.success('登录成功');
-        setToken('123');
         navigate('/');
+        setToken('123', e.checked);
       } else {
         message.error('登录失败');
       }
@@ -37,7 +37,9 @@ const LoginMain = React.memo(() => {
         <Form.Item name="password" rules={[{ required: true, message: '密码必填', type: 'error' }]}>
           <Input.Password size="large" placeholder="请输入登录密码：admin" suffix={<LockOutlined />} />
         </Form.Item>
-        <Checkbox>记住账号</Checkbox>
+        <Form.Item name="checked" valuePropName="checked">
+          <Checkbox>记住账号</Checkbox>
+        </Form.Item>
         <Form.Item className="mt-48px">
           <Button block size="large" type="primary" htmlType="submit">
             登录

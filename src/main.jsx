@@ -3,6 +3,7 @@ import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'antd/dist/reset.css';
+import 'animate.css';
 import { RecoilRoot } from 'recoil';
 import RecoilNexus from 'recoil-nexus';
 import 'virtual:uno.css';

@@ -4,7 +4,7 @@ import LoginMain from './LoginMain';
 
 const LoginIndex = () => {
   return (
-    <div className="h-100vh flex flex-col bg-[100%] bg-[url(@/assets/images/login/login-bg-white.png)] bg-cover">
+    <div className="animate__animated animate__fadeIn h-100vh flex flex-col bg-[100%] bg-[url(@/assets/images/login/login-bg-white.png)] bg-cover">
       <header h-64px p-r-24px p-l-24px flex justify-between flex-items-center>
         <img src={LogoFullIcon} alt="" w-188px h-64px />
       </header>

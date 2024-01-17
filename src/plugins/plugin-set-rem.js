@@ -11,14 +11,6 @@ export const setHtmlRem = () => {
   // 非正常屏幕下的尺寸换算
   let dueH = (vW * 1080) / 1920;
 
-  // 最小窗口分辨率
-  const appMinHeight = document.querySelector('#root').style.minHeight;
-
-  // 最小窗口分辨率
-  if (!appMinHeight) {
-    document.querySelector('#root').style.minWidth = '1440px';
-  }
-
   // 最小适配分辨率
   if (vW < BASE_MIN_VW_VH.VW || vH < BASE_MIN_VW_VH.VH) {
     let rem = BASE_MIN_VW_VH.VW * basePc; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应font-size值
