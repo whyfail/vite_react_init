@@ -66,7 +66,7 @@ const columns = [
 
 const TestIndex = () => {
   return (
-    <div className="h-100% overflow-auto bg-#fff p-25px">
+    <div className="bg-#fff p-25px">
       <Table columns={columns} dataSource={originData} />
     </div>
   );

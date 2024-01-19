@@ -10,7 +10,7 @@ import { clearToken } from '@/utils/auth';
 const myStyles = createUseStyles({
   root: {
     width: '100%',
-    height: '100%',
+    height: '1200px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

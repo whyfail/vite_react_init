@@ -29,7 +29,7 @@ const LayoutHeader = memo(() => {
   const [commonMenuFullVal, setCommonMenuFullVal] = useRecoilState(commonMenuFull);
 
   useEffect(() => {
-    setCommonMenuFullVal(size?.width > 1400);
+    size?.width && setCommonMenuFullVal(size?.width > 1400);
   }, [size]);
 
   return (
