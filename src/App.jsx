@@ -40,6 +40,7 @@ const App = () => {
     <ConfigProvider
       locale={zhCN}
       theme={{
+        cssVar: true,
         token: {
           colorPrimary: '#00b96b',
           borderRadius: 4,
