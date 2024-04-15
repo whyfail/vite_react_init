@@ -31,7 +31,7 @@ const routes = [
         path: 'home',
         element: <HomeIndex />,
         meta: {
-          title: 'home',
+          title: '首页',
           needLogin: true,
         },
       },

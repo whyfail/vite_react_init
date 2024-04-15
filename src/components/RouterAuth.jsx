@@ -9,7 +9,7 @@ const RouterAuth = (props) => {
 
   // 设置标题
   if (meta && meta.title) {
-    document.title = meta.title;
+    document.title = `${import.meta.env.VITE_APP_NAME} - ${meta.title}`;
   }
 
   // 权限登录校验
