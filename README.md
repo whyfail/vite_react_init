@@ -55,7 +55,6 @@ npm run build
 git add -A
 git commit -m "[描述]"
 git pull --rebase
-
 ```
 
 1. 执行完 git pull --rebase 后如果有 succeed 字样，就表示没有冲突，直接 git push
@@ -66,6 +65,18 @@ git pull --rebase
 git add -A
 git rebase --continue ，// 可以线性的连接本地分支与远程分支，无误之后就退出，回到主分支上。
 git push
+```
+
+- git 忽略换行符的变化（建议执行）
+
+```
+git config --global core.autocrlf input
+```
+
+- git 文件名的大小写敏感（建议执行）
+
+```
+git config --global core.ignorecase false
 ```
 
 #### 项目功能简介
@@ -87,8 +98,8 @@ git push
 - 加上配置后执行`npm i vite-plugin-imagemin -D`
 - 在`vite.config`文件中加上插件配置：
 
-```
-import viteImagemin from 'vite-plugin-imagemin'
+```js
+import viteImagemin from 'vite-plugin-imagemin';
 
 export default () => {
   return {
@@ -121,8 +132,8 @@ export default () => {
         },
       }),
     ],
-  }
-}
+  };
+};
 ```
 
 - 对应的配置也可以随项目修改
