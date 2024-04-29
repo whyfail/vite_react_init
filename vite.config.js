@@ -2,6 +2,7 @@ import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react-swc';
 import autoprefixer from 'autoprefixer';
+import million from 'million/compiler';
 import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
 import UnoCSS from 'unocss/vite';
@@ -15,6 +16,11 @@ import vitePluginNoBug from 'vite-plugin-no-bug';
 export default defineConfig({
   base: './',
   plugins: [
+    million.vite({
+      auto: {
+        threshold: 0.05,
+      },
+    }),
     react(),
     visualizer({ gzipSize: true }),
     viteCompression({
