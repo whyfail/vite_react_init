@@ -7,7 +7,6 @@ import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
 import UnoCSS from 'unocss/vite';
 import Printer from 'unplugin-printer/vite';
-import TurboConsole from 'unplugin-turbo-console/vite';
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 import eslint from 'vite-plugin-eslint';
@@ -41,10 +40,6 @@ export default defineConfig({
       failOnError: false,
     }),
     vitePluginNoBug(),
-    TurboConsole({
-      prefix: '___________打印 ↓_____________',
-      suffix: '___________打印 ↑_____________',
-    }),
     Printer({
       info: [
         ({ lightCyan, green, bold }) => {
