@@ -18,7 +18,7 @@ const useStyle = createUseStyles({
   },
 });
 
-const RouterError = () => {
+const CommonError = () => {
   const classes = useStyle();
 
   return (
@@ -28,4 +28,4 @@ const RouterError = () => {
   );
 };
 
-export default RouterError;
+export default CommonError;

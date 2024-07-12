@@ -3,9 +3,9 @@
  */
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
+import CommonError from '@/components/CommonError';
 import Router404 from '@/components/Router404';
 import RouterAuth from '@/components/RouterAuth';
-import RouterError from '@/components/RouterError';
 
 // 路由懒加载
 const Index = lazy(() => import('../pages'));
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/',
     element: <Index />,
-    errorElement: <RouterError />,
+    errorElement: <CommonError />,
     meta: {
       title: '首页',
       needLogin: true,

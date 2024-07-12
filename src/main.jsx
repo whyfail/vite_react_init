@@ -9,6 +9,7 @@ import RecoilNexus from 'recoil-nexus';
 import 'virtual:uno.css';
 import App from './App';
 import './assets/css/index.less';
+import ErrorBoundary from './components/ErrorBoundary';
 import Loading from './components/Loading';
 import RecoilDebugLog from './components/RecoilDebugLog';
 import './plugins/plugin-jss';
@@ -22,15 +23,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <RecoilNexus />
 
       <HashRouter>
-        <Suspense fallback={<Loading />}>
-          <App />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Loading />}>
+            <App />
+          </Suspense>
+        </ErrorBoundary>
       </HashRouter>
     </RecoilRoot>
     {isDev && (
       <Inspector
         keys={['control', 'y']}
-        disableLaunchEditor={true}
         onClickElement={({ codeInfo }) => {
           if (!codeInfo?.absolutePath) return;
 
