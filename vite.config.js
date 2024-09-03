@@ -43,7 +43,7 @@ export default defineConfig({
     Printer({
       info: [
         ({ lightCyan, green, bold }) => {
-          return `  ${green('➜')}  ${bold('官网')}:  ${lightCyan('https://whyfail.github.io/cwa-document')}`;
+          return `  ${green('➜')}  ${bold('官网')}:  ${lightCyan('https://whyfail.github.io/cwa-docs')}`;
         },
       ],
     }),
