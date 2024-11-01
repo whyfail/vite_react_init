@@ -4,10 +4,10 @@
 import React, { memo } from 'react';
 import { Layout } from 'antd';
 import { useRecoilState } from 'recoil';
-import { commonMenuFull } from '@/stores/store-common';
-import LayoutContent from './LayoutContent';
-import LayoutHeader from './LayoutHeader';
-import LayoutSider from './LayoutSider';
+import { commonMenuFull } from '@/stores/store-common.js';
+import LayoutContent from './LayoutContent.jsx';
+import LayoutHeader from './LayoutHeader.jsx';
+import LayoutSider from './LayoutSider.jsx';
 
 const LayoutIndex = memo(() => {
   const [commonMenuFullVal] = useRecoilState(commonMenuFull);

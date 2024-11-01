@@ -5,7 +5,7 @@
 import React, { useRef } from 'react';
 import { useOutlet } from 'react-router-dom';
 import { FloatButton } from 'antd';
-import RouterTransition from '@/components/RouterTransition';
+import RouterTransition from '@/components/RouterTransition.jsx';
 
 const LayoutContent = () => {
   const currentOutlet = useOutlet();

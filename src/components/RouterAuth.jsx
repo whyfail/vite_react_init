@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { App as AntdApp } from 'antd';
-import { isLogin } from '@/utils/auth';
+import { isLogin } from '@/utils/auth.js';
 
 const RouterAuth = (props) => {
   const { meta } = props;

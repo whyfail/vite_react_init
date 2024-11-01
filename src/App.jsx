@@ -6,8 +6,8 @@ import { ConfigProvider } from 'antd';
 import { App as AntdApp } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { setHtmlRem } from './plugins/plugin-set-rem';
-import routes, { transformRoutes } from './routes';
+import { setHtmlRem } from './plugins/plugin-set-rem.js';
+import routes, { transformRoutes } from './routes/index.jsx';
 
 dayjs.locale('zh-cn');
 

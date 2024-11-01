@@ -1,6 +1,6 @@
 // ErrorBoundary.js
 import React, { Component } from 'react';
-import CommonError from './CommonError';
+import CommonError from './CommonError.jsx';
 
 class ErrorBoundary extends Component {
   constructor(props) {

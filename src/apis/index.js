@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from '@/utils/auth';
+import { getToken } from '@/utils/auth.js';
 
 // 访问前缀（线下）
 export const BASE_NAME = '/API_BASE'; //测试版本

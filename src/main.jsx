@@ -7,12 +7,12 @@ import 'animate.css';
 import { RecoilRoot } from 'recoil';
 import RecoilNexus from 'recoil-nexus';
 import 'virtual:uno.css';
-import App from './App';
+import App from './App.jsx';
 import './assets/css/index.less';
-import ErrorBoundary from './components/ErrorBoundary';
-import Loading from './components/Loading';
-import RecoilDebugLog from './components/RecoilDebugLog';
-import './plugins/plugin-jss';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
+import Loading from './components/Loading.jsx';
+import RecoilDebugLog from './components/RecoilDebugLog.jsx';
+import './plugins/plugin-jss.js';
 
 const isDev = import.meta.env.MODE === 'development';
 

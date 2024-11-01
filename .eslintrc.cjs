@@ -12,7 +12,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react', 'react-hooks', 'import'],
   rules: {
     'no-console': [
       'error',
@@ -48,5 +48,6 @@ module.exports = {
     'no-unused-vars': 'error',
     'react/prop-types': 'off',
     'react/no-unknown-property': 'off',
+    'import/extensions': ['error', 'always', { ignorePackages: true }],
   },
 };

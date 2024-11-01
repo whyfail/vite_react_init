@@ -2,9 +2,9 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { nonComponentsChangeRecoil } from '@/common/common-fun';
-import { userNumber } from '@/stores/store-user';
-import { clearToken } from '@/utils/auth';
+import { nonComponentsChangeRecoil } from '@/common/common-fun.js';
+import { userNumber } from '@/stores/store-user.js';
+import { clearToken } from '@/utils/auth.js';
 
 const myStyles = createUseStyles({
   root: {

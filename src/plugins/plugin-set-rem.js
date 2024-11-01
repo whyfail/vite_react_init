@@ -1,7 +1,7 @@
 /**
  *  改变窗口大小时重新设置 rem
  */
-import { BASE_FONT_SIZE, BASE_MIN_VW_VH } from '../common/common-const';
+import { BASE_FONT_SIZE, BASE_MIN_VW_VH } from '../common/common-const.js';
 
 // 设置 rem 函数
 export const setHtmlRem = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import LogoFullIcon from '@/assets/images/login/assets-logo-full.svg';
-import LoginMain from './LoginMain';
+import LoginMain from './LoginMain.jsx';
 
 const LoginIndex = () => {
   return (

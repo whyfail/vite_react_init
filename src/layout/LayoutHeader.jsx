@@ -7,8 +7,8 @@ import { Button, Image, Popover, Space } from 'antd';
 import { useRecoilState } from 'recoil';
 import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
 import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
-import { commonMenuFull } from '@/stores/store-common';
-import { clearToken } from '@/utils/auth';
+import { commonMenuFull } from '@/stores/store-common.js';
+import { clearToken } from '@/utils/auth.js';
 
 const useStyle = createUseStyles({
   root: {

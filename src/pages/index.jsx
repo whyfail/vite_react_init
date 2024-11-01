@@ -1,5 +1,5 @@
 import React from 'react';
-import LayoutIndex from '@/layout';
+import LayoutIndex from '@/layout/index.jsx';
 
 const Index = () => {
   return <LayoutIndex />;

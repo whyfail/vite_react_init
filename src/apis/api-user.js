@@ -1,7 +1,7 @@
 /**
  * 用户相关接口
  */
-import http, { BASE_NAME } from './index';
+import http, { BASE_NAME } from './index.js';
 
 /**
  * 登录
