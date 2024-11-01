@@ -10,13 +10,21 @@ export default defineConfig({
     [
       /^e-(\d+)$/,
       ([, number]) => {
-        return {
-          overflow: 'hidden',
-          'text-overflow': 'ellipsis',
-          display: '-webkit-box',
-          '-webkit-line-clamp': number,
-          '-webkit-box-orient': 'vertical',
-        };
+        if (number === '1') {
+          return {
+            overflow: 'hidden',
+            'text-overflow': 'ellipsis',
+            'white-space': 'nowrap',
+          };
+        } else {
+          return {
+            overflow: 'hidden',
+            'text-overflow': 'ellipsis',
+            display: '-webkit-box',
+            '-webkit-line-clamp': number,
+            '-webkit-box-orient': 'vertical',
+          };
+        }
       },
     ],
   ],
