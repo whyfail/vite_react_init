@@ -25,7 +25,7 @@ class ErrorBoundary extends Component {
         <div className="relative h-full w-full">
           {/* !开发环境下显示错误信息 */}
           {import.meta.env.MODE === 'development' && (
-            <div className="absolute left-20% top-12% z-9 font-bold text-red">{this.state.error}</div>
+            <div className="absolute left-20% top-12% z-9 text-red font-bold">{this.state.error}</div>
           )}
           <CommonError />
         </div>

@@ -89,6 +89,7 @@ git config --global core.ignorecase false
 - `viteCompression` 用来配置开启 gzip 打包
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
 - `preinstall` 该命令是为了强制包管理器，这里使用的是 npm
+- `AutoDecimal` 一个将 JavaScript 中的基本运算自动转换成 decimal.js 方法的插件
 
 #### 项目打包图片优化方案
 

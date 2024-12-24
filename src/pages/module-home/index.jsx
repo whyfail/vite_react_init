@@ -125,6 +125,7 @@ const Index = () => {
               跳转登录页
             </button>
             <button onClick={() => navigate('/other')}>跳转子页面</button>
+            <div className="mt-24px">AutoDecimal自动转换：0.1+0.2={0.1 + 0.2}</div>
           </div>
         </div>
       </div>
