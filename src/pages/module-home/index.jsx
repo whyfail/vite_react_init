@@ -1,32 +1,31 @@
-import React from 'react';
-import { createUseStyles } from 'react-jss';
-import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 import { nonComponentsChangeRecoil } from '@/common/common-fun.js';
 import { userNumber } from '@/stores/store-user.js';
 import { clearToken } from '@/utils/auth.js';
+import { createUseStyles } from 'react-jss';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
 const myStyles = createUseStyles({
   root: {
-    width: '100%',
-    height: '1200px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    userSelect: 'none',
+    'width': '100%',
+    'height': '1200px',
+    'display': 'flex',
+    'justifyContent': 'center',
+    'alignItems': 'center',
+    'userSelect': 'none',
     '& .content_root': {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      userSelect: 'none',
+      'display': 'flex',
+      'justifyContent': 'center',
+      'alignItems': 'center',
+      'userSelect': 'none',
       '& .container': {
-        position: 'relative',
-        width: 350,
-        borderRadius: 20,
-        padding: 40,
-        boxSizing: 'border-box',
-        background: '#ecf0f3',
-        boxShadow: '1px 1px 3px #cbced1, -1px -1px 3px white',
+        'position': 'relative',
+        'width': 350,
+        'borderRadius': 20,
+        'padding': 40,
+        'boxSizing': 'border-box',
+        'background': '#ecf0f3',
+        'boxShadow': '1px 1px 3px #cbced1, -1px -1px 3px white',
         '& input': {
           caretColor: 'red',
           background: '#ecf0f3',
@@ -99,7 +98,7 @@ const myStyles = createUseStyles({
   },
 });
 
-const Index = () => {
+function Index() {
   const classes = myStyles();
   const navigate = useNavigate();
   // 全局状态
@@ -111,12 +110,13 @@ const Index = () => {
         <div className="container">
           <div className="brand-logo">{number}</div>
           <div className="inputs">
-            <button onClick={() => setNumber(number + 1)}>+</button>
-            <button onClick={() => setNumber(number - 1)}>-</button>
-            <button onClick={nonComponentsChangeRecoil} className="font-bold important-text-red">
+            <button onClick={() => setNumber(number + 1)} type="button">+</button>
+            <button onClick={() => setNumber(number - 1)} type="button">-</button>
+            <button onClick={nonComponentsChangeRecoil} className="font-bold important-text-red" type="button">
               组件外修改状态
             </button>
             <button
+              type="button"
               onClick={() => {
                 clearToken();
                 navigate('/login');
@@ -124,13 +124,16 @@ const Index = () => {
             >
               跳转登录页
             </button>
-            <button onClick={() => navigate('/other')}>跳转子页面</button>
-            <div className="mt-24px">AutoDecimal自动转换：0.1+0.2={0.1 + 0.2}</div>
+            <button onClick={() => navigate('/other')} type="button">跳转子页面</button>
+            <div className="mt-24px">
+              AutoDecimal自动转换：0.1+0.2=
+              {0.1 + 0.2}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Index;

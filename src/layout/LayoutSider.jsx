@@ -1,9 +1,8 @@
-import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { DesktopOutlined, HomeOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const LayoutSider = () => {
+function LayoutSider() {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,6 +31,6 @@ const LayoutSider = () => {
       defaultSelectedKeys={[location.pathname]}
     />
   );
-};
+}
 
 export default LayoutSider;

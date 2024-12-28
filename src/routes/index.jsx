@@ -1,13 +1,14 @@
 /**
  * 路由配置文件
  */
-import React, { lazy } from 'react';
-import { Navigate } from 'react-router-dom';
 import CommonError from '@/components/CommonError.jsx';
 import Router404 from '@/components/Router404.jsx';
 import RouterAuth from '@/components/RouterAuth.jsx';
+import { lazy } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // 路由懒加载
+/* eslint-disable react-refresh/only-export-components */
 const Index = lazy(() => import('../pages/index.jsx'));
 const LoginIndex = lazy(() => import('../pages/module-login/index.jsx'));
 const HomeIndex = lazy(() => import('../pages/module-home/index.jsx'));
@@ -65,19 +66,19 @@ const routes = [
 ];
 
 // HOC
-const authLoad = (element, meta = {}) => {
+function authLoad(element, meta = {}) {
   return <RouterAuth meta={meta}>{element}</RouterAuth>;
-};
+}
 
 // 路由配置列表数据转换
-export const transformRoutes = (routes) => {
+export function transformRoutes(routes) {
   const list = [];
 
   routes.forEach((route) => {
     const obj = { ...route };
 
     if (obj.redirect) {
-      obj.element = <Navigate to={obj.redirect} replace={true} />;
+      obj.element = <Navigate to={obj.redirect} replace />;
     }
 
     if (obj.element) {
@@ -95,6 +96,6 @@ export const transformRoutes = (routes) => {
   });
 
   return list;
-};
+}
 
 export default routes;

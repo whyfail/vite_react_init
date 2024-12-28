@@ -1,13 +1,13 @@
 /**
  * 路由过渡动画组件
  */
-import React, { useState, useEffect } from 'react';
+import NProgress from 'nprogress';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-const RouterTransition = ({ children }) => {
+function RouterTransition({ children }) {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,6 +34,6 @@ const RouterTransition = ({ children }) => {
       </CSSTransition>
     </SwitchTransition>
   );
-};
+}
 
 export default RouterTransition;

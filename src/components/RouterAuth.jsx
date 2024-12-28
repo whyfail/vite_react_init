@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
-import { App as AntdApp } from 'antd';
 import { isLogin } from '@/utils/auth.js';
+import { App as AntdApp } from 'antd';
+import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
-const RouterAuth = (props) => {
-  const { meta } = props;
+function RouterAuth(props) {
+  const { meta, children } = props;
   const { message } = AntdApp.useApp();
 
   // 设置标题
@@ -25,7 +25,7 @@ const RouterAuth = (props) => {
     return <Navigate to="/login" replace></Navigate>;
   }
 
-  return <>{props.children}</>;
-};
+  return <>{children}</>;
+}
 
 export default RouterAuth;

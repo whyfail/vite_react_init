@@ -1,6 +1,6 @@
 // uno.config.ts
 import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx';
-import { defineConfig, presetUno, presetAttributify } from 'unocss';
+import { defineConfig, presetAttributify, presetUno } from 'unocss';
 
 export default defineConfig({
   presets: [presetUno(), presetAttributify()],
@@ -12,15 +12,15 @@ export default defineConfig({
       ([, number]) => {
         if (number === '1') {
           return {
-            overflow: 'hidden',
+            'overflow': 'hidden',
             'text-overflow': 'ellipsis',
             'white-space': 'nowrap',
           };
         } else {
           return {
-            overflow: 'hidden',
+            'overflow': 'hidden',
             'text-overflow': 'ellipsis',
-            display: '-webkit-box',
+            'display': '-webkit-box',
             '-webkit-line-clamp': number,
             '-webkit-box-orient': 'vertical',
           };

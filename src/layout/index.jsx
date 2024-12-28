@@ -1,10 +1,10 @@
 /**
  * 布局
  */
-import React, { memo } from 'react';
-import { Layout } from 'antd';
-import { useRecoilState } from 'recoil';
 import { commonMenuFull } from '@/stores/store-common.js';
+import { Layout } from 'antd';
+import { memo } from 'react';
+import { useRecoilState } from 'recoil';
 import LayoutContent from './LayoutContent.jsx';
 import LayoutHeader from './LayoutHeader.jsx';
 import LayoutSider from './LayoutSider.jsx';

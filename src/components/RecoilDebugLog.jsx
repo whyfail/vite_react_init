@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRecoilSnapshot } from 'recoil';
 
-const RecoilDebugLog = () => {
+function RecoilDebugLog() {
   const snapshot = useRecoilSnapshot();
 
   useEffect(() => {
@@ -33,6 +33,6 @@ const RecoilDebugLog = () => {
   }, [snapshot]);
 
   return null;
-};
+}
 
 export default RecoilDebugLog;

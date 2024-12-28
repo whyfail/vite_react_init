@@ -1,14 +1,14 @@
-import React, { memo, useEffect, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
-import { useNavigate } from 'react-router-dom';
-import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
-import { useSize } from 'ahooks';
-import { Button, Image, Popover, Space } from 'antd';
-import { useRecoilState } from 'recoil';
 import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
 import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
 import { commonMenuFull } from '@/stores/store-common.js';
 import { clearToken } from '@/utils/auth.js';
+import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { useSize } from 'ahooks';
+import { Button, Image, Popover, Space } from 'antd';
+import { memo, useEffect, useRef } from 'react';
+import { createUseStyles } from 'react-jss';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
 const useStyle = createUseStyles({
   root: {
@@ -44,7 +44,7 @@ const LayoutHeader = memo(() => {
         />
       </Space>
       <Popover
-        content={
+        content={(
           <Space direction="vertical" style={{ width: '120px' }}>
             <Button type="text" icon={<UserOutlined />}>
               用户中心
@@ -60,12 +60,14 @@ const LayoutHeader = memo(() => {
               退出登录
             </Button>
           </Space>
-        }
+        )}
         trigger="click"
         placement="bottom"
       >
         <Button type="link" icon={<UserOutlined />}>
-          admin <DownOutlined />
+          admin
+          {' '}
+          <DownOutlined />
         </Button>
       </Popover>
     </div>

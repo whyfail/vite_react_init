@@ -13,4 +13,4 @@ const userInfo = atom({
   },
 });
 
-export { userNumber, userInfo };
+export { userInfo, userNumber };

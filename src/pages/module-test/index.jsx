@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Space, Table, Tag } from 'antd';
 
 const originData = [];
@@ -18,7 +17,7 @@ const columns = [
     title: '姓名',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <span>{text}</span>,
+    render: text => <span>{text}</span>,
   },
   {
     title: '年龄',
@@ -57,19 +56,22 @@ const columns = [
     key: 'action',
     render: (_, record) => (
       <Space size="middle">
-        <Button type="link">Invite {record.name}</Button>
+        <Button type="link">
+          Invite
+          {record.name}
+        </Button>
         <Button type="link">Delete</Button>
       </Space>
     ),
   },
 ];
 
-const TestIndex = () => {
+function TestIndex() {
   return (
     <div className="bg-#fff p-25px">
       <Table columns={columns} dataSource={originData} />
     </div>
   );
-};
+}
 
 export default TestIndex;

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs';
+import { App as AntdApp, ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
-import { StyleProvider, px2remTransformer } from '@ant-design/cssinjs';
-import { ConfigProvider } from 'antd';
-import { App as AntdApp } from 'antd';
 import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
+import { useEffect, useState } from 'react';
+import { useRoutes } from 'react-router-dom';
 import { setHtmlRem } from './plugins/plugin-set-rem.js';
 import routes, { transformRoutes } from './routes/index.jsx';
+import 'dayjs/locale/zh-cn';
 
 dayjs.locale('zh-cn');
 
-const App = () => {
+function App() {
   const pages = useRoutes(transformRoutes(routes));
   const [px2rem, setPx2rem] = useState(
     px2remTransformer({
@@ -52,6 +51,6 @@ const App = () => {
       </AntdApp>
     </ConfigProvider>
   );
-};
+}
 
 export default App;

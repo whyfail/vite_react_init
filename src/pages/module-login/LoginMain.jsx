@@ -1,8 +1,8 @@
+import { setToken } from '@/utils/auth.js';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { App, Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Form, Input, Checkbox, Button, App } from 'antd';
-import { setToken } from '@/utils/auth.js';
 
 const LoginMain = React.memo(() => {
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const LoginMain = React.memo(() => {
         message.error('登录失败');
       }
     } catch (e) {
+      console.error(e.message);
       message.error('登录失败');
     }
   };

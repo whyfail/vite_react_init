@@ -2,12 +2,12 @@
  * @name LayoutContent
  * @desc 内容区域
  */
-import React, { useRef } from 'react';
-import { useOutlet } from 'react-router-dom';
-import { FloatButton } from 'antd';
 import RouterTransition from '@/components/RouterTransition.jsx';
+import { FloatButton } from 'antd';
+import { useRef } from 'react';
+import { useOutlet } from 'react-router-dom';
 
-const LayoutContent = () => {
+function LayoutContent() {
   const currentOutlet = useOutlet();
   const mainRef = useRef(null);
 
@@ -17,6 +17,6 @@ const LayoutContent = () => {
       <FloatButton.BackTop target={() => mainRef.current} visibilityHeight={100} />
     </main>
   );
-};
+}
 
 export default LayoutContent;

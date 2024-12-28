@@ -1,9 +1,8 @@
 /**
  * 加载组件
  */
-import React from 'react';
-import { createUseStyles } from 'react-jss';
 import { Spin } from 'antd';
+import { createUseStyles } from 'react-jss';
 
 const useStyle = createUseStyles({
   root: {
@@ -15,7 +14,7 @@ const useStyle = createUseStyles({
   },
 });
 
-const Loading = () => {
+function Loading() {
   const classes = useStyle();
 
   return (
@@ -23,6 +22,6 @@ const Loading = () => {
       <Spin size="large" />
     </div>
   );
-};
+}
 
 export default Loading;

@@ -1,9 +1,11 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode", // 用 Prettier 格式化
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
-  "editor.formatOnSave": true, // 保存时自动格式化
-  "files.eol": "auto", //默认行尾字符。
-  "cSpell.words": ["Attributify", "unocss"]
+  "files.eol": "auto",
+  "cSpell.words": ["Attributify", "unocss"], // 默认行尾字符。
+  // 禁用Prettier插件
+  "prettier.enable": false
 }

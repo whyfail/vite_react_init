@@ -1,8 +1,7 @@
-import React from 'react';
 import LayoutIndex from '@/layout/index.jsx';
 
-const Index = () => {
+function Index() {
   return <LayoutIndex />;
-};
+}
 
 export default Index;

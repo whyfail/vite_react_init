@@ -1,8 +1,7 @@
-import React from 'react';
 import LogoFullIcon from '@/assets/images/login/assets-logo-full.svg';
 import LoginMain from './LoginMain.jsx';
 
-const LoginIndex = () => {
+function LoginIndex() {
   return (
     <div className="animate__animated animate__fadeIn h-100vh flex flex-col bg-[100%] bg-[url(@/assets/images/login/login-bg-white.png)] bg-cover">
       <header h-64px p-r-24px p-l-24px flex justify-between flex-items-center>
@@ -21,6 +20,6 @@ const LoginIndex = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default LoginIndex;

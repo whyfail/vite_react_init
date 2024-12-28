@@ -1,19 +1,19 @@
 /**
  * react-jss px转rem插件
  */
-import { jss } from 'react-jss';
 import jssPluginPreFixer from 'jss-plugin-vendor-prefixer';
+import { jss } from 'react-jss';
 import { BASE_FONT_SIZE } from '../common/common-const.js';
 
-const pxToRem = (value, defaultValue) => {
-  const parsedValue = parseInt(value, 10);
+function pxToRem(value, defaultValue) {
+  const parsedValue = Number.parseInt(value, 10);
 
   if (Number.isNaN(parsedValue)) {
     return defaultValue || value;
   }
 
   return `${parsedValue / BASE_FONT_SIZE}rem`;
-};
+}
 
 const pxToRemPlugin = {
   onProcessStyle: (style, rule) => {

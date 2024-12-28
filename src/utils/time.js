@@ -6,8 +6,8 @@
  * 时间格式化函数
  * @param {string} date 时间  如：2024-1-1 11:11:11 或 时间戳
  * @param {'default' | '-' |  '/' | '.' | '年月日' |  '月日' | '年'} type 类型
- * @param {Boolean} zeroFillFlag  为是否数字补零，默认补零
- * @returns {string} 时间字符串
+ * @param {boolean} zeroFillFlag  为是否数字补零，默认补零
+ * @return {string} 时间字符串
  * @example
  * formatPast('2024-1-1 11:11:11'); // 3天前
  * formatPast('2023-11-1 11:11:11'); // 2个月前
@@ -19,10 +19,10 @@
  * formatPast('2023/6/25 11:32:01', '月日', false); // 6月25日
  * formatPast('2023/8/08 11:32:01', '年'); // 2023年
  */
-export const TimeFormatPast = (date, type = 'default', zeroFillFlag = true) => {
+export function TimeFormatPast(date, type = 'default', zeroFillFlag = true) {
   // 判断date是否为时间戳
-  if (typeof date === 'number' && !isNaN(date) && isFinite(date)) {
-    date = new Date(date).toLocaleDateString() + ' ' + new Date(date).toLocaleTimeString();
+  if (typeof date === 'number' && !Number.isNaN(date) && Number.isFinite(date)) {
+    date = `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
   }
 
   // 定义countTime变量，用于存储计算后的数据
@@ -30,7 +30,7 @@ export const TimeFormatPast = (date, type = 'default', zeroFillFlag = true) => {
   // 获取当前时间戳
   let time = new Date().getTime();
   // 转换传入参数为时间戳
-  let afferentTime = new Date(date).getTime();
+  const afferentTime = new Date(date).getTime();
 
   // 当前时间戳 - 传入时间戳
   time = Number.parseInt(`${time - afferentTime}`);
@@ -53,16 +53,16 @@ export const TimeFormatPast = (date, type = 'default', zeroFillFlag = true) => {
     countTime = Math.floor(time / 3600000);
 
     return `${countTime}小时前`;
-  } else if (time >= 86400000 && type == 'default') {
+  } else if (time >= 86400000 && type === 'default') {
     // 超过二十四小时（一天）且格式参数为默认"default"
     countTime = Math.floor(time / 86400000);
 
-    //大于等于365天
+    // 大于等于365天
     if (countTime >= 365) {
       return `${Math.floor(countTime / 365)}年前`;
     }
 
-    //大于等于30天
+    // 大于等于30天
     if (countTime >= 30) {
       return `${Math.floor(countTime / 30)}个月前`;
     }
@@ -71,32 +71,32 @@ export const TimeFormatPast = (date, type = 'default', zeroFillFlag = true) => {
   } else {
     // 一天（24小时）以上且格式不为"default"则按传入格式参数显示不同格式
     // 数字补零
-    let Y = new Date(date).getFullYear();
-    let M = new Date(date).getMonth() + 1;
-    let zeroFillM = M > 9 ? M : '0' + M;
-    let D = new Date(date).getDate();
-    let zeroFillD = D > 9 ? D : '0' + D;
+    const Y = new Date(date).getFullYear();
+    const M = new Date(date).getMonth() + 1;
+    const zeroFillM = M > 9 ? M : `0${M}`;
+    const D = new Date(date).getDate();
+    const zeroFillD = D > 9 ? D : `0${D}`;
 
     // 传入格式为"-" "/" "."
-    if (type == '-' || type == '/' || type == '.') {
+    if (type === '-' || type === '/' || type === '.') {
       return zeroFillFlag ? Y + type + zeroFillM + type + zeroFillD : Y + type + M + type + D;
     }
 
     // 传入格式为"年月日"
-    if (type == '年月日') {
+    if (type === '年月日') {
       return zeroFillFlag
         ? Y + type[0] + zeroFillM + type[1] + zeroFillD + type[2]
         : Y + type[0] + M + type[1] + D + type[2];
     }
 
     // 传入格式为"月日"
-    if (type == '月日') {
+    if (type === '月日') {
       return zeroFillFlag ? zeroFillM + type[0] + zeroFillD + type[1] : M + type[0] + D + type[1];
     }
 
     // 传入格式为"年"
-    if (type == '年') {
+    if (type === '年') {
       return Y + type;
     }
   }
-};
+}
