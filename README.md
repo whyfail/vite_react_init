@@ -79,6 +79,11 @@ git config --global core.autocrlf input
 git config --global core.ignorecase false
 ```
 
+#### 查看Eslint所有规则
+```
+npx @eslint/config-inspector
+```
+
 #### 项目功能简介
 
 - `lint-staged husky`:用于代码提交时进行`eslint prettier`代码校验，校验通过后，才能提交代码

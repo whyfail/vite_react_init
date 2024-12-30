@@ -8,16 +8,13 @@ export default antfu(
     react: true,
     vue: false,
     unocss: true,
+    typescript: false,
   },
   {
     rules: {
       '@stylistic/semi': [2, 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      // 'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'off',
-      // 'react/prop-types': 'off',
-      // 'react/no-unknown-property': 'off',
-      // 'react/react-in-jsx-scope': 'error',
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
