@@ -1,9 +1,9 @@
 /**
  * react-jss px转rem插件
  */
+import { BASE_FONT_SIZE } from '@/common/commonConst.js';
 import jssPluginPreFixer from 'jss-plugin-vendor-prefixer';
 import { jss } from 'react-jss';
-import { BASE_FONT_SIZE } from '../common/common-const.js';
 
 function pxToRem(value, defaultValue) {
   const parsedValue = Number.parseInt(value, 10);

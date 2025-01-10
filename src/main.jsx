@@ -2,12 +2,9 @@ import { Suspense } from 'react';
 import { Inspector } from 'react-dev-inspector';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
-import RecoilNexus from 'recoil-nexus';
 import App from './App.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import Loading from './components/Loading.jsx';
-import RecoilDebugLog from './components/RecoilDebugLog.jsx';
 import 'antd/dist/reset.css';
 import 'animate.css';
 import 'virtual:uno.css';
@@ -18,18 +15,14 @@ const isDev = import.meta.env.MODE === 'development';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    <RecoilRoot>
-      {isDev && <RecoilDebugLog />}
-      <RecoilNexus />
 
-      <HashRouter>
-        <ErrorBoundary>
-          <Suspense fallback={<Loading />}>
-            <App />
-          </Suspense>
-        </ErrorBoundary>
-      </HashRouter>
-    </RecoilRoot>
+    <HashRouter>
+      <ErrorBoundary>
+        <Suspense fallback={<Loading />}>
+          <App />
+        </Suspense>
+      </ErrorBoundary>
+    </HashRouter>
     {isDev && (
       <Inspector
         keys={['control', 'y']}

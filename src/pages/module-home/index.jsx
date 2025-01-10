@@ -1,9 +1,8 @@
-import { nonComponentsChangeRecoil } from '@/common/common-fun.js';
-import { userNumber } from '@/stores/store-user.js';
+import { nonComponentsChange } from '@/common/commonFun.js';
+import { useStoreUser } from '@/stores/index.js';
 import { clearToken } from '@/utils/auth.js';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 
 const myStyles = createUseStyles({
   root: {
@@ -102,17 +101,17 @@ function Index() {
   const classes = myStyles();
   const navigate = useNavigate();
   // 全局状态
-  const [number, setNumber] = useRecoilState(userNumber);
+  const { userNumber, setUserNumber } = useStoreUser();
 
   return (
     <div className={classes.root}>
       <div className="content_root">
         <div className="container">
-          <div className="brand-logo">{number}</div>
+          <div className="brand-logo">{userNumber}</div>
           <div className="inputs">
-            <button onClick={() => setNumber(number + 1)} type="button">+</button>
-            <button onClick={() => setNumber(number - 1)} type="button">-</button>
-            <button onClick={nonComponentsChangeRecoil} className="font-bold important-text-red" type="button">
+            <button onClick={() => setUserNumber(userNumber + 1)} type="button">+</button>
+            <button onClick={() => setUserNumber(userNumber - 1)} type="button">-</button>
+            <button onClick={() => nonComponentsChange(userNumber + 1)} className="font-bold important-text-red" type="button">
               组件外修改状态
             </button>
             <button

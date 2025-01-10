@@ -1,16 +1,15 @@
 /**
  * 布局
  */
-import { commonMenuFull } from '@/stores/store-common.js';
+import { useStoreSystem } from '@/stores/index.js';
 import { Layout } from 'antd';
 import { memo } from 'react';
-import { useRecoilState } from 'recoil';
 import LayoutContent from './LayoutContent.jsx';
 import LayoutHeader from './LayoutHeader.jsx';
 import LayoutSider from './LayoutSider.jsx';
 
 const LayoutIndex = memo(() => {
-  const [commonMenuFullVal] = useRecoilState(commonMenuFull);
+  const { systemMenuFull } = useStoreSystem();
 
   return (
     <Layout className="h-full">
@@ -18,7 +17,7 @@ const LayoutIndex = memo(() => {
         <LayoutHeader />
       </Layout.Header>
       <Layout hasSider>
-        <Layout.Sider theme="light" collapsed={!commonMenuFullVal}>
+        <Layout.Sider theme="light" collapsed={!systemMenuFull}>
           <LayoutSider />
         </Layout.Sider>
         <Layout.Content>

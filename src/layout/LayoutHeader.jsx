@@ -1,6 +1,6 @@
 import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
 import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
-import { commonMenuFull } from '@/stores/store-common.js';
+import { useStoreSystem } from '@/stores/index.js';
 import { clearToken } from '@/utils/auth.js';
 import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
@@ -8,7 +8,6 @@ import { Button, Image, Popover, Space } from 'antd';
 import { memo, useEffect, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 
 const useStyle = createUseStyles({
   root: {
@@ -26,21 +25,21 @@ const LayoutHeader = memo(() => {
   const ref = useRef(null);
   const size = useSize(ref);
 
-  const [commonMenuFullVal, setCommonMenuFullVal] = useRecoilState(commonMenuFull);
+  const { systemMenuFull, setSystemMenuFull } = useStoreSystem();
 
   useEffect(() => {
-    size?.width && setCommonMenuFullVal(size?.width > 1400);
+    size?.width && setSystemMenuFull(size?.width > 1400);
   }, [size]);
 
   return (
     <div className={classes.root} ref={ref}>
       <Space>
-        <Image src={commonMenuFullVal ? AssetLogoFull : AssetLogo} height={33} preview={false} />
+        <Image src={systemMenuFull ? AssetLogoFull : AssetLogo} height={33} preview={false} />
         <Button
           type="link"
           icon={<MenuOutlined />}
           size={33}
-          onClick={() => setCommonMenuFullVal(!commonMenuFullVal)}
+          onClick={() => setSystemMenuFull(!systemMenuFull)}
         />
       </Space>
       <Popover
