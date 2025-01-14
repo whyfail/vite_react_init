@@ -9,7 +9,7 @@ import LayoutHeader from './LayoutHeader.jsx';
 import LayoutSider from './LayoutSider.jsx';
 
 const LayoutIndex = memo(() => {
-  const { systemMenuFull } = useStoreSystem();
+  const systemMenuFull = useStoreSystem(state => state.systemMenuFull);
 
   return (
     <Layout className="h-full">

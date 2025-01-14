@@ -101,7 +101,8 @@ function Index() {
   const classes = myStyles();
   const navigate = useNavigate();
   // 全局状态
-  const { userNumber, setUserNumber } = useStoreUser();
+  const userNumber = useStoreUser(state => state.userNumber);
+  const setUserNumber = useStoreUser(state => state.setUserNumber);
 
   return (
     <div className={classes.root}>

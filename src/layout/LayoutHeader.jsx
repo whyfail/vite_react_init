@@ -25,7 +25,8 @@ const LayoutHeader = memo(() => {
   const ref = useRef(null);
   const size = useSize(ref);
 
-  const { systemMenuFull, setSystemMenuFull } = useStoreSystem();
+  const systemMenuFull = useStoreSystem(state => state.systemMenuFull);
+  const setSystemMenuFull = useStoreSystem(state => state.setSystemMenuFull);
 
   useEffect(() => {
     size?.width && setSystemMenuFull(size?.width > 1400);
