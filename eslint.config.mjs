@@ -12,6 +12,7 @@ export default antfu(
   },
   {
     rules: {
+      'antfu/if-newline': 'off',
       '@stylistic/semi': [2, 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       'react-hooks/exhaustive-deps': 'off',
