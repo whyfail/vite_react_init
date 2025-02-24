@@ -10,7 +10,6 @@ import AutoDecimal from 'unplugin-auto-decimal/vite';
 import Printer from 'unplugin-printer/vite';
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
-import eslint from 'vite-plugin-eslint';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 
 // https://vitejs.dev/config/
@@ -35,11 +34,6 @@ export default defineConfig({
     }),
     UnoCSS({
       configFile: './unocss.config.js',
-    }),
-    eslint({
-      cache: true,
-      fix: true,
-      failOnError: false,
     }),
     vitePluginNoBug(),
     Printer({
@@ -86,7 +80,7 @@ export default defineConfig({
       '/PROXY': {
         target: 'http://xxxx',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/PROXY/, ''),
+        rewrite: path => path.replace(/^\/PROXY/, ''),
       },
     },
   },
