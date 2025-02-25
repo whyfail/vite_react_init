@@ -1,8 +1,9 @@
 import { px2remTransformer, StyleProvider } from '@ant-design/cssinjs';
+import { useEventListener } from 'ahooks';
 import { App as AntdApp, ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRoutes } from 'react-router-dom';
 import { setHtmlRem } from './plugins/plugin-set-rem.js';
 import routes, { transformRoutes } from './routes/index.jsx';
@@ -25,15 +26,7 @@ function App() {
   };
 
   // 改变窗口大小时重新设置单位大小
-  useEffect(() => {
-    handleSetRem();
-
-    const resizeFun = window.addEventListener('resize', handleSetRem);
-
-    return () => {
-      window.removeEventListener('resize', resizeFun);
-    };
-  }, []);
+  useEventListener('resize', () => handleSetRem());
 
   return (
     <ConfigProvider
