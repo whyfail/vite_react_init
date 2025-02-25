@@ -4,7 +4,6 @@
     "source.fixAll.eslint": "explicit"
   },
   "files.eol": "auto",
-  "cSpell.words": ["Attributify", "unocss"], // 默认行尾字符。
   // 禁用Prettier插件
   "prettier.enable": false
 }

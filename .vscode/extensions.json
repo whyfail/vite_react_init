@@ -1,12 +1,7 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "maggie.eslint-rules-zh-plugin",
-    "esbenp.prettier-vscode",
-    "sburg.vscode-javascript-booster",
-    "streetsidesoftware.code-spell-checker",
-    "xabikos.javascriptsnippets",
-    "xabikos.reactsnippets",
-    "dsznajder.es7-react-js-snippets"
+    "carbonid1.emmet-jss",
+    "antfu.unocss"
   ]
 }
