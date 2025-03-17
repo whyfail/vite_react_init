@@ -9,6 +9,24 @@ export default antfu(
     vue: false,
     unocss: true,
     typescript: false,
+    formatters: {
+      /**
+       * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
+       * By default uses Prettier
+       */
+      css: true,
+      /**
+       * Format HTML files
+       * By default uses Prettier
+       */
+      html: true,
+      /**
+       * Format Markdown files
+       * Supports Prettier and dprint
+       * By default uses Prettier
+       */
+      markdown: 'prettier',
+    },
   },
   {
     rules: {
