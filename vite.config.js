@@ -99,7 +99,7 @@ export default defineConfig({
           antd: ['antd'],
           ahooks: ['ahooks'],
           reactJss: ['react-jss'],
-          recoil: ['recoil'],
+          zustand: ['zustand'],
         },
       },
     },
