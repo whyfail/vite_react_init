@@ -2,6 +2,7 @@ import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react-swc';
 import autoprefixer from 'autoprefixer';
+import { codeInspectorPlugin } from 'code-inspector-plugin';
 import million from 'million/compiler';
 import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -50,6 +51,9 @@ export default defineConfig({
         buttonText: '刷新',
         dismissButtonText: '忽略',
       },
+    }),
+    codeInspectorPlugin({
+      bundler: 'vite',
     }),
   ],
   css: {
