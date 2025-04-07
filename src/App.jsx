@@ -11,6 +11,8 @@ import 'dayjs/locale/zh-cn';
 
 dayjs.locale('zh-cn');
 
+const isUseRem = import.meta.env.VITE_USE_REM === 'true';
+
 function App() {
   const pages = useRoutes(transformRoutes(routes));
   const [px2rem, setPx2rem] = useState(
@@ -26,7 +28,7 @@ function App() {
   };
 
   // 改变窗口大小时重新设置单位大小
-  useEventListener('resize', () => handleSetRem());
+  useEventListener('resize', () => isUseRem && handleSetRem());
 
   return (
     <ConfigProvider
@@ -40,7 +42,7 @@ function App() {
       }}
     >
       <AntdApp message={{ maxCount: 1 }} style={{ width: '100%', height: '100%' }}>
-        <StyleProvider transformers={[px2rem]}>{pages}</StyleProvider>
+        {isUseRem ? <StyleProvider transformers={[px2rem]}>{pages}</StyleProvider> : pages}
       </AntdApp>
     </ConfigProvider>
   );

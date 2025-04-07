@@ -40,4 +40,7 @@ const pxToRemPlugin = {
 };
 
 jss.use(jssPluginPreFixer);
-jss.use(pxToRemPlugin);
+
+if (import.meta.env.VITE_USE_REM === 'true') {
+  jss.use(pxToRemPlugin);
+}

@@ -4,8 +4,8 @@ import LoginMain from './LoginMain.jsx';
 function LoginIndex() {
   return (
     <div className="animate__animated animate__fadeIn h-100vh flex flex-col bg-[100%] bg-[url(@/assets/images/login/login-bg-white.png)] bg-cover">
-      <header h-64px p-r-24px p-l-24px flex justify-between flex-items-center>
-        <img src={LogoFullIcon} alt="" w-188px h-64px />
+      <header className="h-64px flex justify-between flex-items-center p-24px">
+        <img src={LogoFullIcon} alt="" className="h-64px w-188px" />
       </header>
       <div className="absolute left-5% top-22% min-h-500px line-height-22px">
         <div>
