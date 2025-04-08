@@ -6,21 +6,9 @@ import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-d
 import { useSize } from 'ahooks';
 import { Button, Image, Popover, Space } from 'antd';
 import { memo, useEffect, useRef } from 'react';
-import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
 
-const useStyle = createUseStyles({
-  root: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-});
-
 const LayoutHeader = memo(() => {
-  const classes = useStyle();
   const navigate = useNavigate();
   const ref = useRef(null);
   const size = useSize(ref);
@@ -33,7 +21,7 @@ const LayoutHeader = memo(() => {
   }, [size]);
 
   return (
-    <div className={classes.root} ref={ref}>
+    <div className="flex h-full w-full items-center justify-between" ref={ref}>
       <Space>
         <Image src={systemMenuFull ? AssetLogoFull : AssetLogo} height={33} preview={false} />
         <Button

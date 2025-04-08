@@ -107,7 +107,7 @@ export default defineConfig(({ mode }) => {
             lodashEs: ['lodash-es'],
             antd: ['antd'],
             ahooks: ['ahooks'],
-            reactJss: ['react-jss'],
+            antdStyle: ['antd-style'],
             zustand: ['zustand'],
           },
         },

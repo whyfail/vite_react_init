@@ -22,10 +22,10 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="relative h-full w-full">
+        <div className="h-full w-full relative">
           {/* !开发环境下显示错误信息 */}
           {import.meta.env.MODE === 'development' && (
-            <div className="absolute left-20% top-12% z-9 text-red font-bold">{this.state.error}</div>
+            <div className="text-red font-bold left-20% top-12% absolute z-9">{this.state.error}</div>
           )}
           <CommonError />
         </div>

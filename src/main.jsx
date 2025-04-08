@@ -8,7 +8,6 @@ import 'antd/dist/reset.css';
 import 'animate.css';
 import 'virtual:uno.css';
 import './assets/css/index.less';
-import './plugins/plugin-jss.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>

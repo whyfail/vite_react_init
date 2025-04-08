@@ -2,23 +2,10 @@
  * 加载组件
  */
 import { Spin } from 'antd';
-import { createUseStyles } from 'react-jss';
-
-const useStyle = createUseStyles({
-  root: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 function Loading() {
-  const classes = useStyle();
-
   return (
-    <div className={classes.root}>
+    <div className="flex h-full w-full items-center justify-center">
       <Spin size="large" />
     </div>
   );

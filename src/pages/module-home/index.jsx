@@ -1,10 +1,10 @@
 import { nonComponentsChange } from '@/common/commonFun.js';
 import { useStoreUser } from '@/stores/index.js';
 import { clearToken } from '@/utils/auth.js';
-import { createUseStyles } from 'react-jss';
+import { createStyles } from 'antd-style';
 import { useNavigate } from 'react-router-dom';
 
-const myStyles = createUseStyles({
+const useStyles = createStyles(() => ({
   root: {
     'width': '100%',
     'height': '1200px',
@@ -95,17 +95,17 @@ const myStyles = createUseStyles({
       },
     },
   },
-});
+}));
 
 function Index() {
-  const classes = myStyles();
+  const { styles } = useStyles();
   const navigate = useNavigate();
   // 全局状态
   const userNumber = useStoreUser(state => state.userNumber);
   const setUserNumber = useStoreUser(state => state.setUserNumber);
 
   return (
-    <div className={classes.root}>
+    <div className={styles.root}>
       <div className="content_root">
         <div className="container">
           <div className="brand-logo">{userNumber}</div>
