@@ -1,7 +1,7 @@
 /**
  * 布局
  */
-import { useStoreSystem } from '@/stores/index.js';
+import useStoreSystem from '@/stores/storeSystem.js';
 import { Layout } from 'antd';
 import { memo } from 'react';
 import LayoutContent from './LayoutContent.jsx';
@@ -13,7 +13,7 @@ const LayoutIndex = memo(() => {
 
   return (
     <Layout className="h-full">
-      <Layout.Header className="px-20px py-0px bg-#ffffff shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white] z-99">
+      <Layout.Header className="z-99 bg-#ffffff px-20px py-0px shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white]">
         <LayoutHeader />
       </Layout.Header>
       <Layout hasSider>

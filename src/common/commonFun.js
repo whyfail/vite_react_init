@@ -1,5 +1,5 @@
 // 示例代码，请根据实际情况修改
-import { useStoreUser } from '@/stores/index.js';
+import useStoreUser from '@/stores/storeUser.js';
 
 const setUserNumber = useStoreUser.getState().setUserNumber;
 

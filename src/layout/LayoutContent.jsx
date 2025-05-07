@@ -12,7 +12,7 @@ function LayoutContent() {
   const mainRef = useRef(null);
 
   return (
-    <main className="p-15px h-100% min-w-1200px w-100% overflow-y-auto" ref={mainRef}>
+    <main className="h-100% min-w-1200px w-100% overflow-y-auto p-15px" ref={mainRef}>
       <RouterTransition>{currentOutlet}</RouterTransition>
       <FloatButton.BackTop target={() => mainRef.current} visibilityHeight={100} />
     </main>

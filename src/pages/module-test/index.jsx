@@ -68,7 +68,7 @@ const columns = [
 
 function TestIndex() {
   return (
-    <div className="p-25px bg-#fff">
+    <div className="bg-#fff p-25px">
       <Table columns={columns} dataSource={originData} />
     </div>
   );

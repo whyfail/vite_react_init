@@ -1,6 +1,6 @@
 import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
 import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
-import { useStoreSystem } from '@/stores/index.js';
+import useStoreSystem from '@/stores/storeSystem.js';
 import { clearToken } from '@/utils/auth.js';
 import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
@@ -21,7 +21,7 @@ const LayoutHeader = memo(() => {
   }, [size]);
 
   return (
-    <div className="flex h-full w-full items-center justify-between" ref={ref}>
+    <div className="h-full w-full flex items-center justify-between" ref={ref}>
       <Space>
         <Image src={systemMenuFull ? AssetLogoFull : AssetLogo} height={33} preview={false} />
         <Button

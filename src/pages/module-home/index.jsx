@@ -1,5 +1,5 @@
 import { nonComponentsChange } from '@/common/commonFun.js';
-import { useStoreUser } from '@/stores/index.js';
+import useStoreUser from '@/stores/storeUser.js';
 import { clearToken } from '@/utils/auth.js';
 import { createStyles } from 'antd-style';
 import { useNavigate } from 'react-router-dom';
