@@ -22,7 +22,9 @@ export default defineConfig(({ mode }) => {
   return {
     base: './',
     plugins: [
-      AutoDecimal(),
+      AutoDecimal({
+        dts: false,
+      }),
       million.vite({
         auto: {
           threshold: 0.05,
