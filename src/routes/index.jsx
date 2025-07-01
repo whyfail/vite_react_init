@@ -1,14 +1,11 @@
-/**
- * 路由配置文件
- */
+import { lazy } from 'react';
+import { Navigate } from 'react-router-dom';
 import CommonError from '@/components/CommonError.jsx';
 import Router404 from '@/components/Router404.jsx';
 import RouterAuth from '@/components/RouterAuth.jsx';
-import { lazy } from 'react';
-import { Navigate } from 'react-router-dom';
 
 // 路由懒加载
-/* eslint-disable react-refresh/only-export-components */
+
 const Index = lazy(() => import('../pages/index.jsx'));
 const LoginIndex = lazy(() => import('../pages/module-login/index.jsx'));
 const HomeIndex = lazy(() => import('../pages/module-home/index.jsx'));

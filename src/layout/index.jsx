@@ -1,9 +1,6 @@
-/**
- * 布局
- */
-import useStoreSystem from '@/stores/storeSystem.js';
 import { Layout } from 'antd';
 import { memo } from 'react';
+import useStoreSystem from '@/stores/storeSystem.js';
 import LayoutContent from './LayoutContent.jsx';
 import LayoutHeader from './LayoutHeader.jsx';
 import LayoutSider from './LayoutSider.jsx';

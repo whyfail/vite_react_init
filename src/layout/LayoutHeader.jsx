@@ -1,12 +1,12 @@
-import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
-import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
-import useStoreSystem from '@/stores/storeSystem.js';
-import { clearToken } from '@/utils/auth.js';
 import { DownOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { useSize } from 'ahooks';
 import { Button, Image, Popover, Space } from 'antd';
 import { memo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AssetLogoFull from '@/assets/images/login/assets-logo-full.svg';
+import AssetLogo from '@/assets/images/login/assets-t-logo.svg';
+import useStoreSystem from '@/stores/storeSystem.js';
+import { clearToken } from '@/utils/auth.js';
 
 const LayoutHeader = memo(() => {
   const navigate = useNavigate();

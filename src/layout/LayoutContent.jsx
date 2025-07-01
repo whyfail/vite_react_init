@@ -1,11 +1,7 @@
-/**
- * @name LayoutContent
- * @desc 内容区域
- */
-import RouterTransition from '@/components/RouterTransition.jsx';
 import { FloatButton } from 'antd';
 import { useRef } from 'react';
 import { useOutlet } from 'react-router-dom';
+import RouterTransition from '@/components/RouterTransition.jsx';
 
 function LayoutContent() {
   const currentOutlet = useOutlet();

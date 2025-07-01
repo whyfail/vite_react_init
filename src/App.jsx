@@ -16,7 +16,7 @@ const isUseRem = import.meta.env.VITE_USE_REM === 'true';
 function App() {
   const pages = useRoutes(transformRoutes(routes));
   const [px2rem, setPx2rem] = useState(
-    px2remTransformer({
+    () => px2remTransformer({
       rootValue: 16,
     }),
   );

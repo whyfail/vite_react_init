@@ -1,7 +1,7 @@
 import process from 'node:process';
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import legacy from '@vitejs/plugin-legacy';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 import million from 'million/compiler';
@@ -96,7 +96,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     esbuild: {
-      drop: ['console', 'debugger'], // 删除 所有的console 和 debugger
+      drop: mode === 'development' ? [] : ['console', 'debugger'], // 生产环境 删除 所有的console 和 debugger
     },
     build: {
       chunkSizeWarningLimit: 1500,
@@ -105,7 +105,7 @@ export default defineConfig(({ mode }) => {
         output: {
           experimentalMinChunkSize: 1000,
           manualChunks: {
-            react: ['react', 'react-router-dom'],
+            react: ['react', 'react-router'],
             lodashEs: ['lodash-es'],
             antd: ['antd'],
             ahooks: ['ahooks'],

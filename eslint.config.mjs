@@ -61,7 +61,6 @@ export default antfu(
           allow: ['warn', 'error', 'info', 'debug', 'groupCollapsed', 'groupEnd'],
         },
       ],
-      'import/extensions': ['error', 'always', { ignorePackages: true }],
     },
   },
 );

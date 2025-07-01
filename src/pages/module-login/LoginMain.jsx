@@ -1,8 +1,8 @@
-import { setToken } from '@/utils/auth.js';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { App, Button, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setToken } from '@/utils/auth.js';
 
 const LoginMain = React.memo(() => {
   const navigate = useNavigate();

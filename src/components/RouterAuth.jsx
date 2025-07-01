@@ -1,7 +1,7 @@
-import { isLogin } from '@/utils/auth.js';
 import { App as AntdApp } from 'antd';
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import { isLogin } from '@/utils/auth.js';
 
 function RouterAuth(props) {
   const { meta, children } = props;
