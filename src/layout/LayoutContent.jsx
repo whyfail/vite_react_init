@@ -1,7 +1,6 @@
 import { FloatButton } from 'antd';
 import { useRef } from 'react';
 import { useOutlet } from 'react-router-dom';
-import RouterTransition from '@/components/RouterTransition.jsx';
 
 function LayoutContent() {
   const currentOutlet = useOutlet();
@@ -9,7 +8,7 @@ function LayoutContent() {
 
   return (
     <main className="h-100% min-w-1200px w-100% overflow-y-auto p-15px" ref={mainRef}>
-      <RouterTransition>{currentOutlet}</RouterTransition>
+      {currentOutlet}
       <FloatButton.BackTop target={() => mainRef.current} visibilityHeight={100} />
     </main>
   );
