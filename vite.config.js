@@ -26,6 +26,9 @@ export default defineConfig(({ mode }) => {
           threshold: 0.05,
         },
       }),
+      codeInspectorPlugin({
+        bundler: 'vite',
+      }),
       react(),
       visualizer({ gzipSize: true }),
       viteCompression({
@@ -54,9 +57,6 @@ export default defineConfig(({ mode }) => {
           buttonText: '刷新',
           dismissButtonText: '忽略',
         },
-      }),
-      codeInspectorPlugin({
-        bundler: 'vite',
       }),
     ],
     css: {
@@ -91,22 +91,21 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    esbuild: {
-      drop: mode === 'development' ? [] : ['console', 'debugger'], // 生产环境 删除 所有的console 和 debugger
-    },
     build: {
       chunkSizeWarningLimit: 1500,
       reportCompressedSize: false,
       rollupOptions: {
         output: {
-          experimentalMinChunkSize: 1000,
-          manualChunks: {
-            react: ['react', 'react-router'],
-            lodashEs: ['lodash-es'],
-            antd: ['antd'],
-            ahooks: ['ahooks'],
-            antdStyle: ['antd-style'],
-            zustand: ['zustand'],
+          advancedChunks: {
+            groups: [
+              { name: 'react', test: /\/react(?:-dom)?/ },
+              { name: 'reactRouter', test: /\/react-router/ },
+              { name: 'lodashEs', test: /\/lodash-es/ },
+              { name: 'antd', test: /\/antd/ },
+              { name: 'ahooks', test: /\/ahooks/ },
+              { name: 'antdStyle', test: /\/antd-style/ },
+              { name: 'zustand', test: /\/zustand/ },
+            ],
           },
         },
       },
