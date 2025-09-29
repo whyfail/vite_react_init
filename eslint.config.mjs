@@ -34,6 +34,8 @@ export default antfu(
       '@stylistic/semi': [2, 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       'react-hooks/exhaustive-deps': 'off',
+      // 覆盖可能引起冲突的 react 规则
+      'react/no-comment-textnodes': 'off',
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },

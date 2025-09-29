@@ -8,7 +8,6 @@ import million from 'million/compiler';
 import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
 import UnoCSS from 'unocss/vite';
-import AutoDecimal from 'unplugin-auto-decimal/vite';
 import Printer from 'unplugin-printer/vite';
 import { defineConfig, loadEnv } from 'vite';
 import viteCompression from 'vite-plugin-compression';
@@ -22,9 +21,6 @@ export default defineConfig(({ mode }) => {
   return {
     base: './',
     plugins: [
-      AutoDecimal({
-        dts: false,
-      }),
       million.vite({
         auto: {
           threshold: 0.05,
