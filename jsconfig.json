@@ -1,12 +1,19 @@
-// 解决带alias快捷跳转失败
 {
   "compilerOptions": {
+    // 以下为可选配置，可提升兼容性
+    "target": "ES6",
     "baseUrl": "./",
+    "module": "commonjs",
     "paths": {
-      // ?此处添加别名路径
       "@/*": ["src/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["src/*"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
