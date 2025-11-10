@@ -29,7 +29,11 @@ export default defineConfig(({ mode }) => {
       codeInspectorPlugin({
         bundler: 'vite',
       }),
-      react(),
+      react({
+        babel: {
+          plugins: ['babel-plugin-react-compiler'],
+        },
+      }),
       visualizer({ gzipSize: true }),
       viteCompression({
         algorithm: 'gzip',

@@ -45,6 +45,7 @@
     "@unocss/transformer-attributify-jsx": "^66.5.4",
     "@vitejs/plugin-legacy": "^7.2.1",
     "@vitejs/plugin-react": "^5.0.4",
+    "babel-plugin-react-compiler": "^1.0.0",
     "code-inspector-plugin": "^1.2.10",
     "eslint": "^9.38.0",
     "eslint-plugin-format": "^1.0.2",
