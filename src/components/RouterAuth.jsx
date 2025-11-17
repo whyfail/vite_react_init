@@ -8,9 +8,11 @@ function RouterAuth(props) {
   const { message } = AntdApp.useApp();
 
   // 设置标题
-  if (meta && meta.title) {
-    document.title = `${import.meta.env.VITE_APP_NAME} - ${meta.title}`;
-  }
+  useEffect(() => {
+    if (meta && meta.title) {
+      document.title = `${import.meta.env.VITE_APP_NAME} - ${meta.title}`;
+    }
+  }, [meta?.title]);
 
   // 权限登录校验
   const needLogin = meta && meta.needLogin && !isLogin();
@@ -19,7 +21,7 @@ function RouterAuth(props) {
     if (needLogin) {
       message.error('请先登录!');
     }
-  }, [meta, message]);
+  }, [needLogin]);
 
   if (needLogin) {
     return <Navigate to="/login" replace></Navigate>;
