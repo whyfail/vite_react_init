@@ -90,12 +90,11 @@ npx @eslint/config-inspector
 - `lint-staged husky`:用于代码提交时进行`eslint prettier`代码校验，校验通过后，才能提交代码
 - `package.json` 中 `engines`用来定义`node`版本，可根据自己的需要自行修改
 - `.npmrc` 文件是用来约束 npm 的，`package.json` 中 `engines`只能限制`yarn`，所以需要这个文件配置
-- `code-inspector-plugin` 用来通过页面快速定位到代码，在`main.jsx`中进行了配置，在页面中可使用`shift + alt`可跳转到 编辑器 中代码对用位置
+- `code-inspector-plugin` 用来通过页面快速定位到代码，在页面中可使用`shift + alt`可跳转到 编辑器 中代码对用位置
 - `postcss-pxtorem` 用来将 css 中的 px 单位转换为 rem
 - `viteCompression` 用来配置开启 gzip 打包
 - `rollup-plugin-visualizer` 用来打包时展示包大小细节
 - `preinstall` 该命令是为了强制包管理器，这里使用的是 npm
-- `AutoDecimal` 一个将 JavaScript 中的基本运算自动转换成 decimal.js 方法的插件
 
 #### 项目打包图片优化方案
 
