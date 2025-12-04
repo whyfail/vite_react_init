@@ -16,33 +16,33 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.24.0",
+    "@ant-design/cssinjs": "^2.0.1",
     "@ant-design/icons": "^6.1.0",
     "ahooks": "^3.9.6",
     "animate.css": "^4.1.1",
-    "antd": "^6.0.0",
+    "antd": "^6.0.1",
     "antd-style": "^3.7.1",
     "autoprefixer": "^10.4.22",
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.19",
-    "immer": "^11.0.0",
+    "immer": "^11.0.1",
     "lodash-es": "^4.17.21",
     "million": "^3.1.11",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.6",
-    "zustand": "^5.0.8"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-router-dom": "^7.10.0",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.2.0",
-    "@eslint-react/eslint-plugin": "^2.3.7",
+    "@antfu/eslint-config": "^6.3.0",
+    "@eslint-react/eslint-plugin": "^2.3.12",
     "@plugin-web-update-notification/vite": "^2.0.2",
     "@stylistic/eslint-plugin": "^5.6.1",
-    "@types/react": "^19.2.6",
+    "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@unocss/eslint-plugin": "^66.5.9",
-    "@unocss/transformer-attributify-jsx": "^66.5.9",
+    "@unocss/eslint-plugin": "^66.5.10",
+    "@unocss/transformer-attributify-jsx": "^66.5.10",
     "@vitejs/plugin-legacy": "^7.2.1",
     "@vitejs/plugin-react": "^5.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
@@ -56,14 +56,14 @@
     "postcss-pxtorem": "^6.1.0",
     "rollup-plugin-visualizer": "^6.0.5",
     "simple-git-hooks": "^2.13.1",
-    "unocss": "^66.5.9",
+    "unocss": "^66.5.10",
     "unplugin-printer": "^0.0.2",
-    "vite": "npm:rolldown-vite@latest",
+    "vite": "^8.0.0-beta.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-no-bug": "^1.0.5"
   },
   "overrides": {
-    "vite": "npm:rolldown-vite@latest"
+    "vite": "^8.0.0-beta.0"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

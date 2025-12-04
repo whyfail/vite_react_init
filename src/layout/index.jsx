@@ -9,7 +9,7 @@ const LayoutIndex = memo(() => {
   const systemMenuFull = useStoreSystem(state => state.systemMenuFull);
 
   return (
-    <Layout className="h-full">
+    <Layout className="h-full min-w-1200px">
       <Layout.Header className="z-99 bg-#ffffff px-20px py-0px shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white]">
         <LayoutHeader />
       </Layout.Header>

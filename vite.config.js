@@ -97,19 +97,25 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       chunkSizeWarningLimit: 1500,
-      reportCompressedSize: false,
-      rollupOptions: {
+      reportCompressedSize: true,
+      rolldownOptions: {
         output: {
           advancedChunks: {
             groups: [
-              { name: 'react', test: /\/react(?:-dom)?/ },
-              { name: 'reactRouter', test: /\/react-router/ },
-              { name: 'lodashEs', test: /\/lodash-es/ },
-              { name: 'antd', test: /\/antd/ },
-              { name: 'ahooks', test: /\/ahooks/ },
-              { name: 'antdStyle', test: /\/antd-style/ },
-              { name: 'zustand', test: /\/zustand/ },
+              { name: 'react', test: /node_modules\/react(?:-dom)?/ },
+              { name: 'reactRouter', test: /node_modules\/react-router/ },
+              { name: 'lodashEs', test: /node_modules\/lodash-es/ },
+              { name: 'antd', test: /node_modules\/antd/ },
+              { name: 'ahooks', test: /node_modules\/ahooks/ },
+              { name: 'antdStyle', test: /node_modules\/antd-style/ },
+              { name: 'zustand', test: /node_modules\/zustand/ },
             ],
+          },
+          minify: {
+            compress: {
+              dropConsole: true,
+              dropDebugger: true,
+            },
           },
         },
       },
