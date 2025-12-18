@@ -6,10 +6,9 @@ import RouterAuth from '@/components/RouterAuth.jsx';
 
 // 路由懒加载
 
-const Index = lazy(() => import('../pages/index.jsx'));
-const LoginIndex = lazy(() => import('../pages/module-login/index.jsx'));
-const HomeIndex = lazy(() => import('../pages/module-home/index.jsx'));
-const TextIndex = lazy(() => import('../pages/module-test/index.jsx'));
+const Index = lazy(() => import('@/pages/index.jsx'));
+const LoginIndex = lazy(() => import('@/pages/module-login/index.jsx'));
+const HomeIndex = lazy(() => import('@/pages/module-home/index.jsx'));
 
 const routes = [
   {
@@ -30,14 +29,6 @@ const routes = [
         element: <HomeIndex />,
         meta: {
           title: '首页',
-          needLogin: true,
-        },
-      },
-      {
-        path: 'test',
-        element: <TextIndex />,
-        meta: {
-          title: '测试页面',
           needLogin: true,
         },
       },

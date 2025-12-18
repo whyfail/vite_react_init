@@ -36,6 +36,7 @@ export default antfu(
       'react-hooks/exhaustive-deps': 'off',
       // 覆盖可能引起冲突的 react 规则
       'react/no-comment-textnodes': 'off',
+      'no-use-before-define': 'off',
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },

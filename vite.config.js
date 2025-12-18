@@ -1,23 +1,18 @@
-import process from 'node:process';
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 import million from 'million/compiler';
-import postCssPxToRem from 'postcss-pxtorem';
 import { visualizer } from 'rollup-plugin-visualizer';
 import UnoCSS from 'unocss/vite';
 import Printer from 'unplugin-printer/vite';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  // 根据当前工作目录中的 `mode` 加载 .env 文件
-  const env = loadEnv(mode, process.cwd(), '');
-
+export default defineConfig(() => {
   return {
     base: './',
     plugins: [
@@ -66,11 +61,6 @@ export default defineConfig(({ mode }) => {
     css: {
       postcss: {
         plugins: [
-          env.VITE_USE_REM === 'true' && postCssPxToRem({
-            rootValue: 16, // 1rem的大小
-            propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
-            selectorBlackList: ['#app'],
-          }),
           autoprefixer({
             grid: true,
             overrideBrowserslist: ['> 1%'],
