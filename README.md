@@ -28,8 +28,8 @@
   <br>
 
   <div>
-    <img src="https://img.shields.io/badge/Node.js-%3E%3D16.0.0-brightgreen?style=flat-square" alt="Node.js" />
-    <img src="https://img.shields.io/badge/npm-%3E%3D8.0.0-blue?style=flat-square" alt="npm" />
+    <img src="https://img.shields.io/badge/Node.js-%3E%3D20.0.0-brightgreen?style=flat-square" alt="Node.js" />
+    <img src="https://img.shields.io/badge/npm-%3E%3D10.0.0-blue?style=flat-square" alt="npm" />
     <img src="https://img.shields.io/badge/License-MIT-yellowgreen?style=flat-square" alt="License" />
   </div>
 
