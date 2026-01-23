@@ -90,7 +90,7 @@ export default defineConfig(() => ({
     reportCompressedSize: true,
     rolldownOptions: {
       output: {
-        advancedChunks: {
+        codeSplitting: {
           groups: [
             { name: 'react', test: /node_modules\/react(?:-dom)?/ },
             { name: 'reactRouter', test: /node_modules\/react-router/ },
