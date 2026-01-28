@@ -67,7 +67,8 @@
     "vite": "^8.0.0-beta.9"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "node scripts/verify-commit.js $1"
   },
   "lint-staged": {
     "*": "eslint --fix --no-warn-ignored"
