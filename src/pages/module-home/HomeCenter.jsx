@@ -116,6 +116,14 @@ function HomeCenter() {
               跳转登录页
             </button>
             <button onClick={() => navigate('/404')} type="button">跳转404页面</button>
+            <button>
+              <div class="flex items-center justify-center">
+                <div class="i-bxl:baidu color-#1c74e8" />
+                <div class="i-bxl:tiktok color-#000000" />
+                <div class="i-bxl:unity color-red" />
+                <div class="i-bxl:postgresql color-#1c74e8" />
+              </div>
+            </button>
           </div>
         </div>
       </div>

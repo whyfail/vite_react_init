@@ -1,10 +1,9 @@
-// uno.config.ts
-import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx';
+// uno.config.js
+import presetIcons from '@unocss/preset-icons';
 import { defineConfig, presetAttributify, presetMini, presetWind3 } from 'unocss';
 
 export default defineConfig({
-  presets: [presetMini(), presetWind3(), presetAttributify()],
-  transformers: [transformerAttributifyJsx()],
+  presets: [presetMini(), presetWind3(), presetAttributify(), presetIcons()],
   rules: [
     // 省略样式规则
     [
