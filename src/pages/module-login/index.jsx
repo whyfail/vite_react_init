@@ -37,7 +37,7 @@ function LoginIndex() {
         noise={0.5}
         glow={1}
       />
-      <div className="absolute left-1/2 top-1/2 w-[520px] rd-[32px] bg-[#ecf0f350] p-8 shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white] -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute left-[calc(50%-260px)] top-[calc(50%-180px)] w-[520px] rd-[32px] bg-[#ecf0f350] p-8 shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white]">
         <h2 className="text-center text-32px text-[#ffffff] font-bold text-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">登录</h2>
         <Form
           form={form}
