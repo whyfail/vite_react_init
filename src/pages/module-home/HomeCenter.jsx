@@ -1,8 +1,11 @@
+import { useNetwork } from 'ahooks';
 import { createStyles } from 'antd-style';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nonComponentsChange } from '@/common/commonFun.js';
 import useStoreUser from '@/stores/storeUser.js';
 import { clearToken } from '@/utils/auth.js';
+import NetworkStatusModal from './NetworkStatusModal.jsx';
 
 const useStyles = createStyles(() => ({
   root: {
@@ -94,6 +97,18 @@ function HomeCenter() {
   // 全局状态
   const userNumber = useStoreUser(state => state.userNumber);
   const setUserNumber = useStoreUser(state => state.setUserNumber);
+  // 网络状态
+  const networkState = useNetwork();
+  const [showNetworkModal, setShowNetworkModal] = useState(false);
+
+  const handleNetworkClose = () => {
+    setShowNetworkModal(false);
+  };
+
+  // 网络状态变化时自动显示弹窗
+  if (!networkState.online && !showNetworkModal) {
+    setShowNetworkModal(true);
+  }
 
   return (
     <div className={styles.root}>
@@ -115,7 +130,7 @@ function HomeCenter() {
             >
               跳转登录页
             </button>
-            <button onClick={() => navigate('/404')} type="button">跳转404页面</button>
+            <button onClick={() => navigate('/404')} type="button">跳转 404 页面</button>
             <button>
               <div class="flex items-center justify-center">
                 <div class="i-bxl:baidu color-#1c74e8" />
@@ -124,9 +139,13 @@ function HomeCenter() {
                 <div class="i-bxl:postgresql color-#1c74e8" />
               </div>
             </button>
+            <button onClick={() => setShowNetworkModal(true)} type="button">
+              查看网络状态
+            </button>
           </div>
         </div>
       </div>
+      <NetworkStatusModal open={showNetworkModal} onClose={handleNetworkClose} />
     </div>
   );
 }

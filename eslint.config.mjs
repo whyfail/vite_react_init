@@ -27,6 +27,12 @@ export default antfu(
        */
       markdown: 'prettier',
     },
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/public/**',
+      '**/.trae/**',
+    ],
   },
   {
     rules: {
