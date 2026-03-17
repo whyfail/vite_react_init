@@ -55,18 +55,17 @@
 ### 环境要求
 
 - Node.js >= 20.0.0
-- npm >= 10.0.0
 
 ### 安装依赖
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 启动开发服务器
 
 ```bash
-npm run start
+pnpm run start
 ```
 
 开发服务器将在 `http://localhost:5173` 启动，支持热更新。
@@ -74,7 +73,7 @@ npm run start
 ### 项目打包
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 打包后的文件将输出到 `dist` 目录。
@@ -255,7 +254,7 @@ npx @eslint/config-inspector
 
 > **开发过程中的重要提示**
 
-- 📦 项目使用 npm 作为包管理器
+- 📦 项目使用 pnpm 作为包管理器
 - ✅ 提交代码前请确保通过 ESLint 检查
 - 📝 遵循提交规范，保持提交记录清晰
 - 🔒 定期更新依赖包，确保项目安全性

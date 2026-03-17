@@ -1,4 +1,6 @@
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
+import { DevTools } from '@vitejs/devtools';
+import { DevToolsSelfInspect } from '@vitejs/devtools-self-inspect';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
@@ -7,7 +9,6 @@ import million from 'million/compiler';
 import UnoCSS from 'unocss/vite';
 import Printer from 'unplugin-printer/vite';
 import { defineConfig } from 'vite';
-import { analyzer, unstableRolldownAdapter } from 'vite-bundle-analyzer';
 import { compression } from 'vite-plugin-compression2';
 import vitePluginNoBug from 'vite-plugin-no-bug';
 
@@ -15,6 +16,8 @@ import vitePluginNoBug from 'vite-plugin-no-bug';
 export default defineConfig(() => ({
   base: './',
   plugins: [
+    DevTools(),
+    DevToolsSelfInspect(),
     // Million.js 性能优化
     // threshold: 优化阈值，0.05 表示组件渲染时间超过 5% 时才优化
     // 小型项目: 0.1-0.2 | 中型项目: 0.05 | 大型项目: 0.01-0.03
@@ -31,10 +34,6 @@ export default defineConfig(() => ({
         plugins: ['babel-plugin-react-compiler'],
       },
     }),
-    unstableRolldownAdapter(analyzer({
-      openAnalyzer: false, // 避免每次构建自动打开
-      analyzerMode: 'server', // 按需开启
-    })),
     compression({
       algorithms: ['gzip', 'brotliCompress'], // 压缩算法 nginx需增相应配置
     },
