@@ -3,9 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.32.1",
   "description": "{{ description }}",
   "engines": {
-    "node": "^20.0.0 || ^20.11.1 || >=22.0.0"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
