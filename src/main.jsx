@@ -18,6 +18,11 @@ if (import.meta.env.DEV) {
   performanceMonitor.observeLongTasks();
 }
 
+// 引入react-grab（仅在开发环境）
+if (import.meta.env.DEV) {
+  import('react-grab');
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
     <ErrorBoundary>
