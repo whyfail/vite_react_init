@@ -2,7 +2,8 @@ import { App as AntdApp, ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import dayjs from 'dayjs';
 import { useRoutes } from 'react-router-dom';
-import routes, { transformRoutes } from './routes/index.jsx';
+import routes from './routes/index.jsx';
+import { transformRoutes } from './routes/routeUtils.js';
 import 'dayjs/locale/zh-cn';
 
 dayjs.locale('zh-cn');

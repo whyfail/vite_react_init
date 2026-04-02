@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { nonComponentsChange } from '@/common/commonFun.js';
 import useStoreUser from '@/stores/storeUser.js';
 import { clearToken } from '@/utils/auth.js';
-import NetworkStatusModal from './NetworkStatusModal.jsx';
+import HomeClock from './HomeClock.jsx';
+import HomeNetworkStatusModal from './HomeNetworkStatusModal.jsx';
 
 const useStyles = createStyles(() => ({
   root: {
@@ -114,6 +115,7 @@ function HomeCenter() {
     <div className={styles.root}>
       <div className="content_root">
         <div className="container">
+          <HomeClock />
           <div className="brand-logo">{userNumber}</div>
           <div className="inputs">
             <button onClick={() => setUserNumber(userNumber + 1)} type="button">+</button>
@@ -145,7 +147,7 @@ function HomeCenter() {
           </div>
         </div>
       </div>
-      <NetworkStatusModal open={showNetworkModal} onClose={handleNetworkClose} />
+      <HomeNetworkStatusModal open={showNetworkModal} onClose={handleNetworkClose} />
     </div>
   );
 }

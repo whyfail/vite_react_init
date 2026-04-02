@@ -1,7 +1,7 @@
 import { useNetwork } from 'ahooks';
 import { Modal } from 'antd';
 
-function NetworkStatusModal({ open, onClose }) {
+function HomeNetworkStatusModal({ open, onClose }) {
   const networkState = useNetwork();
 
   const getStatusIcon = () => {
@@ -101,4 +101,4 @@ function NetworkStatusModal({ open, onClose }) {
   );
 }
 
-export default NetworkStatusModal;
+export default HomeNetworkStatusModal;

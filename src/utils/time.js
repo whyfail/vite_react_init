@@ -28,7 +28,7 @@ export function TimeFormatPast(date, type = 'default', zeroFillFlag = true) {
   // 定义countTime变量，用于存储计算后的数据
   let countTime;
   // 获取当前时间戳
-  let time = new Date().getTime();
+  let time = Date.now();
   // 转换传入参数为时间戳
   const afferentTime = new Date(date).getTime();
 
