@@ -3,7 +3,7 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import dayjs from 'dayjs';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes/index.jsx';
-import { transformRoutes } from './routes/routeUtils.js';
+import { transformRoutes } from './routes/routeUtils.jsx';
 import 'dayjs/locale/zh-cn';
 
 dayjs.locale('zh-cn');

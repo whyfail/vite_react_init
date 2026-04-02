@@ -6,7 +6,7 @@
 
 - 调用 unocss skill
 
-### 使用ant-design组件
+### 使用antd组件
 
 - 调用 ant-design skill
 
@@ -20,16 +20,17 @@
 
 ### 核心框架
 
-- React 19.2.4
-- React DOM 19.2.4
-- React Router DOM 7.13.0
-- Zustand 5.0.11
-- Ant Design 6.2.3
+- react v19.2.4
+- react-router-dom v7.13.2
+- zustand v5.0.12
+- antd v6.3.5
+- ahooks v3.9.7
+- axios v1.14.0
 
 ### 遵循规则
 
 - 组件命名使用 PascalCase，且符合当前模块的命名，如：module-home模块的组件命名HomeCenter.jsx
-- 优先使用 Ant Design 组件
+- 优先使用 antd 组件
 - 优先使用 unocss 写样式
 - 严格按照项目目录结构组织代码
 - 遵循现有代码风格和命名规范

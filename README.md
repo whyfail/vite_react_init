@@ -41,14 +41,16 @@
 
 ## 🚀 技术栈
 
-- **构建工具**：Vite 8
-- **前端框架**：React 19
-- **路由管理**：React Router
-- **状态管理**：Zustand
+- **构建工具**：Vite 8.0.3
+- **前端框架**：React 19.2.4
+- **路由管理**：React Router DOM 7.13.2
+- **状态管理**：Zustand 5.0.12
+- **UI 组件库**：Ant Design 6.3.5
 - **样式方案**：Less + Unocss
 - **代码规范**：ESLint
-- **提交规范**：Husky + lint-staged
-- **API 封装**：Axios
+- **提交规范**：simple-git-hooks + lint-staged
+- **API 封装**：Axios 1.14.0
+- **React Hooks**：ahooks 3.9.7
 
 ## 📦 快速开始
 
@@ -58,7 +60,7 @@
 
 ### 包管理器
 
-- 使用 pnpm@10.32.1 作为包管理器
+- 使用 pnpm@10.33.0 作为包管理器
 
 ### 安装依赖
 
