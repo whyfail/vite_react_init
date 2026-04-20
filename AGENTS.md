@@ -1,11 +1,11 @@
 ### 核心框架
 
-- react v19.2.4
-- react-router-dom v7.13.2
+- react v19.2.5
+- react-router-dom v7.14.1
 - zustand v5.0.12
-- antd v6.3.5
+- antd v6.3.6
 - ahooks v3.9.7
-- axios v1.14.0
+- axios v1.7.9
 
 ### 遵循规则
 

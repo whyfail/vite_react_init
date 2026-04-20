@@ -41,15 +41,15 @@
 
 ## 🚀 技术栈
 
-- **构建工具**：Vite 8.0.3
-- **前端框架**：React 19.2.4
-- **路由管理**：React Router DOM 7.13.2
+- **构建工具**：Vite 8.0.8
+- **前端框架**：React 19.2.5
+- **路由管理**：React Router DOM 7.14.1
 - **状态管理**：Zustand 5.0.12
-- **UI 组件库**：Ant Design 6.3.5
+- **UI 组件库**：Ant Design 6.3.6
 - **样式方案**：Less + Unocss
-- **代码规范**：ESLint
+- **代码规范**：ESLint 10.2.1
 - **提交规范**：simple-git-hooks + lint-staged
-- **API 封装**：Axios 1.14.0
+- **API 封装**：Axios 1.7.9
 - **React Hooks**：ahooks 3.9.7
 
 ## 📦 快速开始
