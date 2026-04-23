@@ -43,7 +43,7 @@
 
 - **构建工具**：Vite 8.0.8
 - **前端框架**：React 19.2.5
-- **路由管理**：React Router DOM 7.14.1
+- **路由管理**：React Router DOM 7.14.2
 - **状态管理**：Zustand 5.0.12
 - **UI 组件库**：Ant Design 6.3.6
 - **样式方案**：Less + Unocss
