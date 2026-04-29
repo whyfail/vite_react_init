@@ -3,7 +3,7 @@
 - react v19.2.5
 - react-router-dom v7.14.2
 - zustand v5.0.12
-- antd v6.3.6
+- antd v6.3.7
 - ahooks v3.9.7
 - axios v1.15.2
 
