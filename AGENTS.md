@@ -5,7 +5,7 @@
 - zustand v5.0.12
 - antd v6.3.7
 - ahooks v3.9.7
-- axios v1.15.2
+- axios v1.16.0
 
 ### 遵循规则
 

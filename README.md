@@ -47,9 +47,9 @@
 - **状态管理**：Zustand 5.0.12
 - **UI 组件库**：Ant Design 6.3.7
 - **样式方案**：Less + Unocss
-- **代码规范**：ESLint 10.2.1
+- **代码规范**：ESLint 10.3.0
 - **提交规范**：simple-git-hooks + lint-staged
-- **API 封装**：Axios 1.15.2
+- **API 封装**：Axios 1.16.0
 - **React Hooks**：ahooks 3.9.7
 
 ## 📦 快速开始
