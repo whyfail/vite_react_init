@@ -1,17 +1,20 @@
+import type { ReactElement } from 'react';
+import type { RouteObject } from 'react-router-dom';
+import type { AppRouteObject, RouteMeta } from './types';
 import { Navigate } from 'react-router-dom';
-import RouterAuth from '@/components/RouterAuth.jsx';
+import RouterAuth from '@/components/RouterAuth';
 
 // HOC
-function authLoad(element, meta = {}) {
+function authLoad(element: AppRouteObject['element'], meta: RouteMeta = {}): ReactElement {
   return <RouterAuth meta={meta}>{element}</RouterAuth>;
 }
 
 // 路由配置列表数据转换
-export function transformRoutes(routes) {
-  const list = [];
+export function transformRoutes(routes: AppRouteObject[]): RouteObject[] {
+  const list: RouteObject[] = [];
 
   routes.forEach((route) => {
-    const obj = { ...route };
+    const obj: AppRouteObject = { ...route };
 
     if (obj.redirect) {
       obj.element = <Navigate to={obj.redirect} replace />;
@@ -28,7 +31,7 @@ export function transformRoutes(routes) {
       obj.children = transformRoutes(obj.children);
     }
 
-    list.push(obj);
+    list.push(obj as RouteObject);
   });
 
   return list;

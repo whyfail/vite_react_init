@@ -1,12 +1,13 @@
+import type { ReactElement } from 'react';
 import { useNetwork } from 'ahooks';
 import { createStyles } from 'antd-style';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { nonComponentsChange } from '@/common/commonFun.js';
-import useStoreUser from '@/stores/storeUser.js';
-import { clearToken } from '@/utils/auth.js';
-import HomeClock from './HomeClock.jsx';
-import HomeNetworkStatusModal from './HomeNetworkStatusModal.jsx';
+import { nonComponentsChange } from '@/common/commonFun';
+import useStoreUser from '@/stores/storeUser';
+import { clearToken } from '@/utils/auth';
+import HomeClock from './HomeClock';
+import HomeNetworkStatusModal from './HomeNetworkStatusModal';
 
 const useStyles = createStyles(() => ({
   root: {
@@ -92,7 +93,7 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-function HomeCenter() {
+function HomeCenter(): ReactElement {
   const { styles } = useStyles();
   const navigate = useNavigate();
   // 全局状态
@@ -102,7 +103,7 @@ function HomeCenter() {
   const networkState = useNetwork();
   const [showNetworkModal, setShowNetworkModal] = useState(false);
 
-  const handleNetworkClose = () => {
+  const handleNetworkClose = (): void => {
     setShowNetworkModal(false);
   };
 
@@ -133,12 +134,12 @@ function HomeCenter() {
               跳转登录页
             </button>
             <button onClick={() => navigate('/404')} type="button">跳转 404 页面</button>
-            <button>
-              <div class="flex items-center justify-center">
-                <div class="i-bxl:baidu color-#1c74e8" />
-                <div class="i-bxl:tiktok color-#000000" />
-                <div class="i-bxl:unity color-red" />
-                <div class="i-bxl:postgresql color-#1c74e8" />
+            <button type="button">
+              <div className="flex items-center justify-center">
+                <div className="i-bxl:baidu color-#1c74e8" />
+                <div className="i-bxl:tiktok color-#000000" />
+                <div className="i-bxl:unity color-red" />
+                <div className="i-bxl:postgresql color-#1c74e8" />
               </div>
             </button>
             <button onClick={() => setShowNetworkModal(true)} type="button">

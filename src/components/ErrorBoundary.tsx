@@ -1,25 +1,35 @@
+import type { ErrorInfo, ReactNode } from 'react';
 // ErrorBoundary.js
 import { Component } from 'react';
-import CommonError from './CommonError.jsx';
+import CommonError from './CommonError';
 
-class ErrorBoundary extends Component {
-  constructor(props) {
+interface ErrorBoundaryProps {
+  children?: ReactNode
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean
+  error: string | null
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null };
   }
 
-  static getDerivedStateFromError() {
+  static getDerivedStateFromError(): Partial<ErrorBoundaryState> {
     // 更新状态以便下一个渲染可以显示降级UI
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // 你也可以将错误日志记录到错误报告服务
     console.error(error, errorInfo);
     this.setState({ error: error.toString() });
   }
 
-  render() {
+  render(): ReactNode {
     if (this.state.hasError) {
       return (
         <div className="relative h-full w-full">

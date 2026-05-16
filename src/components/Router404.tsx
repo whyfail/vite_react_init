@@ -1,9 +1,10 @@
+import type { ReactElement } from 'react';
 /**
  * 404页面
  */
 import ROUTER_404 from '@/assets/images/router/router_404.svg';
 
-function Router404() {
+function Router404(): ReactElement {
   return (
     <div className="h-full w-full flex justify-center text-center">
       <img src={ROUTER_404} alt="" className="h-full" />

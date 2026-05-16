@@ -8,7 +8,7 @@ export default antfu(
     react: true,
     vue: false,
     unocss: true,
-    typescript: false,
+    typescript: true,
     formatters: {
       /**
        * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue

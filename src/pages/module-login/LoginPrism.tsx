@@ -1,5 +1,43 @@
+import type { ReactElement } from 'react';
 import { Mesh, Program, Renderer, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
+
+type PrismAnimationType = 'rotate' | 'hover' | '3drotate';
+
+interface LoginPrismProps {
+  height?: number
+  baseWidth?: number
+  animationType?: PrismAnimationType
+  glow?: number
+  offset?: {
+    x?: number
+    y?: number
+  }
+  noise?: number
+  transparent?: boolean
+  scale?: number
+  hueShift?: number
+  colorFrequency?: number
+  hoverStrength?: number
+  inertia?: number
+  bloom?: number
+  suspendWhenOffscreen?: boolean
+  timeScale?: number
+}
+
+type PrismContainer = HTMLDivElement & {
+  __prismIO?: IntersectionObserver
+};
+
+type UniformValue = number | Float32Array;
+
+interface PrismUniform {
+  value: UniformValue
+}
+
+interface PrismProgram extends Program {
+  uniforms: Record<string, PrismUniform>
+}
 
 function LoginPrism({
   height = 3.5,
@@ -17,8 +55,8 @@ function LoginPrism({
   bloom = 1,
   suspendWhenOffscreen = false,
   timeScale = 0.5,
-}) {
-  const containerRef = useRef(null);
+}: LoginPrismProps): ReactElement {
+  const containerRef = useRef<PrismContainer | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -220,10 +258,10 @@ function LoginPrism({
         },
         uTimeScale: { value: TS },
       },
-    });
+    }) as PrismProgram;
     const mesh = new Mesh(gl, { geometry, program });
 
-    const resize = () => {
+    const resize = (): void => {
       const w = container.clientWidth || 1;
       const h = container.clientHeight || 1;
 
@@ -242,7 +280,7 @@ function LoginPrism({
 
     const rotBuf = new Float32Array(9);
 
-    const setMat3FromEuler = (yawY, pitchX, rollZ, out) => {
+    const setMat3FromEuler = (yawY: number, pitchX: number, rollZ: number, out: Float32Array): Float32Array => {
       const cy = Math.cos(yawY);
       const sy = Math.sin(yawY);
       const cx = Math.cos(pitchX);
@@ -277,13 +315,14 @@ function LoginPrism({
     const NOISE_IS_ZERO = NOISE < 1e-6;
     let raf = 0;
     const t0 = performance.now();
+    let render: (t: number) => void;
 
-    const startRAF = () => {
+    const startRAF = (): void => {
       if (raf) return;
       raf = requestAnimationFrame(render);
     };
 
-    const stopRAF = () => {
+    const stopRAF = (): void => {
       if (!raf) return;
       cancelAnimationFrame(raf);
       raf = 0;
@@ -301,11 +340,11 @@ function LoginPrism({
     let roll = 0;
     let targetYaw = 0;
     let targetPitch = 0;
-    const lerp = (a, b, t) => a + (b - a) * t;
+    const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
 
     const pointer = { x: 0, y: 0, inside: true };
 
-    const onMove = (e) => {
+    const onMove = (e: PointerEvent): void => {
       const ww = Math.max(1, window.innerWidth);
       const wh = Math.max(1, window.innerHeight);
       const cx = ww * 0.5;
@@ -318,15 +357,15 @@ function LoginPrism({
       pointer.inside = true;
     };
 
-    const onLeave = () => {
+    const onLeave = (): void => {
       pointer.inside = false;
     };
 
-    const onBlur = () => {
+    const onBlur = (): void => {
       pointer.inside = false;
     };
 
-    let onPointerMove = null;
+    let onPointerMove: ((e: PointerEvent) => void) | null = null;
 
     if (animationType === 'hover') {
       onPointerMove = (e) => {
@@ -344,7 +383,7 @@ function LoginPrism({
       program.uniforms.uUseBaseWobble.value = 1;
     }
 
-    const render = (t) => {
+    render = (t: number) => {
       const time = (t - t0) * 0.001;
 
       program.uniforms.iTime.value = time;

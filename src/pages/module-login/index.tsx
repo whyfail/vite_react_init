@@ -1,15 +1,22 @@
+import type { ReactElement } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { App, Button, Checkbox, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { setToken } from '@/utils/auth.js';
-import LoginPrism from './LoginPrism.jsx';
+import { setToken } from '@/utils/auth';
+import LoginPrism from './LoginPrism';
 
-function LoginIndex() {
+interface LoginFormValues {
+  name: string
+  password: string
+  checked?: boolean
+}
+
+function LoginIndex(): ReactElement {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const { message } = App.useApp();
 
-  const onFinish = async (e) => {
+  const onFinish = async (e: LoginFormValues): Promise<void> => {
     try {
       if (e.name === 'admin' && e.password === 'admin') {
         message.success('登录成功');
@@ -18,8 +25,8 @@ function LoginIndex() {
       } else {
         message.error('登录失败');
       }
-    } catch (e) {
-      console.error(e.message);
+    } catch (e: unknown) {
+      console.error(e instanceof Error ? e.message : e);
       message.error('登录失败');
     }
   };
@@ -45,10 +52,10 @@ function LoginIndex() {
           initialValues={{ name: 'admin', password: 'admin' }}
           size="large"
         >
-          <Form.Item name="name" rules={[{ required: true, message: '账号必填', type: 'error' }]}>
+          <Form.Item name="name" rules={[{ required: true, message: '账号必填' }]}>
             <Input placeholder="请输入账号：admin" suffix={<UserOutlined />}></Input>
           </Form.Item>
-          <Form.Item name="password" rules={[{ required: true, message: '密码必填', type: 'error' }]}>
+          <Form.Item name="password" rules={[{ required: true, message: '密码必填' }]}>
             <Input.Password placeholder="请输入登录密码：admin" suffix={<LockOutlined />} />
           </Form.Item>
           <Form.Item>

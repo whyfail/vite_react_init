@@ -3,14 +3,18 @@
  * 使用 Web Vitals 5.1.0 API 监控核心 Web 性能指标
  */
 
+import type { Metric } from 'web-vitals';
 import { onCLS, onFCP, onINP, onLCP, onTTFB } from 'web-vitals';
+
+type MetricName = 'CLS' | 'FCP' | 'LCP' | 'INP' | 'TTFB';
+type PerformanceRatingValue = 'good' | 'needs-improvement' | 'poor';
 
 // 性能指标评分阈值
 const PerformanceRating = {
   good: 'good',
   needsImprovement: 'needs-improvement',
   poor: 'poor',
-};
+} as const;
 
 // Web Vitals 阈值配置
 const VITALS_THRESHOLDS = {
@@ -20,7 +24,17 @@ const VITALS_THRESHOLDS = {
   // 注意：web-vitals 5.1.0 已移除 FID，使用 INP 替代
   INP: { good: 200, poor: 500 }, // 交互到下一次绘制（替代 FID）
   TTFB: { good: 800, poor: 1800 }, // 首字节时间
-};
+} satisfies Record<MetricName, { good: number, poor: number }>;
+
+interface PagePerformanceData {
+  dns: number
+  tcp: number
+  request: number
+  domParse: number
+  resource: number
+  firstPaint: number
+  firstContentfulPaint: number
+}
 
 /**
  * 获取性能评分
@@ -28,8 +42,8 @@ const VITALS_THRESHOLDS = {
  * @param {number} value - 指标值
  * @returns {string} 评分等级
  */
-function getRating(metricName, value) {
-  const thresholds = VITALS_THRESHOLDS[metricName];
+function getRating(metricName: string, value: number): PerformanceRatingValue {
+  const thresholds = VITALS_THRESHOLDS[metricName as MetricName];
 
   if (!thresholds) return PerformanceRating.good;
 
@@ -45,7 +59,7 @@ function getRating(metricName, value) {
  * @param {number} value - 指标值
  * @returns {string} 格式化后的值
  */
-function formatMetric(metricName, value) {
+function formatMetric(metricName: string, value: number): string {
   switch (metricName) {
     case 'CLS':
       return value.toFixed(4);
@@ -71,7 +85,7 @@ function formatMetric(metricName, value) {
  * 控制台输出性能指标
  * @param {object} metric - Web Vitals 指标对象
  */
-function logMetric(metric) {
+function logMetric(metric: Metric): void {
   const { name, value, rating } = metric;
   const formattedValue = formatMetric(name, value);
 
@@ -84,7 +98,7 @@ function logMetric(metric) {
 
   console.debug(
     `%c ${name} `,
-    styles[rating],
+    styles[rating as PerformanceRatingValue],
     formattedValue,
     rating === PerformanceRating.good ? '✓' : rating === PerformanceRating.needsImprovement ? '⚠' : '✗',
   );
@@ -94,7 +108,7 @@ function logMetric(metric) {
  * 性能指标上报（可扩展为上报到监控系统）
  * @param {object} metric - Web Vitals 指标对象
  */
-function reportMetric(metric) {
+function reportMetric(metric: Metric): void {
   const { name, value, rating, delta, id } = metric;
 
   // 控制台输出
@@ -126,7 +140,7 @@ function reportMetric(metric) {
 /**
  * 初始化 Web Vitals 监控（使用 web-vitals 5.1.0 新 API）
  */
-export function initPerformanceMonitoring() {
+export function initPerformanceMonitoring(): void {
   if (!('PerformanceObserver' in window)) {
     console.warn('当前浏览器不支持 PerformanceObserver，性能监控功能已禁用');
 
@@ -177,7 +191,7 @@ export function initPerformanceMonitoring() {
 /**
  * 监控自定义性能指标
  */
-function observeCustomMetrics() {
+function observeCustomMetrics(): void {
   // 监控 DOM 加载时间
   const domLoadObserver = new PerformanceObserver((list) => {
     const entries = list.getEntries();
@@ -213,8 +227,8 @@ function observeCustomMetrics() {
  * 获取页面加载性能数据
  * @returns {object} 性能数据对象
  */
-export function getPagePerformanceData() {
-  const perfData = window.performance.getEntriesByType('navigation')[0];
+export function getPagePerformanceData(): PagePerformanceData | null {
+  const perfData = window.performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
 
   if (!perfData) {
     return null;
@@ -232,16 +246,16 @@ export function getPagePerformanceData() {
     // 资源加载时间
     resource: perfData.loadEventStart - perfData.domContentLoadedEventEnd,
     // 首次绘制时间
-    firstPaint: perfData.responseStart - perfData.navigationStart,
+    firstPaint: perfData.responseStart - perfData.startTime,
     // 首次内容绘制时间
-    firstContentfulPaint: perfData.domContentLoadedEventEnd - perfData.navigationStart,
+    firstContentfulPaint: perfData.domContentLoadedEventEnd - perfData.startTime,
   };
 }
 
 /**
  * 检测长任务（阻塞主线程的任务）
  */
-export function observeLongTasks() {
+export function observeLongTasks(): void {
   if (!('PerformanceObserver' in window)) {
     return;
   }

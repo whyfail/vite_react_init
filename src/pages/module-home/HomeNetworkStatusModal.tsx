@@ -1,10 +1,24 @@
+import type { ReactElement } from 'react';
 import { useNetwork } from 'ahooks';
 import { Modal } from 'antd';
 
-function HomeNetworkStatusModal({ open, onClose }) {
+interface HomeNetworkStatusModalProps {
+  open: boolean
+  onClose: () => void
+}
+
+type ConnectionType = '2g' | '3g' | '4g' | '5g' | 'unknown';
+
+interface NetworkStatusInfo {
+  type: 'error' | 'success'
+  message: string
+  description: string
+}
+
+function HomeNetworkStatusModal({ open, onClose }: HomeNetworkStatusModalProps): ReactElement {
   const networkState = useNetwork();
 
-  const getStatusIcon = () => {
+  const getStatusIcon = (): ReactElement => {
     if (networkState.online) {
       return (
         <div className="mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-green-100">
@@ -20,7 +34,7 @@ function HomeNetworkStatusModal({ open, onClose }) {
     );
   };
 
-  const getStatusMessage = () => {
+  const getStatusMessage = (): NetworkStatusInfo => {
     if (!networkState.online) {
       return {
         type: 'error',
@@ -29,8 +43,8 @@ function HomeNetworkStatusModal({ open, onClose }) {
       };
     }
 
-    const connectionType = networkState.effectiveType || 'unknown';
-    const connectionDesc = {
+    const connectionType = (networkState.effectiveType || 'unknown') as ConnectionType;
+    const connectionDesc: Record<ConnectionType, string> = {
       '2g': '2G 网络',
       '3g': '3G 网络',
       '4g': '4G 网络',

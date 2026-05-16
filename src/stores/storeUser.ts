@@ -1,7 +1,18 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-const useStoreUser = create(
+interface UserInfo {
+  name: string
+  age: number
+}
+
+export interface UserStore {
+  userNumber: number
+  userInfo: UserInfo
+  setUserNumber: (val: number) => void
+}
+
+const useStoreUser = create<UserStore>()(
   devtools(
     persist(
       set => ({

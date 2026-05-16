@@ -1,21 +1,22 @@
+import type { ReactElement } from 'react';
 import { App as AntdApp, ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import dayjs from 'dayjs';
 import { useRoutes } from 'react-router-dom';
-import routes from './routes/index.jsx';
-import { transformRoutes } from './routes/routeUtils.jsx';
+import routes from './routes/index';
+import { transformRoutes } from './routes/routeUtils';
 import 'dayjs/locale/zh-cn';
 
 dayjs.locale('zh-cn');
 
-function App() {
+function App(): ReactElement {
   const pages = useRoutes(transformRoutes(routes));
 
   return (
     <ConfigProvider
       locale={zhCN}
       theme={{
-        cssVar: true,
+        cssVar: {},
         token: {
           // colorPrimary: '#00b96b',
         },

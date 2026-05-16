@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import { useRequest } from 'ahooks';
 import { createStyles } from 'antd-style';
 
@@ -35,7 +36,13 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-function formatTime() {
+interface ClockData {
+  time: string
+  date: string
+  week: string
+}
+
+async function formatTime(): Promise<ClockData> {
   const now = new Date();
 
   // 格式化时间 HH:MM:SS
@@ -61,7 +68,7 @@ function formatTime() {
   };
 }
 
-function HomeClock() {
+function HomeClock(): ReactElement {
   const { styles } = useStyles();
   const { data } = useRequest(formatTime, {
     pollingInterval: 1000,

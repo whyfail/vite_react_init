@@ -19,7 +19,9 @@
  * formatPast('2023/6/25 11:32:01', '月日', false); // 6月25日
  * formatPast('2023/8/08 11:32:01', '年'); // 2023年
  */
-export function TimeFormatPast(date, type = 'default', zeroFillFlag = true) {
+type TimeFormatType = 'default' | '-' | '/' | '.' | '年月日' | '月日' | '年';
+
+export function TimeFormatPast(date: string | number, type: TimeFormatType = 'default', zeroFillFlag = true): string | undefined {
   // 判断date是否为时间戳
   if (typeof date === 'number' && !Number.isNaN(date) && Number.isFinite(date)) {
     date = `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;

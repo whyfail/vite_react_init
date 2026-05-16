@@ -1,8 +1,9 @@
+import type { ReactElement } from 'react';
 import autofit from 'autofit.js';
 import { useEffect } from 'react';
-import HomeCenter from './HomeCenter.jsx';
+import HomeCenter from './HomeCenter';
 
-function Index() {
+function Index(): ReactElement {
   useEffect(() => {
     // 适配(建议只给大屏开启)
     autofit.init({

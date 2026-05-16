@@ -1,14 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
+import type { AppRouteObject } from './types';
 import { lazy } from 'react';
-import CommonError from '@/components/CommonError.jsx';
-import Router404 from '@/components/Router404.jsx';
+import CommonError from '@/components/CommonError';
+import Router404 from '@/components/Router404';
 
 // 路由懒加载
-const Index = lazy(() => import('@/pages/index.jsx'));
-const LoginIndex = lazy(() => import('@/pages/module-login/index.jsx'));
-const HomeIndex = lazy(() => import('@/pages/module-home/index.jsx'));
+const Index = lazy(() => import('@/pages/index'));
+const LoginIndex = lazy(() => import('@/pages/module-login/index'));
+const HomeIndex = lazy(() => import('@/pages/module-home/index'));
 
-const routes = [
+const routes: AppRouteObject[] = [
   {
     path: '/',
     redirect: '/home',

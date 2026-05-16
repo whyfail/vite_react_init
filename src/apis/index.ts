@@ -1,6 +1,7 @@
+import type { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { message } from 'antd';
 import axios from 'axios';
-import { clearToken, getToken } from '@/utils/auth.js';
+import { clearToken, getToken } from '@/utils/auth';
 
 // 访问前缀（线下）
 export const BASE_NAME = '/API_BASE'; // 测试版本
@@ -11,7 +12,11 @@ export const ResponseCode = {
   outTimeCode: 504,
   InvalidTokenCode: 401,
   OtherLoading: 403,
-};
+} as const;
+
+interface ApiErrorData {
+  msg?: string
+}
 
 const http = axios.create({
   timeout: 5000,
@@ -19,9 +24,11 @@ const http = axios.create({
 
 // 请求拦截器
 http.interceptors.request.use(
-  (config) => {
+  (config: InternalAxiosRequestConfig) => {
     // 接口带token
-    config.headers.Authorization = getToken() ? `Bearer ${getToken()}` : '';
+    const token = getToken();
+
+    config.headers.Authorization = token ? `Bearer ${token}` : '';
 
     return config;
   },
@@ -37,7 +44,7 @@ http.interceptors.response.use(
 
     return response.data;
   },
-  (error) => {
+  (error: AxiosError<ApiErrorData>) => {
     const { response } = error;
 
     // 网络错误
@@ -48,7 +55,7 @@ http.interceptors.response.use(
     }
 
     // 错误状态码处理映射
-    const errorHandlers = {
+    const errorHandlers: Partial<Record<number, () => void>> = {
       401: () => {
         message.error('登录已过期，请重新登录');
         clearToken();

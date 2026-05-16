@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import { DevTools } from '@vitejs/devtools';
 import { DevToolsSelfInspect } from '@vitejs/devtools-self-inspect';
@@ -16,8 +17,8 @@ import vitePluginNoBug from 'vite-plugin-no-bug';
 export default defineConfig(() => ({
   base: './',
   plugins: [
-    DevTools(),
-    DevToolsSelfInspect(),
+    process.env.VITE_ENABLE_DEVTOOLS === 'true' && DevTools(),
+    process.env.VITE_ENABLE_DEVTOOLS === 'true' && DevToolsSelfInspect(),
     // Million.js 性能优化
     // threshold: 优化阈值，0.05 表示组件渲染时间超过 5% 时才优化
     // 小型项目: 0.1-0.2 | 中型项目: 0.05 | 大型项目: 0.01-0.03
