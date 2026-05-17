@@ -14,6 +14,9 @@
     <a href="https://react.dev/" target="_blank">
       <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
     </a>
+    <a href="https://www.typescriptlang.org/" target="_blank">
+      <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    </a>
     <a href="https://eslint.org/" target="_blank">
       <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint" />
     </a>
@@ -43,6 +46,7 @@
 
 - **构建工具**：Vite 8.0.12
 - **前端框架**：React 19.2.6
+- **开发语言**：TypeScript 6.0.3
 - **路由管理**：React Router DOM 7.15.0
 - **状态管理**：Zustand 5.0.13
 - **UI 组件库**：Ant Design 6.3.7
@@ -97,8 +101,9 @@ src/
 ├── routes/            # 路由配置
 ├── stores/            # 状态管理
 ├── utils/             # 工具函数
-├── App.jsx            # 应用入口组件
-└── main.jsx           # 应用渲染入口
+├── App.tsx            # 应用入口组件
+├── main.tsx           # 应用渲染入口
+└── vite-env.d.ts      # Vite 与静态资源类型声明
 ```
 
 ### 主要目录说明
@@ -117,8 +122,9 @@ src/
 > **智能路由系统，轻松管理页面跳转**
 
 - ✅ 支持动态路由和嵌套路由
-- ✅ 内置路由守卫（RouterAuth.jsx），保护敏感页面
-- ✅ 优雅的 404 页面处理（Router404.jsx）
+- ✅ 内置路由守卫（RouterAuth.tsx），保护敏感页面
+- ✅ 优雅的 404 页面处理（Router404.tsx）
+- ✅ 路由元信息类型声明（routes/types.ts）
 - ✅ 流畅的路由切换动画效果
 
 ### 🧠 状态管理
@@ -126,7 +132,7 @@ src/
 > **轻量级状态管理，让数据流更清晰**
 
 - ✅ 使用 Zustand 进行高效状态管理
-- ✅ 内置用户信息管理（storeUser.js）
+- ✅ 内置用户信息管理（storeUser.ts）
 - ✅ 支持多模块状态隔离
 - ✅ 易于扩展，适合各种规模的应用
 
@@ -143,8 +149,8 @@ src/
 
 > **全方位的错误捕获，提升用户体验**
 
-- ✅ 全局错误边界（ErrorBoundary.jsx）
-- ✅ 统一的错误页面（CommonError.jsx）
+- ✅ 全局错误边界（ErrorBoundary.tsx）
+- ✅ 统一的错误页面（CommonError.tsx）
 - ✅ 友好的错误提示
 - ✅ 便于开发者调试和定位问题
 
@@ -153,9 +159,10 @@ src/
 > **严格的代码质量控制，确保团队协作效率**
 
 - ✅ 集成 ESLint 进行代码质量检查
-- ✅ Husky + lint-staged 确保提交代码符合规范
+- ✅ simple-git-hooks + lint-staged 确保提交代码符合规范
 - ✅ 统一的代码风格，提高代码可读性
 - ✅ 自动修复常见代码问题
+- ✅ TypeScript 严格类型检查，提交前可运行 `pnpm exec tsc --noEmit`
 
 ## 📝 提交规范
 
@@ -206,8 +213,8 @@ git push
 
 > **高性能打包，优化用户体验**
 
-- ✨ 开启 gzip 打包（viteCompression），减小文件体积
-- 📊 打包时展示包大小细节（rollup-plugin-visualizer）
+- ✨ 开启 gzip / brotli 打包（vite-plugin-compression2），减小文件体积
+- 📊 打包时展示产物大小细节
 - ⚡ 优化加载速度，提升用户体验
 - 🔧 支持自定义打包配置
 
@@ -232,8 +239,20 @@ npx @eslint/config-inspector
 | `vite.config.js`    | Vite 构建配置，优化打包和开发体验 |
 | `eslint.config.mjs` | ESLint 代码规范配置               |
 | `unocss.config.js`  | Unocss 原子化 CSS 配置            |
-| `jsconfig.json`     | JavaScript 项目配置               |
+| `tsconfig.json`     | TypeScript 项目配置               |
 | `.npmrc`            | npm 包管理器配置                  |
+
+### 开发调试开关
+
+默认启动保持轻量，部分开发工具按需开启：
+
+```bash
+# 开启 Vite DevTools
+VITE_ENABLE_DEVTOOLS=true pnpm run start
+
+# 开启长任务性能监控
+VITE_ENABLE_PERFORMANCE_MONITOR=true pnpm run start
+```
 
 ## 🤝 协作开发
 
