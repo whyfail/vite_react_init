@@ -6,25 +6,40 @@ allowBuilds:
   vue-demi: true
 ignoreTrustChecks: true
 minimumReleaseAgeExclude:
-  - '@eslint-react/ast@5.8.9'
-  - '@eslint-react/core@5.8.9'
-  - '@eslint-react/eslint-plugin@5.8.9'
-  - '@eslint-react/eslint@5.8.9'
-  - '@eslint-react/jsx@5.8.9'
-  - '@eslint-react/shared@5.8.9'
-  - '@eslint-react/var@5.8.9'
+  - '@eslint-react/ast@5.8.19'
+  - '@eslint-react/core@5.8.19'
+  - '@eslint-react/eslint-plugin@5.8.19'
+  - '@eslint-react/eslint@5.8.19'
+  - '@eslint-react/jsx@5.8.19'
+  - '@eslint-react/shared@5.8.19'
+  - '@eslint-react/var@5.8.19'
   - '@react-grab/cli@0.1.44'
-  - '@types/react@19.2.16'
-  - eslint-plugin-react-dom@5.8.9
-  - eslint-plugin-react-jsx@5.8.9
-  - eslint-plugin-react-naming-convention@5.8.9
-  - eslint-plugin-react-rsc@5.8.9
-  - eslint-plugin-react-web-api@5.8.9
-  - eslint-plugin-react-x@5.8.9
+  - '@types/react@19.2.17'
+  - '@vitejs/devtools-kit@0.3.3'
+  - '@vitejs/devtools-rolldown@0.3.3'
+  - '@vitejs/devtools-self-inspect@0.3.3'
+  - '@vitejs/devtools@0.3.3'
+  - antd@6.4.4
+  - axios@1.17.0
+  - eslint-plugin-react-dom@5.8.19
+  - eslint-plugin-react-jsx@5.8.19
+  - eslint-plugin-react-naming-convention@5.8.19
+  - eslint-plugin-react-rsc@5.8.19
+  - eslint-plugin-react-web-api@5.8.19
+  - eslint-plugin-react-x@5.8.19
   - react-dom@19.2.7
+  - react-router-dom@7.17.0
   - react-grab@0.1.44
   - react@19.2.7
   - vite@8.0.16
+  - '@rc-component/async-validator@6.0.0'
+  - '@rc-component/form@1.8.3'
 shellEmulator: true
 
 trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 10080
+
+trustPolicyExclude:
+  - million@3.1.11
+  - semver@5.7.2
+  - semver@6.3.1
