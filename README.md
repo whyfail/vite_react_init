@@ -243,11 +243,26 @@ npx @eslint/config-inspector
 
 ### 开发调试开关
 
-默认启动保持轻量，部分开发工具按需开启：
+默认启动保持轻量，部分开发工具按需开启。可以在 `.env` 中修改默认值，也可以在命令行临时覆盖：
+
+```env
+VITE_ENABLE_DEVTOOLS=false
+VITE_ENABLE_CODE_INSPECTOR=true
+VITE_ENABLE_PERFORMANCE_MONITOR=false
+VITE_ENABLE_COMPRESSION=true
+VITE_ENABLE_LEGACY=true
+VITE_ENABLE_WEB_UPDATE_NOTICE=false
+VITE_ENABLE_MILLION=false
+VITE_ENABLE_REACT_COMPILER=false
+VITE_ENABLE_NO_BUG=false
+```
 
 ```bash
 # 开启 Vite DevTools
 VITE_ENABLE_DEVTOOLS=true pnpm run start
+
+# 开启页面元素定位源码
+VITE_ENABLE_CODE_INSPECTOR=true pnpm run start
 
 # 开启长任务性能监控
 VITE_ENABLE_PERFORMANCE_MONITOR=true pnpm run start
@@ -263,6 +278,9 @@ VITE_ENABLE_WEB_UPDATE_NOTICE=true pnpm run build
 
 # 开启 Million.js / React Compiler 等实验优化
 VITE_ENABLE_MILLION=true VITE_ENABLE_REACT_COMPILER=true pnpm run build
+
+# 开启 vite-plugin-no-bug
+VITE_ENABLE_NO_BUG=true pnpm run build
 ```
 
 ## 🤝 协作开发
