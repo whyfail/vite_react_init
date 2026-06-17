@@ -1,5 +1,6 @@
 import process from 'node:process';
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
+import tailwindcss from '@tailwindcss/vite';
 import { DevTools } from '@vitejs/devtools';
 import { DevToolsSelfInspect } from '@vitejs/devtools-self-inspect';
 import legacy from '@vitejs/plugin-legacy';
@@ -7,7 +8,6 @@ import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 import million from 'million/compiler';
-import UnoCSS from 'unocss/vite';
 import Printer from 'unplugin-printer/vite';
 import { defineConfig } from 'vite';
 import { compression } from 'vite-plugin-compression2';
@@ -19,33 +19,30 @@ export default defineConfig(() => ({
   plugins: [
     process.env.VITE_ENABLE_DEVTOOLS === 'true' && DevTools(),
     process.env.VITE_ENABLE_DEVTOOLS === 'true' && DevToolsSelfInspect(),
-    // Million.js 性能优化
-    // threshold: 优化阈值，0.05 表示组件渲染时间超过 5% 时才优化
-    // 小型项目: 0.1-0.2 | 中型项目: 0.05 | 大型项目: 0.01-0.03
-    million.vite({
+    process.env.VITE_ENABLE_MILLION === 'true' && million.vite({
       auto: {
         threshold: 0.05,
       },
     }),
-    codeInspectorPlugin({
+    process.env.VITE_ENABLE_CODE_INSPECTOR === 'true' && codeInspectorPlugin({
       bundler: 'vite',
     }),
     react({
-      babel: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
+      babel: process.env.VITE_ENABLE_REACT_COMPILER === 'true'
+        ? {
+            plugins: ['babel-plugin-react-compiler'],
+          }
+        : undefined,
     }),
-    compression({
+    process.env.VITE_ENABLE_COMPRESSION === 'true' && compression({
       algorithms: ['gzip', 'brotliCompress'], // 压缩算法 nginx需增相应配置
     },
     ),
-    legacy({
+    process.env.VITE_ENABLE_LEGACY === 'true' && legacy({
       targets: ['defaults', 'not IE 11'],
     }),
-    UnoCSS({
-      configFile: './unocss.config.js',
-    }),
-    vitePluginNoBug(),
+    tailwindcss(),
+    process.env.VITE_ENABLE_NO_BUG === 'true' && vitePluginNoBug(),
     Printer({
       info: [
         ({ lightCyan, green, bold }) => {
@@ -53,7 +50,7 @@ export default defineConfig(() => ({
         },
       ],
     }),
-    webUpdateNotice({
+    process.env.VITE_ENABLE_WEB_UPDATE_NOTICE === 'true' && webUpdateNotice({
       notificationProps: {
         title: '系统升级通知',
         description: '检测到当前系统版本已更新，请刷新页面后使用',
@@ -61,7 +58,7 @@ export default defineConfig(() => ({
         dismissButtonText: '忽略',
       },
     }),
-  ],
+  ].filter(Boolean),
   css: {
     postcss: {
       plugins: [
@@ -92,33 +89,5 @@ export default defineConfig(() => ({
   build: {
     chunkSizeWarningLimit: 1500,
     reportCompressedSize: true,
-    rolldownOptions: {
-      output: {
-        codeSplitting: {
-          groups: [
-            // React 核心库（react + react-dom 合并）
-            { name: 'react-vendor', test: /node_modules\/react(?:-dom)?/ },
-            // 路由库
-            { name: 'react-router', test: /node_modules\/react-router/ },
-            // Ant Design 主库（排除 style）
-            { name: 'antd', test: /node_modules\/antd(?!-style)/ },
-            // Ant Design 样式库和相关
-            { name: 'antd-style', test: /node_modules\/(?:antd-style|@ant-design)/ },
-            // Hooks 工具库
-            { name: 'hooks', test: /node_modules\/ahooks/ },
-            // 状态管理和工具库
-            { name: 'utils', test: /node_modules\/(?:zustand|lodash-es|dayjs|axios)/ },
-            // 动画库
-            { name: 'animations', test: /node_modules\/animate\.css/ },
-          ],
-        },
-        minify: {
-          compress: {
-            dropConsole: true,
-            dropDebugger: true,
-          },
-        },
-      },
-    },
   },
 }));

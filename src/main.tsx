@@ -1,14 +1,12 @@
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
-import App from './App';
-import ErrorBoundary from './components/ErrorBoundary';
-import Loading from './components/Loading';
+import App from './app/App';
+import ErrorBoundary from './shared/components/ErrorBoundary';
+import Loading from './shared/components/Loading';
 import { performanceMonitor } from './utils/performance';
-import 'antd/dist/reset.css';
+import './app/styles/index.css';
 import 'animate.css';
-import 'virtual:uno.css';
-import './assets/css/index.less';
 
 // 初始化性能监控
 performanceMonitor.init();

@@ -7,7 +7,6 @@ export default antfu(
     plugins: [stylistic],
     react: true,
     vue: false,
-    unocss: true,
     typescript: true,
     formatters: {
       /**
