@@ -2,6 +2,7 @@ import type { ComponentType, ReactElement, SVGProps } from 'react';
 import {
   BellAlertIcon,
   BoltIcon,
+  BugAntIcon,
   CircleStackIcon,
   CodeBracketSquareIcon,
   CubeTransparentIcon,
@@ -12,6 +13,7 @@ import {
   RocketLaunchIcon,
   ShieldCheckIcon,
   SparklesIcon,
+  WrenchScrewdriverIcon,
 } from '@heroicons/react/24/outline';
 
 interface LibraryItem {
@@ -23,6 +25,13 @@ interface LibraryItem {
 interface StructureItem {
   icon: ComponentType<SVGProps<SVGSVGElement>>
   path: string
+  description: string
+}
+
+interface SwitchItem {
+  icon: ComponentType<SVGProps<SVGSVGElement>>
+  key: string
+  plugin: string
   description: string
 }
 
@@ -112,6 +121,58 @@ const libraries: LibraryItem[] = [
   },
 ];
 
+// vite.config.js 中通过 VITE_ENABLE_* 开关启用的插件
+const switches: SwitchItem[] = [
+  {
+    icon: WrenchScrewdriverIcon,
+    key: 'VITE_ENABLE_DEVTOOLS',
+    plugin: '@vitejs/devtools',
+    description: '开发态调试面板，查看组件树、路由、状态等。配合 self-inspect 自检配置生效情况。',
+  },
+  {
+    icon: CodeBracketSquareIcon,
+    key: 'VITE_ENABLE_CODE_INSPECTOR',
+    plugin: 'code-inspector-plugin',
+    description: '在页面上按住组合键点击元素，自动打开对应源码位置，快速定位组件文件。',
+  },
+  {
+    icon: BoltIcon,
+    key: 'VITE_ENABLE_MILLION',
+    plugin: 'million/compiler',
+    description: '编译期优化 React 组件，减少运行时开销。实验性，开启前需回归验证渲染行为。',
+  },
+  {
+    icon: SparklesIcon,
+    key: 'VITE_ENABLE_REACT_COMPILER',
+    plugin: 'babel-plugin-react-compiler',
+    description: 'React Compiler 自动 memo 优化。需与 million 互斥评估，避免重复优化冲突。',
+  },
+  {
+    icon: CircleStackIcon,
+    key: 'VITE_ENABLE_COMPRESSION',
+    plugin: 'vite-plugin-compression2',
+    description: '构建产物输出 gzip 与 brotli 预压缩文件，需 nginx 增加对应静态文件配置。',
+  },
+  {
+    icon: CubeTransparentIcon,
+    key: 'VITE_ENABLE_LEGACY',
+    plugin: '@vitejs/plugin-legacy',
+    description: '为旧版浏览器注入 polyfill 与降级产物，扩大兼容范围，代价是构建体积增大。',
+  },
+  {
+    icon: BellAlertIcon,
+    key: 'VITE_ENABLE_WEB_UPDATE_NOTICE',
+    plugin: '@plugin-web-update-notification/vite',
+    description: '部署后检测到新版本时弹窗提示用户刷新。适合长会话后台系统。',
+  },
+  {
+    icon: BugAntIcon,
+    key: 'VITE_ENABLE_NO_BUG',
+    plugin: 'vite-plugin-no-bug',
+    description: '趣味性构建彩蛋插件，无实际功能影响，按需开启。',
+  },
+];
+
 function DocsPage(): ReactElement {
   return (
     <main className="min-h-full bg-slate-950 text-slate-100">
@@ -174,6 +235,51 @@ function DocsPage(): ReactElement {
                 <p className="mt-2 text-sm leading-6 text-slate-300">{item.role}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="rounded-lg border border-slate-800 bg-slate-900 p-6">
+          <h2 className="text-xl font-semibold text-white">构建开关</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-300">
+            在
+            {' '}
+            <code className="text-cyan-300">.env</code>
+            {' '}
+            中以
+            {' '}
+            <code className="text-cyan-300">VITE_ENABLE_*</code>
+            {' '}
+            控制；
+            <code className="text-cyan-300">vite.config.js</code>
+            {' '}
+            通过
+            {' '}
+            <code className="text-cyan-300">loadEnv</code>
+            {' '}
+            读取后按需启用插件。值为
+            {' '}
+            <code className="text-cyan-300">true</code>
+            {' '}
+            才启用。
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {switches.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div className="rounded-md border border-slate-800 bg-slate-950 p-4" key={item.key}>
+                  <div className="flex items-center gap-3">
+                    <Icon aria-hidden="true" className="size-5 text-cyan-300" />
+                    <code className="text-sm font-semibold text-cyan-300">{item.key}</code>
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-slate-400">
+                    插件：
+                    <code className="text-slate-300">{item.plugin}</code>
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </section>
 
