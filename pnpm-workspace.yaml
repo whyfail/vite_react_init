@@ -19,6 +19,10 @@ minimumReleaseAgeExclude:
   - '@vitejs/devtools-rolldown@0.3.3'
   - '@vitejs/devtools-self-inspect@0.3.3'
   - '@vitejs/devtools@0.3.3'
+  - '@vitejs/devtools-kit@0.1.24'
+  - '@vitejs/devtools-rolldown@0.1.24'
+  - '@vitejs/devtools-self-inspect@0.1.24'
+  - '@vitejs/devtools@0.1.24'
   - antd@6.4.4
   - axios@1.17.0
   - eslint-plugin-react-dom@5.8.19
@@ -34,6 +38,15 @@ minimumReleaseAgeExclude:
   - vite@8.0.16
   - '@rc-component/async-validator@6.0.0'
   - '@rc-component/form@1.8.3'
+  - '@code-inspector/core@1.6.2'
+  - '@code-inspector/esbuild@1.6.2'
+  - '@code-inspector/mako@1.6.2'
+  - '@code-inspector/turbopack@1.6.2'
+  - '@code-inspector/vite@1.6.2'
+  - '@code-inspector/webpack@1.6.2'
+  - '@vitejs/plugin-react@6.0.3'
+  - code-inspector-plugin@1.6.2
+  - less@4.6.7
 shellEmulator: true
 
 trustPolicy: no-downgrade
@@ -43,3 +56,19 @@ trustPolicyExclude:
   - million@3.1.11
   - semver@5.7.2
   - semver@6.3.1
+
+overrides:
+  '@eslint-react/ast': 5.8.19
+  '@eslint-react/core': 5.8.19
+  '@eslint-react/eslint': 5.8.19
+  '@eslint-react/eslint-plugin': 5.8.19
+  '@eslint-react/jsx': 5.8.19
+  '@eslint-react/shared': 5.8.19
+  '@eslint-react/var': 5.8.19
+  axios: 1.17.0
+  eslint-plugin-react-dom: 5.8.19
+  eslint-plugin-react-jsx: 5.8.19
+  eslint-plugin-react-naming-convention: 5.8.19
+  eslint-plugin-react-rsc: 5.8.19
+  eslint-plugin-react-web-api: 5.8.19
+  eslint-plugin-react-x: 5.8.19

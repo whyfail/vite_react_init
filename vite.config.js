@@ -94,6 +94,11 @@ export default defineConfig(({ mode }) => {
     build: {
       chunkSizeWarningLimit: 1500,
       reportCompressedSize: true,
+      rolldownOptions: {
+        checks: {
+          pluginTimings: false,
+        },
+      },
     },
   };
 });

@@ -25,10 +25,6 @@ interface LoginPrismProps {
   timeScale?: number
 }
 
-type PrismContainer = HTMLDivElement & {
-  __prismIO?: IntersectionObserver
-};
-
 type UniformValue = number | Float32Array;
 
 interface PrismUniform {
@@ -56,7 +52,7 @@ function LoginPrism({
   suspendWhenOffscreen = false,
   timeScale = 0.5,
 }: LoginPrismProps): ReactElement {
-  const containerRef = useRef<PrismContainer | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -443,8 +439,10 @@ function LoginPrism({
       }
     };
 
+    let io: IntersectionObserver | undefined;
+
     if (suspendWhenOffscreen) {
-      const io = new IntersectionObserver((entries) => {
+      io = new IntersectionObserver((entries) => {
         const vis = entries.some(e => e.isIntersecting);
 
         if (vis) startRAF();
@@ -453,7 +451,6 @@ function LoginPrism({
 
       io.observe(container);
       startRAF();
-      container.__prismIO = io;
     } else {
       startRAF();
     }
@@ -468,12 +465,7 @@ function LoginPrism({
         window.removeEventListener('blur', onBlur);
       }
 
-      if (suspendWhenOffscreen) {
-        const io = container.__prismIO;
-
-        if (io) io.disconnect();
-        delete container.__prismIO;
-      }
+      io?.disconnect();
 
       if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
     };

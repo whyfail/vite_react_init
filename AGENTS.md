@@ -77,7 +77,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - Use Tailwind CSS for styling. Import Heroicons from `@heroicons/react/24/outline` or another package subpath and style with Tailwind classes.
 - Session side effects stay in `features/auth/session`; navigation and notifications stay behind `app/navigation` and `app/notifications`.
 - Business requests should use shared API wrappers instead of scattered raw Axios instances.
-- Validate with `pnpm lint`.
+- Validate with `pnpm lint` and `pnpm run build`; after dependency upgrades also run `pnpm peers check`.
 
 ## 项目结构约定
 
