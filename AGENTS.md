@@ -27,6 +27,14 @@ Before implementing:
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
+## Defensive Code
+
+Do not hide unexpected failures with fallback values, empty returns, or broad `try/catch`. Validate external input at boundaries; fail fast for invalid config, programmer errors, and missing required dependencies.
+
+Env vars must be read only in config code and validated at startup. Never default or auto-`trim()` secrets. Avoid `process.env.X || default`; distinguish missing, blank, invalid, and valid values.
+
+If adding a fallback, empty return, or catch block, explain why the error is recoverable.
+
 ## 3. Surgical Changes
 
 **Touch only what you must. Clean up only your own mess.**
