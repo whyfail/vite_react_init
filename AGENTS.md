@@ -86,6 +86,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - Session side effects stay in `features/auth/session`; navigation and notifications stay behind `app/navigation` and `app/notifications`.
 - Business requests should use shared API wrappers instead of scattered raw Axios instances.
 - Validate with `pnpm lint` and `pnpm run build`; after dependency upgrades also run `pnpm peers check`.
+- Current dependency baseline: pnpm 11.9.0, Vite 8.1.0, React 19.2.7, TypeScript 6.0.3, ESLint 10.6.0, Axios 1.18.1.
 
 ## 项目结构约定
 
