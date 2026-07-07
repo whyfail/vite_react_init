@@ -17,37 +17,38 @@ import vitePluginNoBug from 'vite-plugin-no-bug';
 export default defineConfig(({ mode }) => {
   // 显式加载 .env，避免依赖外部 shell 环境变量
   const env = loadEnv(mode, process.cwd(), 'VITE_');
+  const isTest = mode === 'test';
   const on = key => env[key] === 'true';
 
   return {
     base: './',
     plugins: [
-      on('VITE_ENABLE_DEVTOOLS') && DevTools(),
-      on('VITE_ENABLE_DEVTOOLS') && DevToolsSelfInspect(),
-      on('VITE_ENABLE_MILLION') && million.vite({
+      !isTest && on('VITE_ENABLE_DEVTOOLS') && DevTools(),
+      !isTest && on('VITE_ENABLE_DEVTOOLS') && DevToolsSelfInspect(),
+      !isTest && on('VITE_ENABLE_MILLION') && million.vite({
         auto: {
           threshold: 0.05,
         },
       }),
-      on('VITE_ENABLE_CODE_INSPECTOR') && codeInspectorPlugin({
+      !isTest && on('VITE_ENABLE_CODE_INSPECTOR') && codeInspectorPlugin({
         bundler: 'vite',
       }),
       react({
-        babel: on('VITE_ENABLE_REACT_COMPILER')
+        babel: !isTest && on('VITE_ENABLE_REACT_COMPILER')
           ? {
               plugins: ['babel-plugin-react-compiler'],
             }
           : undefined,
       }),
-      on('VITE_ENABLE_COMPRESSION') && compression({
+      !isTest && on('VITE_ENABLE_COMPRESSION') && compression({
         algorithms: ['gzip', 'brotliCompress'], // 压缩算法 nginx需增相应配置
       },
       ),
-      on('VITE_ENABLE_LEGACY') && legacy({
+      !isTest && on('VITE_ENABLE_LEGACY') && legacy({
         targets: ['defaults', 'not IE 11'],
       }),
       tailwindcss(),
-      on('VITE_ENABLE_NO_BUG') && vitePluginNoBug(),
+      !isTest && on('VITE_ENABLE_NO_BUG') && vitePluginNoBug(),
       Printer({
         info: [
           ({ lightCyan, green, bold }) => {
@@ -55,7 +56,7 @@ export default defineConfig(({ mode }) => {
           },
         ],
       }),
-      on('VITE_ENABLE_WEB_UPDATE_NOTICE') && webUpdateNotice({
+      !isTest && on('VITE_ENABLE_WEB_UPDATE_NOTICE') && webUpdateNotice({
         notificationProps: {
           title: '系统升级通知',
           description: '检测到当前系统版本已更新，请刷新页面后使用',
@@ -99,6 +100,35 @@ export default defineConfig(({ mode }) => {
           pluginTimings: false,
         },
       },
+    },
+    test: {
+      coverage: {
+        all: true,
+        exclude: [
+          'src/main.tsx',
+          'src/vite-env.d.ts',
+          'src/features/auth/pages/LoginPrism.tsx',
+          '**/*.test.*',
+          'src/test/**',
+        ],
+        provider: 'v8',
+        reporter: ['text', 'html', 'lcov'],
+        thresholds: {
+          branches: 70,
+          functions: 70,
+          lines: 70,
+          statements: 70,
+        },
+      },
+      css: true,
+      environment: 'jsdom',
+      globals: true,
+      include: ['src/**/*.{test,spec}.{ts,tsx}'],
+      outputFile: {
+        junit: 'test-results/vitest-junit.xml',
+      },
+      reporters: ['default'],
+      setupFiles: './src/test/setup.ts',
     },
   };
 });

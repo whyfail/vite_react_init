@@ -171,6 +171,50 @@ src/
 - ✅ 自动修复常见代码问题
 - ✅ TypeScript 严格类型检查，提交前可运行 `pnpm exec tsc --noEmit`
 
+## 🧪 测试与质量门禁
+
+> **覆盖组件、业务逻辑、无障碍、E2E 和构建验证**
+
+### 常用测试命令
+
+```bash
+# 单元测试、组件测试、a11y 测试
+pnpm test
+
+# 覆盖率门禁，默认全局阈值 70%
+pnpm test:coverage
+
+# 生成 JUnit 报告，供 CI 读取
+pnpm test:junit
+
+# 检查新增/修改组件是否有组件测试
+pnpm test:component-coverage
+
+# Playwright E2E 冒烟测试
+pnpm test:e2e
+```
+
+### 提交前建议验证
+
+```bash
+pnpm test
+pnpm test:coverage
+pnpm test:component-coverage
+pnpm typecheck
+pnpm lint
+pnpm test:e2e
+pnpm build
+```
+
+### 测试约定
+
+- 新增或修改组件时，必须同步新增或更新组件测试；每个组件至少保留一个 render smoke test。
+- 业务逻辑、session、navigation、API wrapper 等非 UI 能力应补单元测试。
+- 网络请求测试使用 MSW，不在测试中请求真实后端。
+- 页面级无障碍测试使用 `jest-axe`，E2E 冒烟测试使用 Playwright。
+- 覆盖率报告输出到 `coverage/`；Vitest/Playwright JUnit 报告输出到 `test-results/`；Playwright HTML 报告输出到 `playwright-report/`。
+- GitHub Actions 会执行安装、peer 检查、测试、覆盖率、组件测试守卫、类型检查、lint、E2E 和 build。
+
 ## 📝 提交规范
 
 ### 提交信息格式

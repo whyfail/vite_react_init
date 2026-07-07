@@ -2,6 +2,7 @@ allowBuilds:
   '@parcel/watcher': true
   core-js: true
   million: true
+  msw: true
   simple-git-hooks: true
   vue-demi: true
 ignoreTrustChecks: true
@@ -84,6 +85,16 @@ minimumReleaseAgeExclude:
   - '@radix-ui/react-tooltip@1.2.12'
   - launch-ide@1.4.5
   - radix-ui@1.6.2
+  - '@vitest/expect@4.1.10'
+  - '@vitest/mocker@4.1.10'
+  - '@vitest/pretty-format@4.1.10'
+  - '@vitest/runner@4.1.10'
+  - '@vitest/snapshot@4.1.10'
+  - '@vitest/spy@4.1.10'
+  - '@vitest/utils@4.1.10'
+  - vitest@4.1.10
+  - '@vitest/coverage-v8@4.1.10'
+  - '@vitest/ui@4.1.10'
 shellEmulator: true
 
 trustPolicy: no-downgrade

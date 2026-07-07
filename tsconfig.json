@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "useDefineForClassFields": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -11,7 +12,7 @@
       "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client"],
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "allowJs": false,
     "strict": true,
     "noEmit": true,
