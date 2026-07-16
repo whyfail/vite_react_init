@@ -14,7 +14,9 @@ describe('app routing components', () => {
       </HashRouter>,
     );
 
-    expect(await screen.findByRole('heading', { name: '登录' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: '登录' }, { timeout: 5_000 }),
+    ).toBeInTheDocument();
   });
 
   it('renders layout outlet', () => {

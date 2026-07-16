@@ -88,7 +88,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - When adding or changing any component, add or update a component test for it; every component should have at least a render smoke test.
 - Validate with `pnpm test`, `pnpm test:coverage`, `pnpm test:component-coverage`, `pnpm typecheck`, `pnpm lint`, `pnpm test:e2e`, and `pnpm run build`; after dependency upgrades also run `pnpm peers check`.
 - Test reports are written to `coverage/`, `test-results/`, and `playwright-report/`; inspect them before lowering coverage thresholds.
-- Current dependency baseline: pnpm 11.10.0, Vite 8.1.3, React 19.2.7, React Router DOM 7.18.1, TypeScript 6.0.3, ESLint 10.6.0, Axios 1.18.1.
+- Current dependency baseline: pnpm 11.10.0, Vite 8.1.4, React 19.2.7, React Router DOM 7.18.1, TypeScript 6.0.3, ESLint 10.7.0, Axios 1.18.1.
 
 ## 项目结构约定
 
