@@ -2,7 +2,6 @@ import process from 'node:process';
 import { webUpdateNotice } from '@plugin-web-update-notification/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { DevTools } from '@vitejs/devtools';
-import { DevToolsSelfInspect } from '@vitejs/devtools-self-inspect';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
@@ -24,7 +23,6 @@ export default defineConfig(({ mode }) => {
     base: './',
     plugins: [
       !isTest && on('VITE_ENABLE_DEVTOOLS') && DevTools(),
-      !isTest && on('VITE_ENABLE_DEVTOOLS') && DevToolsSelfInspect(),
       !isTest && on('VITE_ENABLE_MILLION') && million.vite({
         auto: {
           threshold: 0.05,

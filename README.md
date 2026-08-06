@@ -32,7 +32,7 @@
 
   <div>
     <img src="https://img.shields.io/badge/Node.js-24.18.0-brightgreen?style=flat-square" alt="Node.js" />
-    <img src="https://img.shields.io/badge/pnpm-11.10.0-blue?style=flat-square" alt="pnpm" />
+    <img src="https://img.shields.io/badge/pnpm-11.20.0-blue?style=flat-square" alt="pnpm" />
     <img src="https://img.shields.io/badge/License-MIT-yellowgreen?style=flat-square" alt="License" />
   </div>
 
@@ -44,17 +44,17 @@
 
 ## 🚀 技术栈
 
-- **构建工具**：Vite 8.1.5
-- **前端框架**：React 19.2.7
+- **构建工具**：Vite 8.2.0
+- **前端框架**：React 19.2.8
 - **开发语言**：TypeScript 6.0.3
-- **路由管理**：React Router DOM 7.18.1
+- **路由管理**：React Router DOM 7.18.2
 - **状态管理**：Zustand 5.0.14
 - **UI 组件库**：shadcn/ui
 - **样式方案**：Tailwind CSS 4.3.3 + Less
-- **图标方案**：Heroicons + lucide-react 1.25.0
-- **代码规范**：ESLint 10.7.0
+- **图标方案**：Heroicons + lucide-react 1.28.0
+- **代码规范**：ESLint 10.8.0
 - **提交规范**：simple-git-hooks + lint-staged
-- **API 封装**：Axios 1.18.1
+- **API 封装**：Axios 1.19.0
 - **React Hooks**：ahooks 3.9.7
 
 ## 📦 快速开始
@@ -65,7 +65,7 @@
 
 ### 包管理器
 
-- 使用 pnpm@11.10.0 作为包管理器
+- 使用 pnpm@11.20.0 作为包管理器
 
 ### 安装依赖
 

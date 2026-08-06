@@ -21,7 +21,7 @@ const VITALS_THRESHOLDS = {
   CLS: { good: 0.1, poor: 0.25 }, // 累积布局偏移
   FCP: { good: 1800, poor: 3000 }, // 首次内容绘制
   LCP: { good: 2500, poor: 4000 }, // 最大内容绘制
-  // 注意：web-vitals 5.1.0 已移除 FID，使用 INP 替代
+  // web-vitals 6 使用 INP 作为交互性能指标，不再提供 FID。
   INP: { good: 200, poor: 500 }, // 交互到下一次绘制（替代 FID）
   TTFB: { good: 800, poor: 1800 }, // 首字节时间
 } satisfies Record<MetricName, { good: number, poor: number }>;
@@ -138,7 +138,7 @@ function reportMetric(metric: Metric): void {
 }
 
 /**
- * 初始化 Web Vitals 监控（使用 web-vitals 5.1.0 新 API）
+ * 初始化 Web Vitals 监控（使用 web-vitals 6 API）
  */
 export function initPerformanceMonitoring(): void {
   if (!('PerformanceObserver' in window)) {
@@ -149,7 +149,7 @@ export function initPerformanceMonitoring(): void {
 
   console.debug('🚀 性能监控已启动...');
 
-  // web-vitals 5.1.0 新 API：
+  // web-vitals 6 observer API：
   // 所有 on* 函数都接受一个 options 对象作为第二个参数
   // options 可以包含：reportAllChanges（报告所有变化）、durationThreshold（持续时间阈值）等
 
@@ -159,7 +159,7 @@ export function initPerformanceMonitoring(): void {
     reportAllChanges: true, // 报告所有布局偏移变化
   });
 
-  // 注意：web-vitals 5.1.0 已移除 onFID，改用 INP 作为交互性能指标
+  // web-vitals 6 使用 INP 作为交互性能指标。
   // FID（首次输入延迟）已被 INP（交互到下一次绘制）取代，因为 INP 更能反映整体交互体验
 
   // 监控 LCP - 最大内容绘制

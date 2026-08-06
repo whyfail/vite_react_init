@@ -78,7 +78,8 @@ http.interceptors.response.use(
 );
 
 function request<T>(config: AxiosRequestConfig): Promise<T> {
-  return http.request<unknown, T>(config);
+  // The response interceptor unwraps response.data, which Axios cannot infer.
+  return http.request<unknown, unknown>(config) as Promise<T>;
 }
 
 export type { ApiError };

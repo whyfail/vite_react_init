@@ -3,6 +3,7 @@ allowBuilds:
   core-js: true
   million: true
   msw: true
+  node-pty: true
   simple-git-hooks: true
   vue-demi: true
 ignoreTrustChecks: true
