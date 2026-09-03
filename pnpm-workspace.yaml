@@ -1,12 +1,6 @@
-allowBuilds:
-  '@parcel/watcher': true
-  core-js: true
-  million: true
-  msw: true
-  node-pty: true
-  simple-git-hooks: true
-  vue-demi: true
+minimumReleaseAgeExcludePrune: true
 ignoreTrustChecks: true
+
 minimumReleaseAgeExclude:
   - '@eslint-react/ast@5.10.0'
   - '@eslint-react/core@5.10.0'
@@ -96,7 +90,6 @@ minimumReleaseAgeExclude:
   - vitest@4.1.10
   - '@vitest/coverage-v8@4.1.10'
   - '@vitest/ui@4.1.10'
-shellEmulator: true
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 10080
@@ -105,3 +98,14 @@ trustPolicyExclude:
   - million@3.1.11
   - semver@5.7.2
   - semver@6.3.1
+
+shellEmulator: true
+
+allowBuilds:
+  '@parcel/watcher': true
+  core-js: true
+  million: true
+  msw: true
+  node-pty: true
+  simple-git-hooks: true
+  vue-demi: true
