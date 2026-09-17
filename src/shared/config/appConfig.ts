@@ -1,4 +1,4 @@
-const API_BASE_NAME = '/API_BASE';
+const API_BASE_NAME = import.meta.env.VITE_API_BASE;
 
 const ResponseCode = {
   successCode: 200,

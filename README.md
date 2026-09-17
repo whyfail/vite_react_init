@@ -31,7 +31,7 @@
   <br>
 
   <div>
-    <img src="https://img.shields.io/badge/Node.js-24.18.0-brightgreen?style=flat-square" alt="Node.js" />
+    <img src="https://img.shields.io/badge/Node.js-24.x-brightgreen?style=flat-square" alt="Node.js" />
     <img src="https://img.shields.io/badge/pnpm-11.20.0-blue?style=flat-square" alt="pnpm" />
     <img src="https://img.shields.io/badge/License-MIT-yellowgreen?style=flat-square" alt="License" />
   </div>
@@ -47,11 +47,11 @@
 - **构建工具**：Vite 8.3.0
 - **前端框架**：React 19.3.0
 - **开发语言**：TypeScript 6.0.3
-- **路由管理**：React Router DOM 7.18.3
-- **状态管理**：Zustand 5.0.14
+- **路由管理**：React Router DOM 7.18.4
+- **状态管理**：Zustand 5.0.15
 - **UI 组件库**：shadcn/ui
 - **样式方案**：Tailwind CSS 4.3.3 + Less
-- **图标方案**：Heroicons + lucide-react 1.45.0
+- **图标方案**：Heroicons + lucide-react 1.46.0
 - **代码规范**：ESLint 10.10.0
 - **提交规范**：simple-git-hooks + lint-staged
 - **API 封装**：Axios 1.20.0
@@ -61,7 +61,7 @@
 
 ### 环境要求
 
-- Node.js `24.18.0`（Krypton LTS；支持范围 `^24.18.0`）
+- Node.js 24 LTS（Krypton；支持范围 `>=24.11.0 <25`，推荐最新 24.x）
 
 ### 包管理器
 
@@ -290,6 +290,8 @@ npx @eslint/config-inspector
 默认启动保持轻量，部分开发工具按需开启。可以在 `.env` 中修改默认值，也可以在命令行临时覆盖：
 
 ```env
+VITE_API_BASE="/API_BASE"
+VITE_API_TARGET="http://localhost:8080"
 VITE_ENABLE_DEVTOOLS=false
 VITE_ENABLE_CODE_INSPECTOR=true
 VITE_ENABLE_PERFORMANCE_MONITOR=false
@@ -300,6 +302,8 @@ VITE_ENABLE_MILLION=false
 VITE_ENABLE_REACT_COMPILER=false
 VITE_ENABLE_NO_BUG=false
 ```
+
+`VITE_API_BASE` 和 `VITE_API_TARGET` 为必填项；启动和构建时会立即报告缺失配置。
 
 ```bash
 # 开启 Vite DevTools

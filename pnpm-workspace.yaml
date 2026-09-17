@@ -1,6 +1,4 @@
 minimumReleaseAgeExcludePrune: true
-ignoreTrustChecks: true
-
 minimumReleaseAgeExclude:
   - '@eslint-react/ast@5.10.0'
   - '@eslint-react/core@5.10.0'

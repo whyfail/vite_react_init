@@ -13,6 +13,8 @@ function setToken(token: string, persist = false): void {
 
   if (persist) {
     localStorage.setItem(KEY_TOKEN, token);
+  } else {
+    localStorage.removeItem(KEY_TOKEN);
   }
 }
 

@@ -19,6 +19,17 @@ export default defineConfig(({ mode }) => {
   const isTest = mode === 'test';
   const on = key => env[key] === 'true';
 
+  const required = (key) => {
+    if (!env[key]) {
+      throw new Error(`Missing required environment variable: ${key}`);
+    }
+
+    return env[key];
+  };
+
+  const apiBase = required('VITE_API_BASE');
+  const apiTarget = required('VITE_API_TARGET');
+
   return {
     base: './',
     plugins: [
@@ -83,10 +94,10 @@ export default defineConfig(({ mode }) => {
       open: true,
       proxy: {
       // 代理
-        '/PROXY': {
-          target: 'http://xxxx',
+        [apiBase]: {
+          target: apiTarget,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/PROXY/, ''),
+          rewrite: path => path.slice(apiBase.length),
         },
       },
     },

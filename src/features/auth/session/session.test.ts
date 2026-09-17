@@ -16,6 +16,14 @@ describe('auth session', () => {
     expect(localStorage.getItem('xxx_web_app_token')).toBe('remembered-token');
   });
 
+  it('removes a previously remembered token for a session-only login', () => {
+    setToken('remembered-token', true);
+    setToken('session-token');
+
+    expect(sessionStorage.getItem('xxx_web_app_token')).toBe('session-token');
+    expect(localStorage.getItem('xxx_web_app_token')).toBeNull();
+  });
+
   it('clears every token source', () => {
     setToken('remembered-token', true);
 

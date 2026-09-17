@@ -47,7 +47,7 @@ const routes: AppRouteObject[] = [
     element: <Router404 />,
     meta: {
       title: '404',
-      needLogin: true,
+      needLogin: false,
     },
   },
 ];
