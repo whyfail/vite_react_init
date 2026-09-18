@@ -3,9 +3,9 @@ import { setupServer } from 'msw/node';
 
 const server = setupServer(
   http.post('/API_BASE/login', async ({ request }) => {
-    const body = await request.json() as { name?: string, password?: string };
+    const body = await request.json() as { username?: string, password?: string };
 
-    if (body.name === 'admin' && body.password === 'admin') {
+    if (body.username === 'admin' && body.password === 'admin') {
       return HttpResponse.json({ token: '123' });
     }
 
