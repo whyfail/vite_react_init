@@ -7,7 +7,6 @@ import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 import million from 'million/compiler';
-import Printer from 'unplugin-printer/vite';
 import { defineConfig, loadEnv } from 'vite';
 import { compression } from 'vite-plugin-compression2';
 import vitePluginNoBug from 'vite-plugin-no-bug';
@@ -58,13 +57,6 @@ export default defineConfig(({ mode }) => {
       }),
       tailwindcss(),
       !isTest && on('VITE_ENABLE_NO_BUG') && vitePluginNoBug(),
-      Printer({
-        info: [
-          ({ lightCyan, green, bold }) => {
-            return `  ${green('➜')}  ${bold('官网')}:  ${lightCyan('https://whyfail.github.io/cwa-docs')}`;
-          },
-        ],
-      }),
       !isTest && on('VITE_ENABLE_WEB_UPDATE_NOTICE') && webUpdateNotice({
         notificationProps: {
           title: '系统升级通知',

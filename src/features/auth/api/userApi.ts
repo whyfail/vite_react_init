@@ -2,9 +2,9 @@ import { request } from '@/shared/api/http';
 import { API_BASE_NAME } from '@/shared/config/appConfig';
 
 interface UserLoginParams {
-  name: string
+  username: string
   password: string
-  checked?: boolean
+  remember?: boolean
 }
 
 function userLoginApi(value: UserLoginParams): Promise<unknown> {

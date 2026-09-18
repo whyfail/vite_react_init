@@ -10,17 +10,17 @@ import { Input } from '@/shared/ui/input';
 import LoginPrism from './LoginPrism';
 
 interface LoginFormValues {
-  name: string
+  username: string
   password: string
-  checked?: boolean
+  remember?: boolean
 }
 
 function LoginIndex(): ReactElement {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState<LoginFormValues>({
-    name: 'admin',
+    username: 'admin',
     password: 'admin',
-    checked: false,
+    remember: false,
   });
   const [errors, setErrors] = useState<Partial<Record<keyof LoginFormValues, string>>>({});
 
@@ -29,8 +29,8 @@ function LoginIndex(): ReactElement {
 
     const nextErrors: Partial<Record<keyof LoginFormValues, string>> = {};
 
-    if (!formValues.name.trim()) {
-      nextErrors.name = '账号必填';
+    if (!formValues.username.trim()) {
+      nextErrors.username = '账号必填';
     }
 
     if (!formValues.password.trim()) {
@@ -44,8 +44,8 @@ function LoginIndex(): ReactElement {
     }
 
     try {
-      if (formValues.name === 'admin' && formValues.password === 'admin') {
-        setToken('123', formValues.checked);
+      if (formValues.username === 'admin' && formValues.password === 'admin') {
+        setToken('123', formValues.remember);
         notify.success('登录成功');
         navigate('/');
       } else {
@@ -81,15 +81,15 @@ function LoginIndex(): ReactElement {
       <div className="absolute left-[calc(50%-260px)] top-[calc(50%-180px)] w-[520px] rounded-[32px] bg-[#ecf0f350] p-8 shadow-[1px_1px_3px_#cbced1,-1px_-1px_3px_white]">
         <h2 className="text-center text-[32px] text-[#ffffff] font-bold text-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">登录</h2>
         <form className="mt-6 flex flex-col gap-4" onSubmit={onFinish}>
-          <Field data-invalid={Boolean(errors.name)}>
+          <Field data-invalid={Boolean(errors.username)}>
             <Input
-              aria-invalid={Boolean(errors.name)}
+              aria-invalid={Boolean(errors.username)}
               placeholder="请输入账号：admin"
-              value={formValues.name}
-              onChange={e => updateFormValue('name', e.target.value)}
+              value={formValues.username}
+              onChange={e => updateFormValue('username', e.target.value)}
               className="h-10 bg-white/80"
             />
-            <FieldError>{errors.name}</FieldError>
+            <FieldError>{errors.username}</FieldError>
           </Field>
           <Field data-invalid={Boolean(errors.password)}>
             <Input
@@ -107,8 +107,8 @@ function LoginIndex(): ReactElement {
           </Button>
           <label className="flex items-center justify-end gap-2 text-sm text-white">
             <Checkbox
-              checked={formValues.checked}
-              onCheckedChange={checked => updateFormValue('checked', checked === true)}
+              checked={formValues.remember}
+              onCheckedChange={remember => updateFormValue('remember', remember === true)}
             />
             记住账号
           </label>
