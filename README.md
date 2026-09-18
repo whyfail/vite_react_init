@@ -221,6 +221,16 @@ pnpm build
 - 覆盖率报告输出到 `coverage/`；Vitest/Playwright JUnit 报告输出到 `test-results/`；Playwright HTML 报告输出到 `playwright-report/`。
 - GitHub Actions 会执行安装、peer 检查、测试、覆盖率、组件测试守卫、类型检查、lint、E2E 和 build。
 
+## 🐳 容器化部署
+
+模板内置多阶段 Dockerfile：构建静态产物后用 nginx 提供服务，并把 `/api` 反向代理到后端（上游由运行时环境变量 `API_BACKEND_URL` 决定，默认 `http://host.docker.internal:8080`，Linux 宿主机加 `--add-host=host.docker.internal:host-gateway` 或在运行时覆盖该变量）。
+
+```bash
+# 构建并运行（可按需覆盖 API 地址）
+docker build -t my-app .
+docker run -p 8080:80 -e API_BACKEND_URL=http://host.docker.internal:8080 my-app
+```
+
 ## 📝 提交规范
 
 ### 提交信息格式
