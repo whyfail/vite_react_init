@@ -89,6 +89,12 @@ pnpm run build
 
 打包后的文件将输出到 `dist` 目录。
 
+## 🔗 推荐后端模板
+
+需要真实后端联调？直接搭配同系列的企业级后端模板 [springboot-template](https://github.com/whyfail/springboot-template)。
+
+它提供登录签发 opaque token、`Authorization: Bearer` 鉴权、`GET /api/v1/me` 当前用户与用户/角色管理 REST API，与本模板的登录表单和 API 封装开箱即连；Java 25 + Spring Boot 4 模块化单体，内置 Redis 会话、登录限流、安全审计与 Testcontainers 质量门禁。
+
 ## 📁 项目结构
 
 ```
