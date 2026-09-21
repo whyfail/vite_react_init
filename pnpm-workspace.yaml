@@ -102,6 +102,7 @@ shellEmulator: true
 allowBuilds:
   '@parcel/watcher': true
   core-js: true
+  esbuild: true
   million: true
   msw: true
   node-pty: true

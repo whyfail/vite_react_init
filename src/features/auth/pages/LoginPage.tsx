@@ -2,7 +2,9 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { notify } from '@/app/notifications';
+import { userLoginApi } from '@/features/auth/api/userApi';
 import { setToken } from '@/features/auth/session';
+import { isApiError } from '@/shared/api/http';
 import { Button } from '@/shared/ui/button';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Field, FieldError } from '@/shared/ui/field';
@@ -18,8 +20,8 @@ interface LoginFormValues {
 function LoginIndex(): ReactElement {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState<LoginFormValues>({
-    username: 'admin',
-    password: 'admin',
+    username: '',
+    password: '',
     remember: false,
   });
   const [errors, setErrors] = useState<Partial<Record<keyof LoginFormValues, string>>>({});
@@ -44,16 +46,21 @@ function LoginIndex(): ReactElement {
     }
 
     try {
-      if (formValues.username === 'admin' && formValues.password === 'admin') {
-        setToken('123', formValues.remember);
-        notify.success('登录成功');
-        navigate('/');
+      const result = await userLoginApi({
+        username: formValues.username,
+        password: formValues.password,
+        remember: formValues.remember,
+      });
+
+      setToken(result.token, formValues.remember);
+      notify.success('登录成功');
+      navigate('/');
+    } catch (error: unknown) {
+      if (isApiError(error) && error.message) {
+        notify.error(error.message);
       } else {
         notify.error('登录失败');
       }
-    } catch (e: unknown) {
-      console.error(e instanceof Error ? e.message : e);
-      notify.error('登录失败');
     }
   };
 
@@ -84,7 +91,7 @@ function LoginIndex(): ReactElement {
           <Field data-invalid={Boolean(errors.username)}>
             <Input
               aria-invalid={Boolean(errors.username)}
-              placeholder="请输入账号：admin"
+              placeholder="请输入账号"
               value={formValues.username}
               onChange={e => updateFormValue('username', e.target.value)}
               className="h-10 bg-white/80"
@@ -95,7 +102,7 @@ function LoginIndex(): ReactElement {
             <Input
               aria-invalid={Boolean(errors.password)}
               type="password"
-              placeholder="请输入登录密码：admin"
+              placeholder="请输入登录密码"
               value={formValues.password}
               onChange={e => updateFormValue('password', e.target.value)}
               className="h-10 bg-white/80"

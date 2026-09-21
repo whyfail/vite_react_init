@@ -87,6 +87,8 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - Business requests should use shared API wrappers instead of scattered raw Axios instances.
 - When adding or changing any component, add or update a component test for it; every component should have at least a render smoke test.
 - Validate with `pnpm test`, `pnpm test:coverage`, `pnpm test:component-coverage`, `pnpm typecheck`, `pnpm lint`, `pnpm test:e2e`, and `pnpm run build`; after dependency upgrades also run `pnpm peers check`.
+- After changing `openapi/api-contract.yaml` or the upstream contract, run `pnpm api:generate` and commit the regenerated `src/shared/api/generated`; never edit generated files by hand, and import them only through `src/features/auth/api/userApi.ts` or `@/shared/api/generated`.
+- Browser API mocking lives in `src/shared/api/mock` and only activates when `VITE_ENABLE_MOCK=true`; production builds must never fall back to mock silently.
 - Test reports are written to `coverage/`, `test-results/`, and `playwright-report/`; inspect them before lowering coverage thresholds.
 - Current runtime and dependency baseline: Node.js 24 LTS (>=24.11.0 <25), pnpm 11.20.0, Vite 8.3.0, React 19.3.0, React Router DOM 7.18.4, TypeScript 6.0.3, ESLint 10.10.0, Axios 1.20.0.
 

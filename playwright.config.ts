@@ -17,7 +17,12 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
+    // 默认显式开启 Mock 构建，保证模板 E2E 不依赖真实后端；
+    // 真实后端 E2E 以 E2E_AUTH_MOCK=false 关闭 Mock，并用 E2E_AUTH_* 注入种子凭据
     command: 'pnpm build && pnpm preview --host 127.0.0.1 --port 4173',
+    env: {
+      VITE_ENABLE_MOCK: process.env.E2E_AUTH_MOCK ?? 'true',
+    },
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     url: 'http://127.0.0.1:4173',

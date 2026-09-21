@@ -4,13 +4,20 @@ import { handleUnauthorized } from '@/app/navigation';
 import { notify } from '@/app/notifications';
 import { getToken } from '@/features/auth/session';
 
-interface ApiErrorData {
+// 后端 Problem Details（application/problem+json）顶层字段。
+// 与生成目录中的 Problem 模型保持同构；此处独立声明以避免 http -> generated 的循环依赖。
+interface ProblemDetailsData {
+  code?: string
   msg?: string
+  detail?: string
+  requestId?: string
 }
 
 interface ApiError {
   status?: number
   message: string
+  code?: string
+  requestId?: string
   raw?: unknown
 }
 
@@ -18,10 +25,14 @@ const http = axios.create({
   timeout: 5000,
 });
 
-function toApiError(error: AxiosError<ApiErrorData>): ApiError {
+function toApiError(error: AxiosError<ProblemDetailsData>): ApiError {
+  const problem = error.response?.data;
+
   return {
     status: error.response?.status,
-    message: error.response?.data?.msg || error.message || '请求失败，请稍后重试',
+    message: problem?.msg || problem?.detail || error.message || '请求失败，请稍后重试',
+    code: problem?.code,
+    requestId: problem?.requestId,
     raw: error,
   };
 }
@@ -45,13 +56,20 @@ http.interceptors.response.use(
 
     return response.data;
   },
-  (error: AxiosError<ApiErrorData>) => {
+  (error: AxiosError<ProblemDetailsData>) => {
     const { response } = error;
     const apiError = toApiError(error);
 
     if (!response) {
       notify.error('网络错误，请检查网络连接');
 
+      return Promise.reject(apiError);
+    }
+
+    // 登录接口的 401 表示凭据错误，由登录页自行提示，不走会话过期流程
+    const isLoginRequest = Boolean(error.config?.url?.endsWith('/login'));
+
+    if (response.status === 401 && isLoginRequest) {
       return Promise.reject(apiError);
     }
 
@@ -82,5 +100,9 @@ function request<T>(config: AxiosRequestConfig): Promise<T> {
   return http.request<unknown, unknown>(config) as Promise<T>;
 }
 
+function isApiError(value: unknown): value is ApiError {
+  return typeof value === 'object' && value !== null && 'message' in value;
+}
+
 export type { ApiError };
-export { http, request };
+export { http, isApiError, request };

@@ -1,15 +1,15 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from '@/test/render';
 import LoginPage from './LoginPage';
 import LoginPrism from './LoginPrism';
 
 describe('auth pages', () => {
-  it('renders login form defaults', () => {
+  it('renders login form with empty defaults', () => {
     renderWithRouter(<LoginPage />);
 
-    expect(screen.getByPlaceholderText('请输入账号：admin')).toHaveValue('admin');
-    expect(screen.getByPlaceholderText('请输入登录密码：admin')).toHaveValue('admin');
+    expect(screen.getByPlaceholderText('请输入账号')).toHaveValue('');
+    expect(screen.getByPlaceholderText('请输入登录密码')).toHaveValue('');
     expect(screen.getByRole('button', { name: '登录' })).toBeInTheDocument();
   });
 
@@ -18,22 +18,24 @@ describe('auth pages', () => {
 
     renderWithRouter(<LoginPage />);
 
-    await user.clear(screen.getByPlaceholderText('请输入账号：admin'));
-    await user.clear(screen.getByPlaceholderText('请输入登录密码：admin'));
     await user.click(screen.getByRole('button', { name: '登录' }));
 
     expect(screen.getByText('账号必填')).toBeInTheDocument();
     expect(screen.getByText('密码必填')).toBeInTheDocument();
   });
 
-  it('stores token after successful login', async () => {
+  it('stores the contract token after successful login', async () => {
     const user = userEvent.setup();
 
     renderWithRouter(<LoginPage />);
 
+    await user.type(screen.getByPlaceholderText('请输入账号'), 'admin');
+    await user.type(screen.getByPlaceholderText('请输入登录密码'), 'admin');
     await user.click(screen.getByRole('button', { name: '登录' }));
 
-    expect(sessionStorage.getItem('xxx_web_app_token')).toBe('123');
+    await waitFor(() => {
+      expect(sessionStorage.getItem('xxx_web_app_token')).toBeTruthy();
+    });
   });
 
   it('renders prism background container', () => {

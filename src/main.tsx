@@ -23,16 +23,30 @@ if (import.meta.env.DEV) {
 
 const root = document.getElementById('root');
 
-if (!root) {
-  throw new Error('Root element #root not found');
+// API Mock（MSW）：仅在显式设置 VITE_ENABLE_MOCK=true 时启用。
+// 条件写成静态字面量以便构建期剔除 mock 代码，生产默认走真实后端。
+async function bootstrap(): Promise<void> {
+  if (!root) {
+    throw new Error('Root element #root not found');
+  }
+
+  if (import.meta.env.VITE_ENABLE_MOCK === 'true') {
+    const { enableApiMock } = await import('./shared/api/mock/worker');
+
+    await enableApiMock();
+  }
+
+  ReactDOM.createRoot(root).render(
+    <HashRouter>
+      <ErrorBoundary>
+        <Suspense fallback={<Loading />}>
+          <App />
+        </Suspense>
+      </ErrorBoundary>
+    </HashRouter>,
+  );
 }
 
-ReactDOM.createRoot(root).render(
-  <HashRouter>
-    <ErrorBoundary>
-      <Suspense fallback={<Loading />}>
-        <App />
-      </Suspense>
-    </ErrorBoundary>
-  </HashRouter>,
-);
+bootstrap().catch((error: unknown) => {
+  console.error('应用初始化失败', error);
+});

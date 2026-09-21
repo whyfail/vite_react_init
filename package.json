@@ -11,6 +11,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "api:generate": "orval",
     "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -82,6 +83,7 @@
     "less": "^4.9.1",
     "lint-staged": "^17.5.1",
     "msw": "^2.15.0",
+    "orval": "^8.34.0",
     "react-grab": "^0.2.0",
     "shadcn": "^4.21.0",
     "simple-git-hooks": "^2.14.0",

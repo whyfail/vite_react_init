@@ -31,6 +31,8 @@ export default antfu(
       '**/dist/**',
       '**/public/**',
       '**/.trae/**',
+      'src/shared/api/generated/**',
+      'openapi/**',
       'vite_react_ssr_init/**',
     ],
   },

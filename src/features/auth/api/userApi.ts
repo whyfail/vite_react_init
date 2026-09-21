@@ -1,19 +1,11 @@
-import { request } from '@/shared/api/http';
-import { API_BASE_NAME } from '@/shared/config/appConfig';
+import type { CurrentUser, LoginRequest, LoginResponse } from '@/shared/api/generated/model';
+import { getSpringBootEnterpriseTemplateAPI } from '@/shared/api/generated';
 
-interface UserLoginParams {
-  username: string
-  password: string
-  remember?: boolean
-}
+const { login, logout, getCurrentUser } = getSpringBootEnterpriseTemplateAPI();
 
-function userLoginApi(value: UserLoginParams): Promise<unknown> {
-  return request<unknown>({
-    method: 'POST',
-    url: `${API_BASE_NAME}/login`,
-    data: value,
-  });
-}
-
-export type { UserLoginParams };
-export { userLoginApi };
+export type { CurrentUser, LoginRequest, LoginResponse };
+export {
+  getCurrentUser as getCurrentUserApi,
+  login as userLoginApi,
+  logout as userLogoutApi,
+};
