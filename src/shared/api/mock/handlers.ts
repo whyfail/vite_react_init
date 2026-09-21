@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
 // 演示账号与契约形状的固定响应。仅在显式开启 VITE_ENABLE_MOCK 时启用，
-// 组合模式（create-wl-app preset）不会引入该模块。
+// 组合模式（cwa-stack preset）不会引入该模块。
 const DEMO_USERNAME = 'admin';
 const DEMO_PASSWORD = 'admin';
 
