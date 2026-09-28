@@ -90,7 +90,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - After changing `openapi/api-contract.yaml` or the upstream contract, run `pnpm api:generate` and commit the regenerated `src/shared/api/generated`; never edit generated files by hand, and import them only through `src/features/auth/api/userApi.ts` or `@/shared/api/generated`.
 - Browser API mocking lives in `src/shared/api/mock` and only activates when `VITE_ENABLE_MOCK=true`; production builds must never fall back to mock silently.
 - Test reports are written to `coverage/`, `test-results/`, and `playwright-report/`; inspect them before lowering coverage thresholds.
-- Current runtime and dependency baseline: Node.js 24 LTS (>=24.11.0 <25), pnpm 11.20.0, Vite 8.3.0, React 19.3.0, React Router DOM 7.18.4, TypeScript 6.0.3, ESLint 10.10.0, Axios 1.20.0.
+- Current runtime and dependency baseline: Node.js 24 LTS (>=24.11.0 <25), pnpm 11.20.0, Vite 8.3.1, React 19.3.0, React Router DOM 7.18.4, TypeScript 6.0.3, ESLint 10.11.0, Axios 1.20.0.
 
 ## 项目结构约定
 
