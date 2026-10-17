@@ -32,7 +32,7 @@
 
   <div>
     <img src="https://img.shields.io/badge/Node.js-24.x-brightgreen?style=flat-square" alt="Node.js" />
-    <img src="https://img.shields.io/badge/pnpm-11.20.0-blue?style=flat-square" alt="pnpm" />
+    <img src="https://img.shields.io/badge/pnpm-12.14.0-blue?style=flat-square" alt="pnpm" />
     <img src="https://img.shields.io/badge/License-MIT-yellowgreen?style=flat-square" alt="License" />
   </div>
 
@@ -65,7 +65,7 @@
 
 ### 包管理器
 
-- 使用 pnpm@11.20.0 作为包管理器
+- 使用 pnpm@12.14.0 作为包管理器
 
 ### 安装依赖
 
