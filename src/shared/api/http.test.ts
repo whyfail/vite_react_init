@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { http, HttpResponse } from 'msw/http';
 import { vi } from 'vitest';
 import { setToken } from '@/features/auth/session';
 import { server } from '@/test/server';
@@ -53,7 +53,10 @@ describe('http request client', () => {
           requestId: 'req-123',
           timestamp: '2026-01-01T00:00:00Z',
         },
-        { status: 429, headers: { 'Content-Type': 'application/problem+json' } },
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/problem+json' },
+        },
       )),
     );
 

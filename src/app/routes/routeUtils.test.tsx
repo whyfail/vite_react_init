@@ -27,7 +27,9 @@ describe('route utilities', () => {
   });
 
   it('turns redirect routes into Navigate elements', () => {
-    const [route] = transformRoutes([{ path: '/', redirect: '/docs' }]);
+    const [route] = transformRoutes([
+      { path: '/', redirect: '/docs' },
+    ]);
 
     expect(isValidElement(route.element)).toBe(true);
     expect('redirect' in route).toBe(false);

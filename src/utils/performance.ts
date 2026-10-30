@@ -100,7 +100,11 @@ function logMetric(metric: Metric): void {
     `%c ${name} `,
     styles[rating as PerformanceRatingValue],
     formattedValue,
-    rating === PerformanceRating.good ? '✓' : rating === PerformanceRating.needsImprovement ? '⚠' : '✗',
+    rating === PerformanceRating.good
+      ? '✓'
+      : rating === PerformanceRating.needsImprovement
+        ? '⚠'
+        : '✗',
   );
 }
 
@@ -205,7 +209,9 @@ function observeCustomMetrics(): void {
     });
   });
 
-  domLoadObserver.observe({ entryTypes: ['navigation'] });
+  domLoadObserver.observe({
+    entryTypes: ['navigation'],
+  });
 
   // 监控资源加载时间
   const resourceObserver = new PerformanceObserver((list) => {
@@ -220,7 +226,9 @@ function observeCustomMetrics(): void {
     }
   });
 
-  resourceObserver.observe({ entryTypes: ['resource'] });
+  resourceObserver.observe({
+    entryTypes: ['resource'],
+  });
 }
 
 /**
@@ -273,7 +281,9 @@ export function observeLongTasks(): void {
       }
     });
 
-    observer.observe({ entryTypes: ['longtask'] });
+    observer.observe({
+      entryTypes: ['longtask'],
+    });
   } catch (error) {
     console.debug('长任务监控不支持:', error);
   }

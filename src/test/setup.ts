@@ -118,7 +118,7 @@ vi.stubGlobal('requestAnimationFrame', vi.fn(() => 0));
 vi.stubGlobal('cancelAnimationFrame', vi.fn());
 
 beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'error' });
+  server.listen({ onUnhandledFrame: 'error' });
 });
 
 afterEach(() => {

@@ -46,8 +46,12 @@ describe('performance monitor utilities', () => {
     expect(webVitalObservers.onINP).toHaveBeenCalledTimes(1);
     expect(webVitalObservers.onLCP).toHaveBeenCalledTimes(1);
     expect(webVitalObservers.onTTFB).toHaveBeenCalledTimes(1);
-    expect(observe).toHaveBeenCalledWith({ entryTypes: ['navigation'] });
-    expect(observe).toHaveBeenCalledWith({ entryTypes: ['resource'] });
+    expect(observe).toHaveBeenCalledWith({
+      entryTypes: ['navigation'],
+    });
+    expect(observe).toHaveBeenCalledWith({
+      entryTypes: ['resource'],
+    });
   });
 
   it('skips web-vitals setup when PerformanceObserver is unavailable', async () => {
@@ -65,20 +69,22 @@ describe('performance monitor utilities', () => {
   it('reads page navigation timing data', async () => {
     const { performanceMonitor } = await import('./performance');
 
-    vi.spyOn(window.performance, 'getEntriesByType').mockReturnValue([{
-      connectEnd: 30,
-      connectStart: 10,
-      domComplete: 120,
-      domContentLoadedEventEnd: 100,
-      domInteractive: 80,
-      domainLookupEnd: 10,
-      domainLookupStart: 2,
-      loadEventStart: 140,
-      requestStart: 30,
-      responseEnd: 60,
-      responseStart: 50,
-      startTime: 0,
-    } as PerformanceNavigationTiming]);
+    vi.spyOn(window.performance, 'getEntriesByType').mockReturnValue([
+      {
+        connectEnd: 30,
+        connectStart: 10,
+        domComplete: 120,
+        domContentLoadedEventEnd: 100,
+        domInteractive: 80,
+        domainLookupEnd: 10,
+        domainLookupStart: 2,
+        loadEventStart: 140,
+        requestStart: 30,
+        responseEnd: 60,
+        responseStart: 50,
+        startTime: 0,
+      } as PerformanceNavigationTiming,
+    ]);
 
     expect(performanceMonitor.getPageData()).toEqual({
       dns: 8,
@@ -109,7 +115,9 @@ describe('performance monitor utilities', () => {
 
     performanceMonitor.observeLongTasks();
 
-    expect(observe).toHaveBeenCalledWith({ entryTypes: ['longtask'] });
+    expect(observe).toHaveBeenCalledWith({
+      entryTypes: ['longtask'],
+    });
   });
 
   it('ignores unsupported long task observers', async () => {

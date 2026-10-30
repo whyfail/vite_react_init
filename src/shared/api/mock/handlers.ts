@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { http, HttpResponse } from 'msw/http';
 
 // 演示账号与契约形状的固定响应。仅在显式开启 VITE_ENABLE_MOCK 时启用，
 // 组合模式（cwa-stack preset）不会引入该模块。
@@ -28,7 +28,10 @@ function problemResponse(status: number, code: string, msg: string) {
       requestId: 'mock-request-id',
       timestamp: new Date().toISOString(),
     },
-    { status, headers: { 'Content-Type': 'application/problem+json' } },
+    {
+      status,
+      headers: { 'Content-Type': 'application/problem+json' },
+    },
   );
 }
 

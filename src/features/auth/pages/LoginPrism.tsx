@@ -236,7 +236,9 @@ function LoginPrism({
         uHeight: { value: H },
         uBaseHalf: { value: BASE_HALF },
         uUseBaseWobble: { value: 1 },
-        uRot: { value: new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]) },
+        uRot: {
+          value: new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]),
+        },
         uGlow: { value: GLOW },
         uOffsetPx: { value: offsetPxBuf },
         uNoise: { value: NOISE },
@@ -248,7 +250,9 @@ function LoginPrism({
         uCenterShift: { value: H * 0.25 },
         uInvBaseHalf: { value: 1 / BASE_HALF },
         uInvHeight: { value: 1 / H },
-        uMinAxis: { value: Math.min(BASE_HALF, H) },
+        uMinAxis: {
+          value: Math.min(BASE_HALF, H),
+        },
         uPxScale: {
           value: 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE),
         },
@@ -390,7 +394,9 @@ function LoginPrism({
         const maxPitch = 0.6 * HOVSTR;
         const maxYaw = 0.6 * HOVSTR;
 
-        targetYaw = (pointer.inside ? -pointer.x : 0) * maxYaw;
+        targetYaw = (pointer.inside
+          ? -pointer.x
+          : 0) * maxYaw;
         targetPitch = (pointer.inside ? pointer.y : 0) * maxPitch;
 
         const prevYaw = yaw;

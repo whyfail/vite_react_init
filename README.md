@@ -32,7 +32,7 @@
 
   <div>
     <img src="https://img.shields.io/badge/Node.js-24.x-brightgreen?style=flat-square" alt="Node.js" />
-    <img src="https://img.shields.io/badge/pnpm-12.14.0-blue?style=flat-square" alt="pnpm" />
+    <img src="https://img.shields.io/badge/pnpm-12.16.1-blue?style=flat-square" alt="pnpm" />
     <img src="https://img.shields.io/badge/License-MIT-yellowgreen?style=flat-square" alt="License" />
   </div>
 
@@ -44,28 +44,28 @@
 
 ## 🚀 技术栈
 
-- **构建工具**：Vite 8.3.3
-- **前端框架**：React 19.3.0
+- **构建工具**：Vite 8.3.5
+- **前端框架**：React 19.3.1
 - **开发语言**：TypeScript 6.0.3
-- **路由管理**：React Router DOM 7.18.4
-- **状态管理**：Zustand 5.0.15
+- **路由管理**：React Router DOM 7.18.5
+- **状态管理**：Zustand 5.0.16
 - **UI 组件库**：shadcn/ui
 - **样式方案**：Tailwind CSS 4.3.3 + Less
-- **图标方案**：Heroicons + lucide-react 1.52.0
-- **代码规范**：ESLint 10.12.0
+- **图标方案**：Heroicons + lucide-react 1.64.0
+- **代码规范**：ESLint 10.13.0
 - **提交规范**：simple-git-hooks + lint-staged
-- **API 封装**：Axios 1.20.0
-- **React Hooks**：ahooks 3.10.0
+- **API 封装**：Axios 1.21.0
+- **React Hooks**：ahooks 3.11.0
 
 ## 📦 快速开始
 
 ### 环境要求
 
-- Node.js 24 LTS（Krypton；支持范围 `>=24.11.0 <25`，推荐最新 24.x）
+- Node.js 24 LTS（Krypton；支持范围 `>=24.15.0 <25`，推荐最新 24.x）
 
 ### 包管理器
 
-- 使用 pnpm@12.14.0 作为包管理器
+- 使用 pnpm@12.16.1 作为包管理器
 
 ### 安装依赖
 

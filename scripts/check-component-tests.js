@@ -29,7 +29,9 @@ function walk(dir, predicate) {
       return walk(fullPath, predicate);
     }
 
-    return predicate(fullPath) ? [fullPath] : [];
+    return predicate(fullPath)
+      ? [fullPath]
+      : [];
   });
 }
 
@@ -85,7 +87,12 @@ const tests = walk(srcRoot, filePath =>
 
 const missing = components.filter((componentPath) => {
   const componentName = basename(componentPath, extname(componentPath));
-  const componentNames = [...new Set([componentName, toPascalCase(componentName)])];
+  const componentNames = [
+    ...new Set([
+      componentName,
+      toPascalCase(componentName),
+    ]),
+  ];
   const importPath = toImportPath(componentPath);
   const relativePath = relative(srcRoot, componentPath).split(sep).join('/');
 

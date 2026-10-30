@@ -41,7 +41,11 @@ export default antfu(
       'e18e/prefer-static-regex': 'off',
       'antfu/if-newline': 'off',
       '@stylistic/semi': [2, 'always'],
-      '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+      '@stylistic/brace-style': [
+        'error',
+        '1tbs',
+        { allowSingleLine: true },
+      ],
       'react-hooks/exhaustive-deps': 'off',
       // 覆盖可能引起冲突的 react 规则
       'react/no-comment-textnodes': 'off',
@@ -60,17 +64,48 @@ export default antfu(
         { blankLine: 'any', prev: 'export', next: 'export' },
         { blankLine: 'always', prev: '*', next: 'function' },
         { blankLine: 'always', prev: 'function', next: '*' },
-        { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-        { blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
-        { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
-        { blankLine: 'always', prev: ['case', 'default'], next: '*' },
-        { blankLine: 'always', prev: '*', next: ['block', 'block-like'] },
-        { blankLine: 'always', prev: ['block', 'block-like'], next: '*' },
+        {
+          blankLine: 'always',
+          prev: ['const', 'let', 'var'],
+          next: '*',
+        },
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: ['const', 'let', 'var'],
+        },
+        {
+          blankLine: 'any',
+          prev: ['const', 'let', 'var'],
+          next: ['const', 'let', 'var'],
+        },
+        {
+          blankLine: 'always',
+          prev: ['case', 'default'],
+          next: '*',
+        },
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: ['block', 'block-like'],
+        },
+        {
+          blankLine: 'always',
+          prev: ['block', 'block-like'],
+          next: '*',
+        },
       ],
       'no-console': [
         'error',
         {
-          allow: ['warn', 'error', 'info', 'debug', 'groupCollapsed', 'groupEnd'],
+          allow: [
+            'warn',
+            'error',
+            'info',
+            'debug',
+            'groupCollapsed',
+            'groupEnd',
+          ],
         },
       ],
     },

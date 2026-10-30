@@ -75,13 +75,19 @@ export function TimeFormatPast(date: string | number, type: TimeFormatType = 'de
     // 数字补零
     const Y = new Date(date).getFullYear();
     const M = new Date(date).getMonth() + 1;
-    const zeroFillM = M > 9 ? M : `0${M}`;
+    const zeroFillM = M > 9
+      ? M
+      : `0${M}`;
     const D = new Date(date).getDate();
-    const zeroFillD = D > 9 ? D : `0${D}`;
+    const zeroFillD = D > 9
+      ? D
+      : `0${D}`;
 
     // 传入格式为"-" "/" "."
     if (type === '-' || type === '/' || type === '.') {
-      return zeroFillFlag ? Y + type + zeroFillM + type + zeroFillD : Y + type + M + type + D;
+      return zeroFillFlag
+        ? Y + type + zeroFillM + type + zeroFillD
+        : Y + type + M + type + D;
     }
 
     // 传入格式为"年月日"
@@ -93,7 +99,9 @@ export function TimeFormatPast(date: string | number, type: TimeFormatType = 'de
 
     // 传入格式为"月日"
     if (type === '月日') {
-      return zeroFillFlag ? zeroFillM + type[0] + zeroFillD + type[1] : M + type[0] + D + type[1];
+      return zeroFillFlag
+        ? zeroFillM + type[0] + zeroFillD + type[1]
+        : M + type[0] + D + type[1];
     }
 
     // 传入格式为"年"

@@ -41,7 +41,9 @@ http.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = getToken();
 
-    config.headers.Authorization = token ? `Bearer ${token}` : '';
+    config.headers.Authorization = token
+      ? `Bearer ${token}`
+      : '';
 
     return config;
   },

@@ -26,7 +26,9 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // 你也可以将错误日志记录到错误报告服务
     console.error(error, errorInfo);
-    this.setState({ error: error.toString() });
+    this.setState({
+      error: error.toString(),
+    });
   }
 
   render(): ReactNode {

@@ -8,8 +8,14 @@ export default defineConfig({
   outputDir: 'test-results/playwright-artifacts',
   reporter: [
     ['list'],
-    ['html', { open: 'never', outputFolder: 'playwright-report' }],
-    ['junit', { outputFile: 'test-results/playwright-junit.xml' }],
+    [
+      'html',
+      { open: 'never', outputFolder: 'playwright-report' },
+    ],
+    [
+      'junit',
+      { outputFile: 'test-results/playwright-junit.xml' },
+    ],
   ],
   testDir: './tests/e2e',
   use: {
