@@ -44,17 +44,17 @@
 
 ## 🚀 技术栈
 
-- **构建工具**：Vite 8.3.5
+- **构建工具**：Vite 8.3.8
 - **前端框架**：React 19.3.1
 - **开发语言**：TypeScript 6.0.3
 - **路由管理**：React Router DOM 7.18.5
-- **状态管理**：Zustand 5.0.16
+- **状态管理**：Zustand 5.1.0
 - **UI 组件库**：shadcn/ui
-- **样式方案**：Tailwind CSS 4.3.3 + Less
-- **图标方案**：Heroicons + lucide-react 1.64.0
-- **代码规范**：ESLint 10.13.0
+- **样式方案**：Tailwind CSS 4.3.5 + Less
+- **图标方案**：Heroicons + lucide-react 1.73.0
+- **代码规范**：ESLint 10.15.0
 - **提交规范**：simple-git-hooks + lint-staged
-- **API 封装**：Axios 1.21.0
+- **API 封装**：Axios 1.21.1
 - **React Hooks**：ahooks 3.11.0
 
 ## 📦 快速开始
